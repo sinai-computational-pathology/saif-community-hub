@@ -1,0 +1,359 @@
+combo: mouth_oral_cavity__age
+organ_slug: mouth_oral_cavity
+organ: Mouth / Oral Cavity
+demographic: age
+demographic_label: Age Group
+summary: >-
+  Age signal in oral cavity histology is likely mixed. Clinical-context signal may come from age-skewed enrichment for
+  oral squamous cell carcinoma, dysplasia, chronic mucosal injury, denture/prosthetic trauma, salivary dysfunction, and
+  procedure differences. Morphology signal may also persist in benign/background tissue through epithelial atrophy, rete
+  ridge flattening, stromal collagen remodeling, vascular change, chronic inflammation, and minor salivary gland
+  atrophy.
+claims:
+  - id: C1
+    section: clinical_context
+    status: active
+    hypothesis: Older patients are enriched for oral squamous cell carcinoma.
+    mechanism: >-
+      Oral cancer incidence and cancer-directed resections increase with age, creating diagnosis and specimen-type
+      shortcuts.
+    features: SCC vs benign mucosa, invasive carcinoma, keratinization, necrosis, perineural invasion, resection vs biopsy.
+    confounders: Diagnosis, tumor stage, oral subsite, specimen type, treatment status.
+    validation: >-
+      Match benign/malignant status and SCC stage/subsite; test residual age signal within SCC-only and benign-only
+      subsets.
+    literature:
+      - short_citation: Lenoci et al., 2024
+        citation: >-
+          Lenoci D, Moresco E, Cavalieri S, et al. Oral cancer in young adults: incidence, risk factors, prognosis, and
+          molecular biomarkers. Frontiers in Oncology. 2024
+        doi: 10.3389/fonc.2024.1452909
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11484398/
+        evidence_status: needs claim-level validation
+      - short_citation: Majchrzak et al., 2014
+        citation: >-
+          Majchrzak E, Szybiak B, Wegner A, et al. Oral cavity and oropharyngeal squamous cell carcinoma in young
+          adults: a review of the literature. 2014
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC3908841/
+        evidence_status: source metadata incomplete
+      - short_citation: Brizuela & Winters, 2023
+        citation: Brizuela M, Winters R. Histology, Oral Mucosa. StatPearls. Updated 2023
+        pmid: '34033326'
+        url: https://www.ncbi.nlm.nih.gov/books/NBK572115/
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C2
+    section: clinical_context
+    status: active
+    hypothesis: Older patients are enriched for epithelial dysplasia and field-change biopsies.
+    mechanism: >-
+      Cumulative tobacco/alcohol, dental irritation, and chronic mucosal injury can increase dysplasia workups in older
+      patients.
+    features: Dysplasia grade, keratinizing atypia, hyperkeratosis, lichenoid/interface inflammation, margin status.
+    confounders: Dysplasia grade, risk exposure, subsite, biopsy indication.
+    validation: Match dysplasia grade and oral subsite; compare age prediction within dysplasia-only cases.
+    literature:
+      - short_citation: Porto et al., 2024
+        citation: >-
+          Porto UN, Laureano NK, dos Santos NS, et al. Leukoplakia and erythroplakia in youngers versus older
+          individuals: a clinicopathological retrospective study. 2024
+        doi: 10.4317/medoral.26659
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11365051/
+        evidence_status: needs claim-level validation
+      - short_citation: Alnuaimi et al., 2020
+        citation: >-
+          Alnuaimi AD, Wiesenfeld D, O'Brien-Simpson NM, Reynolds EC, McCullough MJ. Long-term follow-up of oral
+          epithelial dysplasia: A hospital based cross-sectional study. 2020
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC7770253/
+        evidence_status: source metadata incomplete
+      - short_citation: Wetzel & Wollenberg, 2020
+        citation: Wetzel SL, Wollenberg J. Oral Potentially Malignant Disorders. Dental Clinics of North America. 2020
+        pmid: '31735231'
+        doi: 10.1016/j.cden.2019.08.004
+        url: https://pubmed.ncbi.nlm.nih.gov/31735231/
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C3
+    section: clinical_context
+    status: active
+    hypothesis: Older patients may have more prosthetic/dental trauma and chronic ulcer/injury specimens.
+    mechanism: Dentures, dental disease, medications, and comorbidity can shift biopsy mix toward chronic reactive lesions.
+    features: Ulceration, granulation tissue, fibrosis/scar, pseudoepitheliomatous hyperplasia, chronic inflammation.
+    confounders: Diagnosis, denture/prosthetic history, subsite, biopsy indication.
+    validation: >-
+      Use report diagnosis and subsite to identify traumatic/reactive lesions; test whether age signal attenuates when
+      excluded.
+    literature:
+      - short_citation: Fitzpatrick et al., 2019
+        citation: >-
+          Fitzpatrick SG, Cohen DM, Clark AN. Ulcerated Lesions of the Oral Mucosa: Clinical and Histologic Review. Head
+          and Neck Pathology. 2019
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC6405793/
+        evidence_status: source metadata incomplete
+      - short_citation: Jovanovic et al., 2023
+        citation: >-
+          Jovanovic M, Jankovic S, Okicic N, et al. Factors affecting the healing of decubital lesions in patients
+          wearing newly made dentures. 2023
+        pmid: '38303831'
+        doi: 10.1016/j.jds.2023.03.019
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC10829545/
+        evidence_status: needs claim-level validation
+      - short_citation: Qiu et al., 2026
+        citation: >-
+          Qiu C, Jie W, et al. Ageing of the Oral Mucosa: Mechanisms and Consequences. International Dental Journal.
+          2026
+        doi: 10.1016/j.identj.2026.109482
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13068552/
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C4
+    section: clinical_context
+    status: active
+    hypothesis: Older patients may be enriched for salivary dysfunction-related pathology.
+    mechanism: >-
+      Aging and medications can alter oral moisture and minor salivary gland context, affecting sampling and
+      inflammation.
+    features: Minor salivary gland tissue, acinar atrophy, duct dilation, chronic sialadenitis, fibrosis, fatty replacement.
+    confounders: Salivary gland inclusion, Sjogren/autoimmune disease, medication history, biopsy site.
+    validation: Stratify by presence of minor salivary gland tissue and salivary diagnoses.
+    literature:
+      - short_citation: Qiu et al., 2026
+        citation: >-
+          Qiu C, Jie W, et al. Ageing of the Oral Mucosa: Mechanisms and Consequences. International Dental Journal.
+          2026
+        doi: 10.1016/j.identj.2026.109482
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13068552/
+        evidence_status: needs claim-level validation
+      - short_citation: Brizuela & Winters, 2023
+        citation: Brizuela M, Winters R. Histology, Oral Mucosa. StatPearls. Updated 2023
+        pmid: '34033326'
+        url: https://www.ncbi.nlm.nih.gov/books/NBK572115/
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M1
+    section: histomorphology
+    status: active
+    hypothesis: Oral epithelial thickness decreases with age.
+    mechanism: Oral mucosal aging may cause epithelial thinning/atrophy and reduced proliferative capacity.
+    features: Epithelial thickness, atrophy, basal/parabasal cellularity, keratin layer.
+    confounders: Subsite, inflammation, dysplasia, ulceration, fixation/orientation.
+    validation: Quantify epithelial thickness in benign non-ulcerated mucosa matched by subsite.
+    literature:
+      - short_citation: Shklar, 1966
+        citation: Shklar G. The effects of aging upon oral mucosa. Journal of Investigative Dermatology. 1966
+        pmid: '5916125'
+        doi: 10.1038/jid.1966.107
+        url: https://pubmed.ncbi.nlm.nih.gov/5916125/
+        evidence_status: needs claim-level validation
+      - short_citation: Qiu et al., 2026
+        citation: >-
+          Qiu C, Jie W, et al. Ageing of the Oral Mucosa: Mechanisms and Consequences. International Dental Journal.
+          2026
+        doi: 10.1016/j.identj.2026.109482
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13068552/
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M2
+    section: histomorphology
+    status: active
+    hypothesis: Rete ridge architecture becomes flatter or less complex with age.
+    mechanism: Aging may reduce epithelial-connective tissue interface complexity.
+    features: Rete ridge height/density, epithelial-connective interface, papillary architecture.
+    confounders: Subsite, frictional keratosis, dysplasia, section orientation.
+    validation: Morphometric rete ridge analysis in benign mucosa after subsite matching.
+    literature:
+      - short_citation: Shklar, 1966
+        citation: Shklar G. The effects of aging upon oral mucosa. Journal of Investigative Dermatology. 1966
+        pmid: '5916125'
+        doi: 10.1038/jid.1966.107
+        url: https://pubmed.ncbi.nlm.nih.gov/5916125/
+        evidence_status: needs claim-level validation
+      - short_citation: Qiu et al., 2026
+        citation: >-
+          Qiu C, Jie W, et al. Ageing of the Oral Mucosa: Mechanisms and Consequences. International Dental Journal.
+          2026
+        doi: 10.1016/j.identj.2026.109482
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13068552/
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M3
+    section: histomorphology
+    status: active
+    hypothesis: Lamina propria collagen and extracellular matrix remodel with age.
+    mechanism: Aging fibroblasts and ECM turnover may alter collagen density, organization, and stromal stiffness.
+    features: Collagen density, hyalinization, stromal cellularity, fibrosis, elastotic-like change.
+    confounders: Scar, chronic inflammation, tumor desmoplasia, subsite.
+    validation: Restrict to benign background lamina propria; quantify stromal texture/collagen density.
+    literature:
+      - short_citation: Gomi et al., 2020
+        citation: >-
+          Gomi T, Imamura T, et al. Comprehensive histological investigation of age-related changes in dermal
+          extracellular matrix and muscle fibers in the upper lip vermilion. International Journal of Cosmetic Science.
+          2020
+        doi: 10.1111/ics.12622
+        url: https://pubmed.ncbi.nlm.nih.gov/32712160/
+        evidence_status: needs claim-level validation
+      - short_citation: Qiu et al., 2026
+        citation: >-
+          Qiu C, Jie W, et al. Ageing of the Oral Mucosa: Mechanisms and Consequences. International Dental Journal.
+          2026
+        doi: 10.1016/j.identj.2026.109482
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13068552/
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M4
+    section: histomorphology
+    status: active
+    hypothesis: Oral mucosal immune background changes with age.
+    mechanism: Immunosenescence/inflammaging may alter chronic inflammatory infiltrates.
+    features: Lymphoplasmacytic infiltrate, lichenoid/interface inflammation, lymphoid aggregates.
+    confounders: Diagnosis, infection, autoimmune disease, ulceration, treatment.
+    validation: Test within benign/reactive diagnoses and adjust for inflammation-related diagnostic labels.
+    literature:
+      - short_citation: Qiu et al., 2026
+        citation: >-
+          Qiu C, Jie W, et al. Ageing of the Oral Mucosa: Mechanisms and Consequences. International Dental Journal.
+          2026
+        doi: 10.1016/j.identj.2026.109482
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13068552/
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M5
+    section: histomorphology
+    status: active
+    hypothesis: Minor salivary gland atrophy may encode age when glands are present.
+    mechanism: Aging and xerostomia-related processes may reduce acini and increase fibrosis/fat.
+    features: Acinar atrophy, duct dilation, periductal fibrosis, fatty replacement, chronic sialadenitis.
+    confounders: Salivary gland sampling, Sjogren disease, radiation, medication history.
+    validation: Analyze only slides containing minor salivary gland tissue; match salivary diagnosis.
+    literature:
+      - short_citation: Qiu et al., 2026
+        citation: >-
+          Qiu C, Jie W, et al. Ageing of the Oral Mucosa: Mechanisms and Consequences. International Dental Journal.
+          2026
+        doi: 10.1016/j.identj.2026.109482
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13068552/
+        evidence_status: needs claim-level validation
+      - short_citation: Brizuela & Winters, 2023
+        citation: Brizuela M, Winters R. Histology, Oral Mucosa. StatPearls. Updated 2023
+        pmid: '34033326'
+        url: https://www.ncbi.nlm.nih.gov/books/NBK572115/
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+key_takeaways:
+  - >-
+    The most likely clinical-context signal is age-skewed diagnosis and specimen mix, especially SCC, dysplasia, chronic
+    injury, and salivary dysfunction.
+  - >-
+    The most plausible morphology signal is benign mucosal aging: epithelial atrophy, flatter rete ridges, stromal
+    collagen remodeling, and minor salivary gland atrophy.
+  - >-
+    The most important validation is diagnosis-, subsite-, and specimen-type matching, followed by benign/background
+    mucosa analysis.
+references:
+  - 'n': 1
+    raw: >-
+      Qiu C, Jie W, et al. Ageing of the Oral Mucosa: Mechanisms and Consequences. International Dental Journal. 2026.
+      DOI: 10.1016/j.identj.2026.109482. https://pmc.ncbi.nlm.nih.gov/articles/PMC13068552/
+    citation: 'Qiu C, Jie W, et al. Ageing of the Oral Mucosa: Mechanisms and Consequences. International Dental Journal. 2026'
+    year: '2026'
+    doi: 10.1016/j.identj.2026.109482
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13068552/
+  - 'n': 2
+    raw: >-
+      Gomi T, Imamura T, et al. Comprehensive histological investigation of age-related changes in dermal extracellular
+      matrix and muscle fibers in the upper lip vermilion. International Journal of Cosmetic Science. 2020. DOI:
+      10.1111/ics.12622. https://pubmed.ncbi.nlm.nih.gov/32712160/
+    citation: >-
+      Gomi T, Imamura T, et al. Comprehensive histological investigation of age-related changes in dermal extracellular
+      matrix and muscle fibers in the upper lip vermilion. International Journal of Cosmetic Science. 2020
+    year: '2020'
+    doi: 10.1111/ics.12622
+    url: https://pubmed.ncbi.nlm.nih.gov/32712160/
+  - 'n': 3
+    raw: >-
+      Shklar G. The effects of aging upon oral mucosa. Journal of Investigative Dermatology. 1966. PMID: 5916125. DOI:
+      10.1038/jid.1966.107. https://pubmed.ncbi.nlm.nih.gov/5916125/
+    citation: Shklar G. The effects of aging upon oral mucosa. Journal of Investigative Dermatology. 1966
+    year: '1966'
+    pmid: '5916125'
+    doi: 10.1038/jid.1966.107
+    url: https://pubmed.ncbi.nlm.nih.gov/5916125/
+  - 'n': 4
+    raw: >-
+      Brizuela M, Winters R. Histology, Oral Mucosa. StatPearls. Updated 2023. PMID: 34033326.
+      https://www.ncbi.nlm.nih.gov/books/NBK572115/
+    citation: Brizuela M, Winters R. Histology, Oral Mucosa. StatPearls. Updated 2023
+    year: '2023'
+    pmid: '34033326'
+    url: https://www.ncbi.nlm.nih.gov/books/NBK572115/
+  - 'n': 5
+    raw: >-
+      Lenoci D, Moresco E, Cavalieri S, et al. Oral cancer in young adults: incidence, risk factors, prognosis, and
+      molecular biomarkers. Frontiers in Oncology. 2024. DOI: 10.3389/fonc.2024.1452909.
+      https://pmc.ncbi.nlm.nih.gov/articles/PMC11484398/
+    citation: >-
+      Lenoci D, Moresco E, Cavalieri S, et al. Oral cancer in young adults: incidence, risk factors, prognosis, and
+      molecular biomarkers. Frontiers in Oncology. 2024
+    year: '2024'
+    doi: 10.3389/fonc.2024.1452909
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11484398/
+  - 'n': 6
+    raw: >-
+      Majchrzak E, Szybiak B, Wegner A, et al. Oral cavity and oropharyngeal squamous cell carcinoma in young adults: a
+      review of the literature. 2014. https://pmc.ncbi.nlm.nih.gov/articles/PMC3908841/
+    citation: >-
+      Majchrzak E, Szybiak B, Wegner A, et al. Oral cavity and oropharyngeal squamous cell carcinoma in young adults: a
+      review of the literature. 2014
+    year: '2014'
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC3908841/
+  - 'n': 7
+    raw: >-
+      Alnuaimi AD, Wiesenfeld D, O'Brien-Simpson NM, Reynolds EC, McCullough MJ. Long-term follow-up of oral epithelial
+      dysplasia: A hospital based cross-sectional study. 2020. https://pmc.ncbi.nlm.nih.gov/articles/PMC7770253/
+    citation: >-
+      Alnuaimi AD, Wiesenfeld D, O'Brien-Simpson NM, Reynolds EC, McCullough MJ. Long-term follow-up of oral epithelial
+      dysplasia: A hospital based cross-sectional study. 2020
+    year: '2020'
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC7770253/
+  - 'n': 8
+    raw: >-
+      Porto UN, Laureano NK, dos Santos NS, et al. Leukoplakia and erythroplakia in youngers versus older individuals: a
+      clinicopathological retrospective study. 2024. DOI: 10.4317/medoral.26659.
+      https://pmc.ncbi.nlm.nih.gov/articles/PMC11365051/
+    citation: >-
+      Porto UN, Laureano NK, dos Santos NS, et al. Leukoplakia and erythroplakia in youngers versus older individuals: a
+      clinicopathological retrospective study. 2024
+    year: '2024'
+    doi: 10.4317/medoral.26659
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11365051/
+  - 'n': 9
+    raw: >-
+      Wetzel SL, Wollenberg J. Oral Potentially Malignant Disorders. Dental Clinics of North America. 2020. PMID:
+      31735231. DOI: 10.1016/j.cden.2019.08.004. https://pubmed.ncbi.nlm.nih.gov/31735231/
+    citation: Wetzel SL, Wollenberg J. Oral Potentially Malignant Disorders. Dental Clinics of North America. 2020
+    year: '2020'
+    pmid: '31735231'
+    doi: 10.1016/j.cden.2019.08.004
+    url: https://pubmed.ncbi.nlm.nih.gov/31735231/
+  - 'n': 10
+    raw: >-
+      Fitzpatrick SG, Cohen DM, Clark AN. Ulcerated Lesions of the Oral Mucosa: Clinical and Histologic Review. Head and
+      Neck Pathology. 2019. https://pmc.ncbi.nlm.nih.gov/articles/PMC6405793/
+    citation: >-
+      Fitzpatrick SG, Cohen DM, Clark AN. Ulcerated Lesions of the Oral Mucosa: Clinical and Histologic Review. Head and
+      Neck Pathology. 2019
+    year: '2019'
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC6405793/
+  - 'n': 11
+    raw: >-
+      Jovanovic M, Jankovic S, Okicic N, et al. Factors affecting the healing of decubital lesions in patients wearing
+      newly made dentures. 2023. DOI: 10.1016/j.jds.2023.03.019. PMID: 38303831.
+      https://pmc.ncbi.nlm.nih.gov/articles/PMC10829545/
+    citation: >-
+      Jovanovic M, Jankovic S, Okicic N, et al. Factors affecting the healing of decubital lesions in patients wearing
+      newly made dentures. 2023
+    year: '2023'
+    pmid: '38303831'
+    doi: 10.1016/j.jds.2023.03.019
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC10829545/

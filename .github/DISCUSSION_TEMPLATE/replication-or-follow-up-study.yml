@@ -1,0 +1,53 @@
+title: "[Follow-up study] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Propose a replication, validation, or follow-up experiment grounded in a public Hub claim or Atlas result.
+
+        **This discussion is public. Describe restricted cohorts only at a non-identifying, governance-safe level. Do not share PHI, identifiers, credentials, private paths, or unpublished sensitive results.**
+  - type: input
+    id: context
+    attributes:
+      label: Organ–demographic combination and claim ID or Atlas URL
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Scientific question
+    validations:
+      required: true
+  - type: textarea
+    id: cohort
+    attributes:
+      label: Proposed cohort or material
+      description: Give aggregate, non-identifying characteristics and governance constraints only.
+    validations:
+      required: true
+  - type: textarea
+    id: test
+    attributes:
+      label: Proposed test and success criterion
+    validations:
+      required: true
+  - type: textarea
+    id: contribution
+    attributes:
+      label: Available expertise or resources
+    validations:
+      required: false
+  - type: textarea
+    id: limitations
+    attributes:
+      label: Anticipated limitations and confounders
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public-data confirmation
+      options:
+        - label: I confirm that this submission contains no sensitive, restricted, identifying, or credential material.
+          required: true

@@ -1,0 +1,5 @@
+node_modules/
+_site/
+.citation-cache/
+citation-report.md
+.DS_Store

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "version": "v1",
+  "releaseId": "saif-community-hub-2026-08-14-supplement-v1",
+  "generatedAt": "2026-08-14T14:58:26.286Z",
+  "commitSha": "19bfbd3e34f183c5def163de7456417e929e2e90",
+  "claimCount": 232,
+  "dossierCount": 28,
+  "organCount": 14,
+  "citationCount": 94,
+  "citationValidation": "schema-validated; DOI and PMID resolution tracked by CI",
+  "linkedAtlasReleaseId": "saif-results-2026-07-31",
+  "files": {
+    "app.js": "6523d6c35bfe072cfa653719fdcbf0618a521b30343df9a5e4d87a532a691540",
+    "claims_bundle.js": "686b13fd096d21e0fc4a1565eb68f138624bdbc786396e6d2542a1c4b8dd9ea5",
+    "favicon.png": "9aeecb244ac260b2b0c6223991aa560f073959e07ca71faff4dd519b67d40395",
+    "index.html": "ea2a39dbdf63ae03ce6ee22c1337a8f5064e5e4fae6978f9e8edd1e27fdc9be1",
+    "og.png": "01fc3de7718246cca520ee9091689951a90cb424d0b8898edd3b77ca3edd95af",
+    "release_manifest.json": "5e83dbfd7cbb312769e66ad3387891acd2f1b711bce8aef868f73d93846ae8df",
+    "styles.css": "366c501542c43256aaa27f5ceda739fdac6b99247e905fa031490e0055a1b46e"
+  }
+}

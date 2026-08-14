@@ -1,0 +1,167 @@
+combo: small_bowel__sex
+organ_slug: small_bowel
+organ: Small Bowel
+demographic: sex
+demographic_label: Sex
+summary: >-
+  Small bowel sex signal is a residual candidate likely mediated by celiac disease, autoimmune/inflammatory workup, IBD
+  phenotype, healthcare utilization, and biopsy indication. Direct sex-specific small bowel H&E morphology outside
+  diagnosis is not well established.
+claims:
+  - id: C1
+    section: clinical_context
+    status: active
+    hypothesis: Women are more often diagnosed with celiac disease in many cohorts.
+    mechanism: Celiac workup and diagnosis can produce sex-skewed biopsy mix.
+    features: Villous atrophy, intraepithelial lymphocytes, crypt hyperplasia, chronic inflammation.
+    confounders: Celiac diagnosis, serology, biopsy indication, age, duodenum vs small bowel site.
+    validation: Match or exclude celiac disease and villous atrophy; retest residual sex signal.
+    literature:
+      - short_citation: Villanacci et al., 2020
+        citation: >-
+          Villanacci V, et al. Celiac disease: histology-differential diagnosis-complications. A practical approach.
+          Pathologica. 2020
+        pmcid: PMC7931573
+        evidence_status: source metadata incomplete
+      - short_citation: Vivas et al., 2015
+        citation: Vivas S, et al. Age-related differences in celiac disease. 2015
+        pmcid: PMC4635160
+        evidence_status: source metadata incomplete
+    evidence_status: source metadata incomplete
+  - id: C2
+    section: clinical_context
+    status: active
+    hypothesis: Sex differences in IBD phenotype or healthcare utilization may alter small bowel case mix.
+    mechanism: Workup for Crohn disease, chronic enteritis, anemia, malabsorption, or autoimmune disease can differ by sex.
+    features: Chronic active enteritis, granulomas, ulcers, stricturing/ischemic changes.
+    confounders: Diagnosis, procedure, site, inflammation severity, medication.
+    validation: Stratify by Crohn/IBD, celiac, ischemia, neoplasm, and nonspecific biopsy categories.
+    literature:
+      - short_citation: Vivas et al., 2015
+        citation: Vivas S, et al. Age-related differences in celiac disease. 2015
+        pmcid: PMC4635160
+        evidence_status: source metadata incomplete
+    evidence_status: source metadata incomplete
+  - id: C3
+    section: clinical_context
+    status: active
+    hypothesis: Anemia and malabsorption workups may create sex-associated duodenal biopsy patterns.
+    mechanism: Iron deficiency and autoimmune screening pathways can affect who receives small-bowel biopsies.
+    features: Normal biopsies, mild IEL increase, villous blunting, chronic inflammation.
+    confounders: Indication, anemia, celiac serology, age, menstrual status if available.
+    validation: Match biopsy indication and celiac status before reviewing residual sex signal.
+    literature:
+      - short_citation: Villanacci et al., 2020
+        citation: >-
+          Villanacci V, et al. Celiac disease: histology-differential diagnosis-complications. A practical approach.
+          Pathologica. 2020
+        pmcid: PMC7931573
+        evidence_status: source metadata incomplete
+      - short_citation: Vivas et al., 2015
+        citation: Vivas S, et al. Age-related differences in celiac disease. 2015
+        pmcid: PMC4635160
+        evidence_status: source metadata incomplete
+    evidence_status: source metadata incomplete
+  - id: C4
+    section: clinical_context
+    status: active
+    hypothesis: Neoplasm, ischemia, and obstruction categories may differ by age/sex context.
+    mechanism: Small-bowel resections and biopsies include heterogeneous entities whose distribution can encode sex indirectly.
+    features: Tumor, ischemic injury, ulceration, fibrosis, metastatic disease.
+    confounders: Diagnosis, procedure, site, age, treatment.
+    validation: Group cases into biopsy vs resection and diagnosis families before testing.
+    literature:
+      - short_citation: Vivas et al., 2015
+        citation: Vivas S, et al. Age-related differences in celiac disease. 2015
+        pmcid: PMC4635160
+        evidence_status: source metadata incomplete
+    evidence_status: source metadata incomplete
+  - id: M1
+    section: histomorphology
+    status: active
+    hypothesis: Celiac-type injury is the strongest H&E-visible sex carrier.
+    mechanism: Female enrichment for celiac disease can produce villous/crypt/IEL patterns that encode sex indirectly.
+    features: Villous height, crypt hyperplasia, IEL density, lamina propria inflammation.
+    confounders: Celiac diagnosis, duodenal site, age, biopsy orientation.
+    validation: Compare sex signal within non-celiac biopsies and within matched Marsh/injury grades.
+    literature:
+      - short_citation: Villanacci et al., 2020
+        citation: >-
+          Villanacci V, et al. Celiac disease: histology-differential diagnosis-complications. A practical approach.
+          Pathologica. 2020
+        pmcid: PMC7931573
+        evidence_status: source metadata incomplete
+      - short_citation: Vivas et al., 2015
+        citation: Vivas S, et al. Age-related differences in celiac disease. 2015
+        pmcid: PMC4635160
+        evidence_status: source metadata incomplete
+    evidence_status: source metadata incomplete
+  - id: M2
+    section: histomorphology
+    status: active
+    hypothesis: Diffuse immune differences are plausible but weakly supported.
+    mechanism: Sex-related immune regulation may influence autoimmune enteropathy/celiac/inflammatory patterns.
+    features: IELs, lymphoid aggregates, plasma cells, eosinophils.
+    confounders: Diagnosis, autoimmune disease, infection, medication.
+    validation: Treat as indirect unless residual signal persists after diagnosis/inflammation matching.
+    literature:
+      - short_citation: Vivas et al., 2015
+        citation: Vivas S, et al. Age-related differences in celiac disease. 2015
+        pmcid: PMC4635160
+        evidence_status: source metadata incomplete
+    evidence_status: source metadata incomplete
+  - id: M3
+    section: histomorphology
+    status: active
+    hypothesis: Chronic active enteritis and granulomatous patterns may reflect IBD mix.
+    mechanism: Crohn disease and infection produce visible ulceration, granulomas, and chronic architectural distortion.
+    features: Granulomas, ulcers, pyloric metaplasia, crypt distortion, active inflammation.
+    confounders: IBD diagnosis, medication, infection, site, age.
+    validation: Exclude IBD/infection or match these categories before interpreting residual sex signal.
+    literature:
+      - short_citation: Villanacci et al., 2020
+        citation: >-
+          Villanacci V, et al. Celiac disease: histology-differential diagnosis-complications. A practical approach.
+          Pathologica. 2020
+        pmcid: PMC7931573
+        evidence_status: source metadata incomplete
+      - short_citation: Vivas et al., 2015
+        citation: Vivas S, et al. Age-related differences in celiac disease. 2015
+        pmcid: PMC4635160
+        evidence_status: source metadata incomplete
+    evidence_status: source metadata incomplete
+  - id: M4
+    section: histomorphology
+    status: active
+    hypothesis: Direct normal small-bowel sex morphology is not established.
+    mechanism: A signal in normal biopsies may reflect orientation, tissue quantity, indication, or reporting workflow.
+    features: Normal villi, goblet/Paneth cells, mild IELs, lamina propria cellularity.
+    confounders: Site, orientation, indication, institution, celiac serology.
+    validation: Treat as exploratory until reviewer-added DOI-backed references support a direct mechanism.
+    literature:
+      - short_citation: Villanacci et al., 2020
+        citation: >-
+          Villanacci V, et al. Celiac disease: histology-differential diagnosis-complications. A practical approach.
+          Pathologica. 2020
+        pmcid: PMC7931573
+        evidence_status: source metadata incomplete
+    evidence_status: source metadata incomplete
+key_takeaways:
+  - 'Best review target: celiac-type injury, villous atrophy, IELs, and crypt hyperplasia.'
+  - 'Main shortcut risk: celiac/IBD diagnosis and biopsy indication.'
+  - Direct intrinsic sex morphology evidence is limited; prioritize diagnosis-matched validation.
+references:
+  - 'n': 1
+    raw: >-
+      Villanacci V, et al. Celiac disease: histology-differential diagnosis-complications. A practical approach.
+      Pathologica. 2020. PMCID: PMC7931573.
+    citation: >-
+      Villanacci V, et al. Celiac disease: histology-differential diagnosis-complications. A practical approach.
+      Pathologica. 2020
+    year: '2020'
+    pmcid: PMC7931573
+  - 'n': 2
+    raw: 'Vivas S, et al. Age-related differences in celiac disease. 2015. PMCID: PMC4635160.'
+    citation: Vivas S, et al. Age-related differences in celiac disease. 2015
+    year: '2015'
+    pmcid: PMC4635160

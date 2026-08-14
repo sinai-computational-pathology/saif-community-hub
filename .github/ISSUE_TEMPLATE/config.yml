@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Scientific discussion
+    url: https://github.com/sinai-computational-pathology/saif-community-hub/discussions
+    about: Discuss interpretations, evidence, follow-up studies, and collaborations.
+  - name: Security or privacy concern
+    url: https://github.com/sinai-computational-pathology/saif-community-hub/security
+    about: Use a private channel for sensitive security or privacy reports.

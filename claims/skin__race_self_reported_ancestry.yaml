@@ -1,0 +1,194 @@
+combo: skin__race_self_reported_ancestry
+organ_slug: skin
+organ: Skin
+demographic: race_self_reported_ancestry
+demographic_label: Race / Self-Reported Ancestry
+summary: >-
+  Skin race/self-reported ancestry signal is a high-priority residual candidate, but it should be framed as
+  pigmentation/phototype, anatomic site, exposure, diagnosis mix, and care-context signal rather than intrinsic race
+  biology. H&E-visible carriers include basal/suprabasal melanin, pigment incontinence, melanophages, solar elastosis,
+  and skin-of-color dermatopathology reaction patterns.
+claims:
+  - id: C1
+    section: clinical_context
+    status: active
+    hypothesis: Dermatopathology diagnosis mix can differ by skin phototype and care/access patterns.
+    mechanism: Pigmentation affects presentation and diagnosis of inflammatory, pigmentary, and UV-related dermatoses.
+    features: Diagnosis labels, inflammatory reaction pattern, pigmentary disorders, actinic damage, biopsy site.
+    confounders: Diagnosis, anatomic site, UV exposure, institution, stain/scanner.
+    validation: Match diagnosis and site; test whether residual signal remains in normal/benign background epidermis.
+    literature:
+      - short_citation: Williams et al., 2023
+        citation: >-
+          Williams KA, Wondimu B, Ajayi AM, Sokumbi O. Skin of color in dermatopathology: does color matter? Human
+          Pathology. 2023
+        pmid: '37146946'
+        doi: 10.1016/j.humpath.2023.04.012
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C2
+    section: clinical_context
+    status: active
+    hypothesis: UV-related disease and photodamage may confound race/phototype signal.
+    mechanism: Phototype and sun exposure influence actinic lesions and solar elastosis burden.
+    features: Actinic keratosis/SCC/BCC, solar elastosis, dermal collagen/elastin.
+    confounders: Age, sun-exposed site, diagnosis, geography, care access.
+    validation: Match sun-exposed site and keratinocytic lesion diagnosis.
+    literature:
+      - short_citation: Williams et al., 2023
+        citation: >-
+          Williams KA, Wondimu B, Ajayi AM, Sokumbi O. Skin of color in dermatopathology: does color matter? Human
+          Pathology. 2023
+        pmid: '37146946'
+        doi: 10.1016/j.humpath.2023.04.012
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C3
+    section: clinical_context
+    status: active
+    hypothesis: Pigmentary and interface-dermatitis diagnoses may be unevenly represented.
+    mechanism: >-
+      Post-inflammatory hyperpigmentation, lichen planus-like reactions, and pigmentary disorders can increase
+      pigment/incontinence patterns.
+    features: Lichenoid/interface dermatitis, pigment incontinence, melanophages, basal vacuolar change.
+    confounders: Diagnosis, inflammation, site, treatment, prior injury.
+    validation: Exclude pigmentary/interface diagnoses and retest race/ancestry signal.
+    literature:
+      - short_citation: Williams et al., 2023
+        citation: >-
+          Williams KA, Wondimu B, Ajayi AM, Sokumbi O. Skin of color in dermatopathology: does color matter? Human
+          Pathology. 2023
+        pmid: '37146946'
+        doi: 10.1016/j.humpath.2023.04.012
+        evidence_status: needs claim-level validation
+      - short_citation: Moreiras et al., 2021
+        citation: >-
+          Moreiras H, Seabra MC, Barral DC. Melanin Transfer in the Epidermis: The Pursuit of Skin Pigmentation Control
+          Mechanisms. International Journal of Molecular Sciences. 2021
+        doi: 10.3390/ijms22094466
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C4
+    section: clinical_context
+    status: active
+    hypothesis: Anatomic site and biopsy threshold may mediate signal.
+    mechanism: Skin-of-color clinical workflows and lesion visibility can alter biopsy site, lesion duration, and specimen type.
+    features: Acral sites, scalp/hair-bearing skin, keloid/scar, inflammatory vs neoplastic lesions.
+    confounders: Site, diagnosis, institution/access, procedure type, age.
+    validation: Match anatomic site and diagnosis; audit access/workflow proxies where possible.
+    literature:
+      - short_citation: Williams et al., 2023
+        citation: >-
+          Williams KA, Wondimu B, Ajayi AM, Sokumbi O. Skin of color in dermatopathology: does color matter? Human
+          Pathology. 2023
+        pmid: '37146946'
+        doi: 10.1016/j.humpath.2023.04.012
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M1
+    section: histomorphology
+    status: active
+    hypothesis: Epidermal pigmentation can directly encode phototype.
+    mechanism: Melanin amount, melanosome transfer, and keratinocyte handling shape visible pigment distribution.
+    features: Basal melanin, suprabasal melanin, pigment caps, melanocyte/keratinocyte pigment pattern.
+    confounders: Stain intensity, site, inflammation, sun exposure, lesion type.
+    validation: Inspect attention along basal epidermis after diagnosis/site matching.
+    literature:
+      - short_citation: Moreiras et al., 2021
+        citation: >-
+          Moreiras H, Seabra MC, Barral DC. Melanin Transfer in the Epidermis: The Pursuit of Skin Pigmentation Control
+          Mechanisms. International Journal of Molecular Sciences. 2021
+        doi: 10.3390/ijms22094466
+        evidence_status: needs claim-level validation
+      - short_citation: Dodia et al., 2023
+        citation: Dodia P, Bhutta BS, Leslie SW, et al. Dermatopathology Epidermis Histology. StatPearls. 2023. NCBI Bookshelf
+        evidence_status: source metadata incomplete
+    evidence_status: needs claim-level validation
+  - id: M2
+    section: histomorphology
+    status: active
+    hypothesis: Dermal pigment and interface/inflammatory changes may encode context.
+    mechanism: Pigment incontinence and melanophages arise in pigmentary/interface disorders and post-inflammatory states.
+    features: Melanophages, pigment incontinence, lichenoid/interface dermatitis.
+    confounders: Diagnosis, inflammation, prior injury, treatment.
+    validation: Test residual race signal after excluding pigmentary/interface diagnoses.
+    literature:
+      - short_citation: Williams et al., 2023
+        citation: >-
+          Williams KA, Wondimu B, Ajayi AM, Sokumbi O. Skin of color in dermatopathology: does color matter? Human
+          Pathology. 2023
+        pmid: '37146946'
+        doi: 10.1016/j.humpath.2023.04.012
+        evidence_status: needs claim-level validation
+      - short_citation: Moreiras et al., 2021
+        citation: >-
+          Moreiras H, Seabra MC, Barral DC. Melanin Transfer in the Epidermis: The Pursuit of Skin Pigmentation Control
+          Mechanisms. International Journal of Molecular Sciences. 2021
+        doi: 10.3390/ijms22094466
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M3
+    section: histomorphology
+    status: active
+    hypothesis: Race/self-reported ancestry should be interpreted as a proxy label, not direct biology.
+    mechanism: Self-reported race can proxy pigmentation, exposure, geography, access, and workflow.
+    features: Pigment, site, diagnosis mix, photodamage, biopsy thresholds.
+    confounders: Institution, scanner/stain, access, site, diagnosis.
+    validation: Report residual signal as pigmentation/context unless ancestry-specific mechanism is directly supported.
+    literature:
+      - short_citation: Williams et al., 2023
+        citation: >-
+          Williams KA, Wondimu B, Ajayi AM, Sokumbi O. Skin of color in dermatopathology: does color matter? Human
+          Pathology. 2023
+        pmid: '37146946'
+        doi: 10.1016/j.humpath.2023.04.012
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M4
+    section: histomorphology
+    status: active
+    hypothesis: Dermal photodamage and elastosis may encode phototype plus exposure.
+    mechanism: UV susceptibility and exposure patterns affect collagen/elastin degeneration in sun-exposed skin.
+    features: Solar elastosis, dermal collagen basophilia, epidermal atrophy, actinic keratosis.
+    confounders: Age, sun-exposed site, lesion type, geography, occupational exposure.
+    validation: Analyze sun-exposed and non-sun-exposed sites separately.
+    literature:
+      - short_citation: Williams et al., 2023
+        citation: >-
+          Williams KA, Wondimu B, Ajayi AM, Sokumbi O. Skin of color in dermatopathology: does color matter? Human
+          Pathology. 2023
+        pmid: '37146946'
+        doi: 10.1016/j.humpath.2023.04.012
+        evidence_status: needs claim-level validation
+      - short_citation: Dodia et al., 2023
+        citation: Dodia P, Bhutta BS, Leslie SW, et al. Dermatopathology Epidermis Histology. StatPearls. 2023. NCBI Bookshelf
+        evidence_status: source metadata incomplete
+    evidence_status: needs claim-level validation
+key_takeaways:
+  - 'Best review target: basal/suprabasal epidermal pigment and dermal melanophages after site/diagnosis matching.'
+  - 'Main shortcut risk: diagnosis mix, UV exposure, anatomic site, and access/workflow.'
+  - 'Use cautious language: pigmentation/phototype signal, not intrinsic race biology.'
+references:
+  - 'n': 1
+    raw: >-
+      Williams KA, Wondimu B, Ajayi AM, Sokumbi O. Skin of color in dermatopathology: does color matter? Human
+      Pathology. 2023. PMID: 37146946. DOI: 10.1016/j.humpath.2023.04.012.
+    citation: >-
+      Williams KA, Wondimu B, Ajayi AM, Sokumbi O. Skin of color in dermatopathology: does color matter? Human
+      Pathology. 2023
+    year: '2023'
+    pmid: '37146946'
+    doi: 10.1016/j.humpath.2023.04.012
+  - 'n': 2
+    raw: >-
+      Moreiras H, Seabra MC, Barral DC. Melanin Transfer in the Epidermis: The Pursuit of Skin Pigmentation Control
+      Mechanisms. International Journal of Molecular Sciences. 2021. DOI: 10.3390/ijms22094466.
+    citation: >-
+      Moreiras H, Seabra MC, Barral DC. Melanin Transfer in the Epidermis: The Pursuit of Skin Pigmentation Control
+      Mechanisms. International Journal of Molecular Sciences. 2021
+    year: '2021'
+    doi: 10.3390/ijms22094466
+  - 'n': 3
+    raw: Dodia P, Bhutta BS, Leslie SW, et al. Dermatopathology Epidermis Histology. StatPearls. 2023. NCBI Bookshelf.
+    citation: Dodia P, Bhutta BS, Leslie SW, et al. Dermatopathology Epidermis Histology. StatPearls. 2023. NCBI Bookshelf
+    year: '2023'

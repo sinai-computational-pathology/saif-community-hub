@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "saif-community-hub-2026-08-14",
+  "status": "approved",
+  "approvedAt": "2026-08-14",
+  "repository": "sinai-computational-pathology/saif-community-hub",
+  "siteUrl": "https://sinai-computational-pathology.github.io/saif-community-hub/",
+  "atlasUrl": "https://sinai-computational-pathology.github.io/saif-results-atlas/",
+  "atlasReleaseId": "saif-results-2026-07-31",
+  "claimCount": 28
+}

@@ -1,0 +1,47 @@
+name: Site or content defect
+description: Report a reproducible website, accessibility, broken-link, or confirmed content problem.
+title: "[Defect] "
+labels: ["triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Scientific interpretation and new evidence belong in Discussions, not Issues.
+
+        **This issue is public. Do not include PHI, identifiers, restricted data, credentials, private paths, or unpublished sensitive results.**
+  - type: dropdown
+    id: type
+    attributes:
+      label: Problem type
+      options:
+        - Website behavior
+        - Accessibility
+        - Broken link
+        - Confirmed content inconsistency
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Page URL
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened and what should happen instead?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps or supporting source
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public-data confirmation
+      options:
+        - label: I confirm that this issue contains no sensitive, restricted, identifying, or credential material.
+          required: true

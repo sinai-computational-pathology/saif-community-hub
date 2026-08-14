@@ -1,0 +1,227 @@
+combo: sinus_sinonasal_tract__sex
+organ_slug: sinus_sinonasal_tract
+organ: Sinus / Sinonasal Tract
+demographic: sex
+demographic_label: Sex
+summary: >-
+  Sex signal in sinonasal histology is likely mixed but substantially clinical-context mediated. Male predominance in
+  some sinonasal cancers may reflect occupational exposures, smoking, and histologic subtype. CRS phenotype and
+  inflammatory profile may also vary by sex, potentially producing H&E-visible inflammatory and stromal remodeling
+  differences.
+claims:
+  - id: C1
+    section: clinical_context
+    status: active
+    hypothesis: Male patients may be enriched for sinonasal malignancy.
+    mechanism: Sinonasal cancer incidence and exposure-linked cancers can show male predominance.
+    features: SCC, adenocarcinoma, melanoma, necrosis, invasion, resection specimens.
+    confounders: Benign/malignant status, histologic subtype, occupation, smoking, stage.
+    validation: Match benign/malignant status and tumor histology/stage.
+    literature:
+      - short_citation: Binazzi et al., 2024
+        citation: >-
+          Binazzi A, di Marzio D, Mensi C, et al. Gender Differences in Sinonasal Cancer Incidence: Data from the
+          Italian Registry. Cancers. 2024
+        doi: 10.3390/cancers16112053
+        url: https://www.mdpi.com/2072-6694/16/11/2053
+        evidence_status: needs claim-level validation
+      - short_citation: Smaadahl et al., 2024
+        citation: >-
+          Smaadahl N, Hool S, Reinhardt P, et al. Treatment and related morbidity of nasal cavity and paranasal sinus
+          cancers. Frontiers in Oncology. 2024
+        doi: 10.3389/fonc.2024.1422892
+        url: https://www.frontiersin.org/journals/oncology/articles/10.3389/fonc.2024.1422892/full
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C2
+    section: clinical_context
+    status: active
+    hypothesis: Occupational exposure may mediate sex signal.
+    mechanism: Wood dust/industrial exposure patterns can affect sinonasal adenocarcinoma risk.
+    features: Intestinal-type adenocarcinoma, dysplasia, respiratory epithelial injury.
+    confounders: Occupation, tumor subtype, subsite, smoking.
+    validation: Use occupational metadata if available; otherwise match tumor histology/subsite.
+    literature:
+      - short_citation: Binazzi et al., 2024
+        citation: >-
+          Binazzi A, di Marzio D, Mensi C, et al. Gender Differences in Sinonasal Cancer Incidence: Data from the
+          Italian Registry. Cancers. 2024
+        doi: 10.3390/cancers16112053
+        url: https://www.mdpi.com/2072-6694/16/11/2053
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C3
+    section: clinical_context
+    status: active
+    hypothesis: CRS diagnosis and phenotype may differ by sex.
+    mechanism: Biological sex may associate with CRS diagnosis, phenotype, and inflammatory profile.
+    features: CRS with/without polyps, eosinophils/neutrophils, edema, fibrosis.
+    confounders: CRS phenotype, asthma/allergy, steroid treatment, subsite.
+    validation: Match CRS phenotype/endotype and comorbid allergy/asthma.
+    literature:
+      - short_citation: Chiu et al., 2025
+        citation: Chiu RG, et al. Biological Sex and Chronic Rhinosinusitis Diagnosis, Phenotype, and Inflammatory Profile. 2025
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12550736/
+        evidence_status: source metadata incomplete
+      - short_citation: Fokkens et al., 2020
+        citation: >-
+          Fokkens WJ, Lund VJ, Hopkins C, et al. European Position Paper on Rhinosinusitis and Nasal Polyps 2020.
+          Rhinology. 2020
+        pmid: '32077450'
+        doi: 10.4193/Rhin20.600
+        url: https://pubmed.ncbi.nlm.nih.gov/32077450/
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C4
+    section: clinical_context
+    status: active
+    hypothesis: Procedure type may differ by sex through tumor or CRS pathways.
+    mechanism: Different case mix can affect biopsy/resection/polypectomy distribution.
+    features: Biopsy vs sinus surgery vs tumor resection, margins, bone/cartilage, treatment effect.
+    confounders: Diagnosis, procedure type, institution.
+    validation: Stratify by procedure type and diagnosis category.
+    literature:
+      - short_citation: Smaadahl et al., 2024
+        citation: >-
+          Smaadahl N, Hool S, Reinhardt P, et al. Treatment and related morbidity of nasal cavity and paranasal sinus
+          cancers. Frontiers in Oncology. 2024
+        doi: 10.3389/fonc.2024.1422892
+        url: https://www.frontiersin.org/journals/oncology/articles/10.3389/fonc.2024.1422892/full
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M1
+    section: histomorphology
+    status: active
+    hypothesis: Sex may influence eosinophilic versus neutrophilic CRS inflammation.
+    mechanism: Sex-linked immune regulation may alter inflammatory profiles.
+    features: Eosinophils, neutrophils, lymphoplasmacytic inflammation, allergic mucin.
+    confounders: CRS endotype, allergy/asthma, infection, steroids.
+    validation: Cell-count analysis within CRS/polyp matched subsets.
+    literature:
+      - short_citation: Chiu et al., 2025
+        citation: Chiu RG, et al. Biological Sex and Chronic Rhinosinusitis Diagnosis, Phenotype, and Inflammatory Profile. 2025
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12550736/
+        evidence_status: source metadata incomplete
+      - short_citation: Fokkens et al., 2020
+        citation: >-
+          Fokkens WJ, Lund VJ, Hopkins C, et al. European Position Paper on Rhinosinusitis and Nasal Polyps 2020.
+          Rhinology. 2020
+        pmid: '32077450'
+        doi: 10.4193/Rhin20.600
+        url: https://pubmed.ncbi.nlm.nih.gov/32077450/
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M2
+    section: histomorphology
+    status: active
+    hypothesis: Sex may influence stromal remodeling in nasal polyps/CRS.
+    mechanism: Inflammatory pathways can alter edema, fibrosis, glands, and basement membrane thickening.
+    features: Edema, fibrosis, basement membrane thickening, glandular hyperplasia, epithelial remodeling.
+    confounders: CRS phenotype, treatment, subsite, chronicity.
+    validation: Quantify remodeling features after endotype and treatment matching.
+    literature:
+      - short_citation: Fokkens et al., 2020
+        citation: >-
+          Fokkens WJ, Lund VJ, Hopkins C, et al. European Position Paper on Rhinosinusitis and Nasal Polyps 2020.
+          Rhinology. 2020
+        pmid: '32077450'
+        doi: 10.4193/Rhin20.600
+        url: https://pubmed.ncbi.nlm.nih.gov/32077450/
+        evidence_status: needs claim-level validation
+      - short_citation: Chiu et al., 2025
+        citation: Chiu RG, et al. Biological Sex and Chronic Rhinosinusitis Diagnosis, Phenotype, and Inflammatory Profile. 2025
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12550736/
+        evidence_status: source metadata incomplete
+    evidence_status: needs claim-level validation
+  - id: M3
+    section: histomorphology
+    status: active
+    hypothesis: Tumor histology may mediate apparent sex morphology.
+    mechanism: Sex-associated cancer subtype distribution produces visible morphology differences.
+    features: SCC/adenocarcinoma/melanoma subtype, necrosis, invasion, desmoplasia.
+    confounders: Tumor subtype, stage, exposure, treatment.
+    validation: Tumor-only analysis matched by histology/stage.
+    literature:
+      - short_citation: Binazzi et al., 2024
+        citation: >-
+          Binazzi A, di Marzio D, Mensi C, et al. Gender Differences in Sinonasal Cancer Incidence: Data from the
+          Italian Registry. Cancers. 2024
+        doi: 10.3390/cancers16112053
+        url: https://www.mdpi.com/2072-6694/16/11/2053
+        evidence_status: needs claim-level validation
+      - short_citation: Smaadahl et al., 2024
+        citation: >-
+          Smaadahl N, Hool S, Reinhardt P, et al. Treatment and related morbidity of nasal cavity and paranasal sinus
+          cancers. Frontiers in Oncology. 2024
+        doi: 10.3389/fonc.2024.1422892
+        url: https://www.frontiersin.org/journals/oncology/articles/10.3389/fonc.2024.1422892/full
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M4
+    section: histomorphology
+    status: active
+    hypothesis: Direct sex-specific benign sinonasal morphology remains uncertain.
+    mechanism: Residual signal in benign mucosa may reflect unmeasured inflammatory/endotype context.
+    features: Benign respiratory epithelium, glands, stroma, vessels.
+    confounders: Subsite, inflammation, CRS endotype, treatment.
+    validation: Test benign non-tumor, endotype-matched mucosa; interpret cautiously.
+    literature:
+      - short_citation: Fokkens et al., 2020
+        citation: >-
+          Fokkens WJ, Lund VJ, Hopkins C, et al. European Position Paper on Rhinosinusitis and Nasal Polyps 2020.
+          Rhinology. 2020
+        pmid: '32077450'
+        doi: 10.4193/Rhin20.600
+        url: https://pubmed.ncbi.nlm.nih.gov/32077450/
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+key_takeaways:
+  - >-
+    The strongest clinical-context hypotheses are malignancy/subtype, occupational exposure, CRS phenotype, and
+    procedure type.
+  - >-
+    The strongest morphology hypotheses are inflammatory cell composition and CRS remodeling, not generic sex-specific
+    sinonasal anatomy.
+  - >-
+    The most important validation is matching by diagnosis, CRS endotype, tumor subtype/stage, subsite, exposure proxy,
+    and procedure type.
+references:
+  - 'n': 1
+    raw: >-
+      Binazzi A, di Marzio D, Mensi C, et al. Gender Differences in Sinonasal Cancer Incidence: Data from the Italian
+      Registry. Cancers. 2024. DOI: 10.3390/cancers16112053. https://www.mdpi.com/2072-6694/16/11/2053
+    citation: >-
+      Binazzi A, di Marzio D, Mensi C, et al. Gender Differences in Sinonasal Cancer Incidence: Data from the Italian
+      Registry. Cancers. 2024
+    year: '2024'
+    doi: 10.3390/cancers16112053
+    url: https://www.mdpi.com/2072-6694/16/11/2053
+  - 'n': 2
+    raw: >-
+      Smaadahl N, Hool S, Reinhardt P, et al. Treatment and related morbidity of nasal cavity and paranasal sinus
+      cancers. Frontiers in Oncology. 2024. DOI: 10.3389/fonc.2024.1422892.
+      https://www.frontiersin.org/journals/oncology/articles/10.3389/fonc.2024.1422892/full
+    citation: >-
+      Smaadahl N, Hool S, Reinhardt P, et al. Treatment and related morbidity of nasal cavity and paranasal sinus
+      cancers. Frontiers in Oncology. 2024
+    year: '2024'
+    doi: 10.3389/fonc.2024.1422892
+    url: https://www.frontiersin.org/journals/oncology/articles/10.3389/fonc.2024.1422892/full
+  - 'n': 3
+    raw: >-
+      Chiu RG, et al. Biological Sex and Chronic Rhinosinusitis Diagnosis, Phenotype, and Inflammatory Profile. 2025.
+      https://pmc.ncbi.nlm.nih.gov/articles/PMC12550736/
+    citation: Chiu RG, et al. Biological Sex and Chronic Rhinosinusitis Diagnosis, Phenotype, and Inflammatory Profile. 2025
+    year: '2025'
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12550736/
+  - 'n': 4
+    raw: >-
+      Fokkens WJ, Lund VJ, Hopkins C, et al. European Position Paper on Rhinosinusitis and Nasal Polyps 2020. Rhinology.
+      2020. PMID: 32077450. DOI: 10.4193/Rhin20.600. https://pubmed.ncbi.nlm.nih.gov/32077450/
+    citation: >-
+      Fokkens WJ, Lund VJ, Hopkins C, et al. European Position Paper on Rhinosinusitis and Nasal Polyps 2020. Rhinology.
+      2020
+    year: '2020'
+    pmid: '32077450'
+    doi: 10.4193/Rhin20.600
+    url: https://pubmed.ncbi.nlm.nih.gov/32077450/

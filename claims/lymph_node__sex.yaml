@@ -1,0 +1,161 @@
+combo: lymph_node__sex
+organ_slug: lymph_node
+organ: Lymph Node
+demographic: sex
+demographic_label: Sex
+summary: >-
+  Lymph node sex signal ranks highly because residual S3_CC performance is strong. Current literature support is weaker
+  than the performance signal: sex-related lymph-node morphology is most plausibly mediated by immune dimorphism,
+  autoimmune/inflammatory context, lymphoma/metastasis case mix, and possibly stromal/immune-cell composition. This page
+  should be treated as a high-priority literature-search target.
+claims:
+  - id: C1
+    section: clinical_context
+    status: active
+    hypothesis: Sex differences in immune disease, infection, and malignancy workup may alter lymph-node sampling mix.
+    mechanism: >-
+      Female-biased autoimmune disease and sex-skewed cancer types can change reactive, metastatic, and lymphoma
+      contexts.
+    features: >-
+      Reactive follicular hyperplasia, granulomas, metastatic carcinoma type, lymphoma subtype, excisional vs core
+      biopsy.
+    confounders: Diagnosis, primary tumor type, lymphoma subtype, sampling procedure, age.
+    validation: Stratify lymph nodes by reactive, lymphoma, and metastatic categories; match primary tumor type.
+    literature:
+      - short_citation: Klein & Flanagan, 2016
+        citation: Klein SL, Flanagan KL. Sex differences in immune responses. Nature Reviews Immunology. 2016
+        pmid: '26819318'
+        doi: 10.1038/nri.2016.90
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C2
+    section: clinical_context
+    status: active
+    hypothesis: Sex-skewed cancer staging can create metastatic lymph-node shortcuts.
+    mechanism: >-
+      Breast, gynecologic, prostate, head/neck, lung, and GI primaries have different sex distributions and nodal
+      sampling pathways.
+    features: Metastatic carcinoma morphology, nodal dissection context, extranodal extension, treatment effect.
+    confounders: Primary cancer site, staging procedure, nodal basin, treatment status.
+    validation: Exclude metastatic nodes or match primary tumor site before interpreting residual sex signal.
+    literature:
+      - short_citation: Klein & Flanagan, 2016
+        citation: Klein SL, Flanagan KL. Sex differences in immune responses. Nature Reviews Immunology. 2016
+        pmid: '26819318'
+        doi: 10.1038/nri.2016.90
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C3
+    section: clinical_context
+    status: active
+    hypothesis: Reactive lymphadenopathy indications may differ by sex.
+    mechanism: >-
+      Autoimmune, infectious, vaccine/reactive, and inflammatory indications can be sex-skewed and alter benign node
+      morphology.
+    features: Follicular hyperplasia, paracortical expansion, plasma cells, sinus histiocytosis, granulomas.
+    confounders: Reactive diagnosis, autoimmune disease, infection, vaccine/treatment history, age.
+    validation: Compare sex signal within reactive-only nodes and after excluding lymphoma/metastasis.
+    literature:
+      - short_citation: Klein & Flanagan, 2016
+        citation: Klein SL, Flanagan KL. Sex differences in immune responses. Nature Reviews Immunology. 2016
+        pmid: '26819318'
+        doi: 10.1038/nri.2016.90
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C4
+    section: clinical_context
+    status: active
+    hypothesis: Procedure type and nodal basin may create hidden sex shortcuts.
+    mechanism: >-
+      Sentinel nodes, neck dissections, pelvic nodes, and excisional biopsies can be tied to sex-skewed primary
+      diseases.
+    features: Sentinel node protocol, nodal station, fat content, metastatic deposit type, biopsy vs dissection.
+    confounders: Nodal basin, primary tumor site, procedure type, institution, treatment.
+    validation: Audit nodal basin and procedure distributions in S3 clusters.
+    literature:
+      - short_citation: Klein & Flanagan, 2016
+        citation: Klein SL, Flanagan KL. Sex differences in immune responses. Nature Reviews Immunology. 2016
+        pmid: '26819318'
+        doi: 10.1038/nri.2016.90
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M1
+    section: histomorphology
+    status: active
+    hypothesis: Sex-based immune dimorphism may alter reactive lymphoid architecture.
+    mechanism: Sex hormones and X-linked immune regulation can influence adaptive/innate immune responses.
+    features: Follicle density, germinal centers, paracortical expansion, plasma cells, sinus histiocytosis.
+    confounders: Age, infection, autoimmune disease, vaccine/reactive context, lymphoma.
+    validation: Quantify reactive patterns in benign/reactive nodes after diagnosis and age matching.
+    literature:
+      - short_citation: Klein & Flanagan, 2016
+        citation: Klein SL, Flanagan KL. Sex differences in immune responses. Nature Reviews Immunology. 2016
+        pmid: '26819318'
+        doi: 10.1038/nri.2016.90
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M2
+    section: histomorphology
+    status: active
+    hypothesis: >-
+      Residual sex signal may reflect unmeasured diagnosis or primary-site context rather than intrinsic nodal
+      morphology.
+    mechanism: S3 diagnosis matching may not fully balance nodal basin, primary tumor, or inflammatory indication.
+    features: Nodal basin, metastatic histology, tissue adequacy, fibrosis/necrosis.
+    confounders: Primary site, nodal station, institution, procedure type.
+    validation: Audit S3 clusters for primary tumor site and nodal basin balance.
+    literature: []
+    evidence_status: source metadata incomplete
+  - id: M3
+    section: histomorphology
+    status: active
+    hypothesis: Germinal-center and paracortical architecture may be indirect immune carriers.
+    mechanism: Sex-dimorphic immune responses may alter adaptive immune activation patterns in reactive nodes.
+    features: Germinal center size, follicle density, mantle zones, paracortical expansion.
+    confounders: Reactive etiology, age, infection, autoimmune disease, lymphoma exclusion.
+    validation: Quantify architecture only in benign/reactive nodes matched by indication.
+    literature:
+      - short_citation: Klein & Flanagan, 2016
+        citation: Klein SL, Flanagan KL. Sex differences in immune responses. Nature Reviews Immunology. 2016
+        pmid: '26819318'
+        doi: 10.1038/nri.2016.90
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M4
+    section: histomorphology
+    status: active
+    hypothesis: Sinus and macrophage-rich patterns may reflect metastatic or inflammatory context.
+    mechanism: Primary tumor type and immune activation can alter sinus histiocytosis, fibrosis, and necrosis.
+    features: Sinus histiocytosis, macrophages, necrosis, fibrosis, extranodal extension.
+    confounders: Metastatic status, primary site, treatment, nodal basin.
+    validation: Separate metastatic, lymphoma, and reactive nodes before calling intrinsic sex morphology.
+    literature:
+      - short_citation: Klein & Flanagan, 2016
+        citation: Klein SL, Flanagan KL. Sex differences in immune responses. Nature Reviews Immunology. 2016
+        pmid: '26819318'
+        doi: 10.1038/nri.2016.90
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+key_takeaways:
+  - 'Best immediate validation: separate reactive, lymphoma, and metastatic lymph nodes.'
+  - >-
+    Best literature task: replace E42/preprint support with peer-reviewed human lymph-node sex-difference pathology or
+    immune-architecture sources.
+  - Interpret high residual performance cautiously until primary tumor site and nodal basin are checked.
+references:
+  - 'n': 1
+    raw: >-
+      Klein SL, Flanagan KL. Sex differences in immune responses. Nature Reviews Immunology. 2016. PMID: 26819318. DOI:
+      10.1038/nri.2016.90.
+    citation: Klein SL, Flanagan KL. Sex differences in immune responses. Nature Reviews Immunology. 2016
+    year: '2016'
+    pmid: '26819318'
+    doi: 10.1038/nri.2016.90
+  - 'n': 2
+    raw: >-
+      Lymph node sex differences / aging source from current notes. BioRxiv preprint. E42 in master evidence registry.
+      Needs peer-reviewed replacement before manuscript use.
+    citation: >-
+      Lymph node sex differences / aging source from current notes. BioRxiv preprint. E42 in master evidence registry.
+      Needs peer-reviewed replacement before manuscript use
+    year: ''

@@ -1,0 +1,269 @@
+combo: small_bowel__race_self_reported_ancestry
+organ_slug: small_bowel
+organ: Small Bowel
+demographic: race_self_reported_ancestry
+demographic_label: Race / Self-Reported Ancestry
+summary: >-
+  Small-bowel race or ancestry signal should be treated as a clinical-context and ascertainment hypothesis, not as
+  intrinsic racial morphology. The strongest literature-supported carriers are celiac-workup patterns, ethnic variation
+  in villous atrophy prevalence among biopsied patients, IBD/infectious differential diagnosis, diet/geography, and
+  access-to-endoscopy differences. Any residual signal after diagnosis matching should be reviewed as a mixture of
+  ancestry, environment, structural access, and biopsy indication.
+claims:
+  - id: C1
+    section: clinical_context
+    status: active
+    hypothesis: Race/ethnicity may correlate with duodenal biopsy ascertainment for celiac disease.
+    mechanism: >-
+      Referral, symptom interpretation, access, and clinician testing thresholds can affect who receives duodenal
+      biopsies.
+    features: Number of duodenal fragments, normal biopsies, mild IEL increase, celiac-compatible injury.
+    confounders: Indication, endoscopy setting, insurance/access proxies, age, sex.
+    validation: Compare race signal within indication-matched duodenal biopsies and normal-biopsy subsets.
+    literature:
+      - short_citation: Lebwohl et al., 2012
+        citation: >-
+          Lebwohl B, Tennyson CA, Holub JL, et al. Sex and racial disparities in duodenal biopsy to evaluate for celiac
+          disease. Gastrointestinal Endoscopy. 2012
+        pmid: '22732871'
+        url: https://pubmed.ncbi.nlm.nih.gov/22732871/
+        evidence_status: needs claim-level validation
+      - short_citation: Krigel et al., 2016
+        citation: >-
+          Krigel A, Turner KO, Makharia GK, et al. Ethnic Variations in Duodenal Villous Atrophy Consistent with Celiac
+          Disease in the United States. Clinical Gastroenterology and Hepatology. 2016
+        pmcid: PMC4955830
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC4955830/
+        evidence_status: source metadata incomplete
+    evidence_status: needs claim-level validation
+  - id: C2
+    section: clinical_context
+    status: active
+    hypothesis: Villous atrophy prevalence differs across ethnicity groups among biopsied patients.
+    mechanism: >-
+      Celiac-associated HLA background, diet, geography, immigration, and ascertainment can alter prevalence of villous
+      atrophy.
+    features: Villous blunting, crypt hyperplasia, intraepithelial lymphocytes, Marsh-like injury.
+    confounders: H. pylori, age, sex, indication, ethnicity assignment method, diet/geography.
+    validation: >-
+      Match celiac diagnosis and villous atrophy grade; test residual race signal within celiac-positive and
+      celiac-negative groups.
+    literature:
+      - short_citation: Krigel et al., 2016
+        citation: >-
+          Krigel A, Turner KO, Makharia GK, et al. Ethnic Variations in Duodenal Villous Atrophy Consistent with Celiac
+          Disease in the United States. Clinical Gastroenterology and Hepatology. 2016
+        pmcid: PMC4955830
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC4955830/
+        evidence_status: source metadata incomplete
+      - short_citation: Villanacci et al., 2020
+        citation: >-
+          Villanacci V, Ceppa P, Tavani E, et al. Celiac disease: histology-differential diagnosis-complications. A
+          practical approach. Pathologica. 2020
+        pmcid: PMC7931573
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC7931573/
+        evidence_status: source metadata incomplete
+    evidence_status: source metadata incomplete
+  - id: C3
+    section: clinical_context
+    status: active
+    hypothesis: IBD, infection, and medication-injury mix may differ by race/ethnicity and care pathway.
+    mechanism: >-
+      Access, geography, microbiome/exposure, and disease phenotype may change chronic active enteritis or infectious
+      patterns.
+    features: Chronic active enteritis, granulomas, ulcers, parasites, eosinophils, ischemic or medication injury.
+    confounders: Diagnosis, Crohn disease, infection, NSAID/drug injury, anatomic site.
+    validation: 'Stratify by diagnosis category: celiac, Crohn, infection, ischemic/drug injury, normal.'
+    literature:
+      - short_citation: Zheng et al., 2022
+        citation: >-
+          Zheng H, Zhang W, Wu Z, et al. The impact of aging on intestinal mucosal immune function and clinical
+          applications. Frontiers in Immunology. 2022
+        pmid: '36524122'
+        pmcid: PMC9745321
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC9745321/
+        evidence_status: needs claim-level validation
+      - short_citation: Villanacci et al., 2020
+        citation: >-
+          Villanacci V, Ceppa P, Tavani E, et al. Celiac disease: histology-differential diagnosis-complications. A
+          practical approach. Pathologica. 2020
+        pmcid: PMC7931573
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC7931573/
+        evidence_status: source metadata incomplete
+    evidence_status: needs claim-level validation
+  - id: C4
+    section: clinical_context
+    status: active
+    hypothesis: Normal or nonspecific biopsies may encode workflow rather than biology.
+    mechanism: >-
+      Race-associated health-care access and endoscopy thresholds can alter the fraction of normal/nonspecific
+      small-bowel biopsies.
+    features: Normal villi, mild chronic inflammation, nonspecific IELs, tissue quantity/orientation.
+    confounders: Procedure indication, site, pathologist reporting style, institution.
+    validation: Audit normal-biopsy rate and report text categories by demographic group.
+    literature:
+      - short_citation: Lebwohl et al., 2012
+        citation: >-
+          Lebwohl B, Tennyson CA, Holub JL, et al. Sex and racial disparities in duodenal biopsy to evaluate for celiac
+          disease. Gastrointestinal Endoscopy. 2012
+        pmid: '22732871'
+        url: https://pubmed.ncbi.nlm.nih.gov/22732871/
+        evidence_status: needs claim-level validation
+      - short_citation: Krigel et al., 2016
+        citation: >-
+          Krigel A, Turner KO, Makharia GK, et al. Ethnic Variations in Duodenal Villous Atrophy Consistent with Celiac
+          Disease in the United States. Clinical Gastroenterology and Hepatology. 2016
+        pmcid: PMC4955830
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC4955830/
+        evidence_status: source metadata incomplete
+    evidence_status: needs claim-level validation
+  - id: M1
+    section: histomorphology
+    status: active
+    hypothesis: Villous atrophy pattern may mediate much of the apparent race/ancestry signal.
+    mechanism: Ethnic variation in celiac-compatible villous atrophy changes overt mucosal architecture.
+    features: Villus height, crypt depth, villus:crypt ratio, Marsh pattern, IEL density.
+    confounders: Celiac diagnosis, gluten exposure, HLA/geography, H. pylori, age/sex.
+    validation: Morphometrically compare villous architecture after celiac-grade matching.
+    literature:
+      - short_citation: Krigel et al., 2016
+        citation: >-
+          Krigel A, Turner KO, Makharia GK, et al. Ethnic Variations in Duodenal Villous Atrophy Consistent with Celiac
+          Disease in the United States. Clinical Gastroenterology and Hepatology. 2016
+        pmcid: PMC4955830
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC4955830/
+        evidence_status: source metadata incomplete
+      - short_citation: Villanacci et al., 2020
+        citation: >-
+          Villanacci V, Ceppa P, Tavani E, et al. Celiac disease: histology-differential diagnosis-complications. A
+          practical approach. Pathologica. 2020
+        pmcid: PMC7931573
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC7931573/
+        evidence_status: source metadata incomplete
+    evidence_status: source metadata incomplete
+  - id: M2
+    section: histomorphology
+    status: active
+    hypothesis: IEL and lamina propria immune patterns may reflect diagnostic mix.
+    mechanism: >-
+      Celiac disease, infection, H. pylori-associated duodenal changes, and autoimmune context can produce
+      lymphocyte-rich mucosa.
+    features: IELs, plasma cells, lymphoid aggregates, eosinophils, active inflammation.
+    confounders: Celiac, H. pylori, infection, medication, IBD, immune disease.
+    validation: Cell-count review in diagnosis-matched biopsies; separate IEL-predominant from active-enteritis patterns.
+    literature:
+      - short_citation: Villanacci et al., 2020
+        citation: >-
+          Villanacci V, Ceppa P, Tavani E, et al. Celiac disease: histology-differential diagnosis-complications. A
+          practical approach. Pathologica. 2020
+        pmcid: PMC7931573
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC7931573/
+        evidence_status: source metadata incomplete
+      - short_citation: Zheng et al., 2022
+        citation: >-
+          Zheng H, Zhang W, Wu Z, et al. The impact of aging on intestinal mucosal immune function and clinical
+          applications. Frontiers in Immunology. 2022
+        pmid: '36524122'
+        pmcid: PMC9745321
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC9745321/
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M3
+    section: histomorphology
+    status: active
+    hypothesis: Crohn/infectious patterns can produce localized morphology unrelated to intrinsic ancestry.
+    mechanism: Granulomatous or ulcerative injury may track geography, exposure, or care pathway.
+    features: Granulomas, fissuring ulcers, chronic active inflammation, parasites, eosinophils.
+    confounders: Crohn diagnosis, infection testing, travel/geography, medication, site.
+    validation: Exclude Crohn/infection or match these categories before interpreting residual signal.
+    literature:
+      - short_citation: Zheng et al., 2022
+        citation: >-
+          Zheng H, Zhang W, Wu Z, et al. The impact of aging on intestinal mucosal immune function and clinical
+          applications. Frontiers in Immunology. 2022
+        pmid: '36524122'
+        pmcid: PMC9745321
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC9745321/
+        evidence_status: needs claim-level validation
+      - short_citation: Villanacci et al., 2020
+        citation: >-
+          Villanacci V, Ceppa P, Tavani E, et al. Celiac disease: histology-differential diagnosis-complications. A
+          practical approach. Pathologica. 2020
+        pmcid: PMC7931573
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC7931573/
+        evidence_status: source metadata incomplete
+    evidence_status: needs claim-level validation
+  - id: M4
+    section: histomorphology
+    status: active
+    hypothesis: Direct benign race-specific small-bowel morphology is not established.
+    mechanism: >-
+      Any persistent signal in normal mucosa may reflect unmeasured diet, microbiome, geography, sectioning, or
+      reporting workflow.
+    features: Normal villous architecture, subtle IELs, goblet/Paneth cell distribution, orientation.
+    confounders: Diet/geography, endoscopy indication, lab/site, orientation, tissue quality.
+    validation: Treat residual normal-mucosa signal as exploratory; require manual review and external validation.
+    literature:
+      - short_citation: Lebwohl et al., 2012
+        citation: >-
+          Lebwohl B, Tennyson CA, Holub JL, et al. Sex and racial disparities in duodenal biopsy to evaluate for celiac
+          disease. Gastrointestinal Endoscopy. 2012
+        pmid: '22732871'
+        url: https://pubmed.ncbi.nlm.nih.gov/22732871/
+        evidence_status: needs claim-level validation
+      - short_citation: Krigel et al., 2016
+        citation: >-
+          Krigel A, Turner KO, Makharia GK, et al. Ethnic Variations in Duodenal Villous Atrophy Consistent with Celiac
+          Disease in the United States. Clinical Gastroenterology and Hepatology. 2016
+        pmcid: PMC4955830
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC4955830/
+        evidence_status: source metadata incomplete
+    evidence_status: needs claim-level validation
+key_takeaways:
+  - This combo should be reviewed primarily as a workflow/disease-prevalence hypothesis.
+  - The most visible H&E carrier is villous atrophy/IEL/crypt hyperplasia, especially celiac-compatible injury.
+  - The main guardrail is to avoid interpreting socially defined race as intrinsic small-bowel morphology.
+references:
+  - 'n': 1
+    raw: >-
+      Lebwohl B, Tennyson CA, Holub JL, et al. Sex and racial disparities in duodenal biopsy to evaluate for celiac
+      disease. Gastrointestinal Endoscopy. 2012. PMID: 22732871. https://pubmed.ncbi.nlm.nih.gov/22732871/
+    citation: >-
+      Lebwohl B, Tennyson CA, Holub JL, et al. Sex and racial disparities in duodenal biopsy to evaluate for celiac
+      disease. Gastrointestinal Endoscopy. 2012
+    year: '2012'
+    pmid: '22732871'
+    url: https://pubmed.ncbi.nlm.nih.gov/22732871/
+  - 'n': 2
+    raw: >-
+      Krigel A, Turner KO, Makharia GK, et al. Ethnic Variations in Duodenal Villous Atrophy Consistent with Celiac
+      Disease in the United States. Clinical Gastroenterology and Hepatology. 2016. PMCID: PMC4955830.
+      https://pmc.ncbi.nlm.nih.gov/articles/PMC4955830/
+    citation: >-
+      Krigel A, Turner KO, Makharia GK, et al. Ethnic Variations in Duodenal Villous Atrophy Consistent with Celiac
+      Disease in the United States. Clinical Gastroenterology and Hepatology. 2016
+    year: '2016'
+    pmcid: PMC4955830
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC4955830/
+  - 'n': 3
+    raw: >-
+      Villanacci V, Ceppa P, Tavani E, et al. Celiac disease: histology-differential diagnosis-complications. A
+      practical approach. Pathologica. 2020. PMCID: PMC7931573. https://pmc.ncbi.nlm.nih.gov/articles/PMC7931573/
+    citation: >-
+      Villanacci V, Ceppa P, Tavani E, et al. Celiac disease: histology-differential diagnosis-complications. A
+      practical approach. Pathologica. 2020
+    year: '2020'
+    pmcid: PMC7931573
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC7931573/
+  - 'n': 4
+    raw: >-
+      Zheng H, Zhang W, Wu Z, et al. The impact of aging on intestinal mucosal immune function and clinical
+      applications. Frontiers in Immunology. 2022. PMID: 36524122; PMCID: PMC9745321.
+      https://pmc.ncbi.nlm.nih.gov/articles/PMC9745321/
+    citation: >-
+      Zheng H, Zhang W, Wu Z, et al. The impact of aging on intestinal mucosal immune function and clinical
+      applications. Frontiers in Immunology. 2022
+    year: '2022'
+    pmid: '36524122'
+    pmcid: PMC9745321
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC9745321/

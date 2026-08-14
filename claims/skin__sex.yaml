@@ -1,0 +1,225 @@
+combo: skin__sex
+organ_slug: skin
+organ: Skin
+demographic: sex
+demographic_label: Sex
+summary: >-
+  Skin sex signal is context-sensitive but remains high priority. Literature supports sex-linked skin thickness,
+  collagen, elastic-fiber proportions, topography, scar/wound ECM, dermal white adipose context, and hormone-sensitive
+  adnexal structures. Site, age, scar/wound status, cosmetic/dermatology utilization, and diagnosis mix are major
+  confounders.
+claims:
+  - id: C1
+    section: clinical_context
+    status: active
+    hypothesis: Sex differences in skin specimen site and dermatology utilization may create shortcuts.
+    mechanism: Hair-bearing/cosmetic sites, melanoma/non-melanoma cancer patterns, and scar/procedure contexts can differ by sex.
+    features: Anatomic site, lesion type, scar, hair follicles, sebaceous units, tumor subtype.
+    confounders: Site, diagnosis, procedure, age, UV exposure.
+    validation: Match anatomic site and diagnosis; audit scar/wound and cosmetic-procedure contexts.
+    literature:
+      - short_citation: Dąbrowska et al., 2018
+        citation: >-
+          Dąbrowska M, Mielcarek A, Nowak I. Evaluation of sex-related changes in skin topography and structure using
+          innovative skin testing equipment. Skin Research and Technology. 2018
+        pmid: '29707820'
+        doi: 10.1111/srt.12473
+        evidence_status: needs claim-level validation
+      - short_citation: Gawronska-Kozak et al., 2023
+        citation: >-
+          Gawronska-Kozak B, Kopcewicz M, Machcinska-Zielinska S, et al. Gender Differences in Post-Operative Human
+          Skin. Biomedicines. 2023
+        pmid: '37893135'
+        pmcid: PMC10604277
+        doi: 10.3390/biomedicines11102653
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C2
+    section: clinical_context
+    status: active
+    hypothesis: Scar/wound specimens can encode sex through post-operative ECM differences.
+    mechanism: Wound healing and scar ECM composition may differ by sex.
+    features: Scar collagen, alpha-SMA-rich stroma, elastin, dermal adipose, inflammation.
+    confounders: Scar diagnosis, procedure timing, site, age.
+    validation: Exclude scar/wound specimens or stratify them separately.
+    literature:
+      - short_citation: Gawronska-Kozak et al., 2023
+        citation: >-
+          Gawronska-Kozak B, Kopcewicz M, Machcinska-Zielinska S, et al. Gender Differences in Post-Operative Human
+          Skin. Biomedicines. 2023
+        pmid: '37893135'
+        pmcid: PMC10604277
+        doi: 10.3390/biomedicines11102653
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C3
+    section: clinical_context
+    status: active
+    hypothesis: Skin cancer subtype and site distributions may differ by sex.
+    mechanism: UV exposure, behavior, hair-bearing sites, and screening can alter melanoma and keratinocytic lesion mix.
+    features: Melanoma, SCC/BCC, actinic keratosis, solar elastosis, anatomic site.
+    confounders: Diagnosis, sun-exposed site, age, geography, procedure type.
+    validation: Match diagnosis and sun-exposed site before interpreting residual sex morphology.
+    literature:
+      - short_citation: Dąbrowska et al., 2018
+        citation: >-
+          Dąbrowska M, Mielcarek A, Nowak I. Evaluation of sex-related changes in skin topography and structure using
+          innovative skin testing equipment. Skin Research and Technology. 2018
+        pmid: '29707820'
+        doi: 10.1111/srt.12473
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C4
+    section: clinical_context
+    status: active
+    hypothesis: Cosmetic/procedural and inflammatory biopsy patterns may mediate sex signal.
+    mechanism: Dermatology utilization and procedure patterns can alter scars, nevi, alopecia, and inflammatory lesion mix.
+    features: Scar, nevus, alopecia/scalp, inflammatory dermatoses, biopsy size/depth.
+    confounders: Diagnosis, site, procedure, institution, age.
+    validation: Audit diagnosis/site/procedure distributions within S3 clusters.
+    literature:
+      - short_citation: Dąbrowska et al., 2018
+        citation: >-
+          Dąbrowska M, Mielcarek A, Nowak I. Evaluation of sex-related changes in skin topography and structure using
+          innovative skin testing equipment. Skin Research and Technology. 2018
+        pmid: '29707820'
+        doi: 10.1111/srt.12473
+        evidence_status: needs claim-level validation
+      - short_citation: Gawronska-Kozak et al., 2023
+        citation: >-
+          Gawronska-Kozak B, Kopcewicz M, Machcinska-Zielinska S, et al. Gender Differences in Post-Operative Human
+          Skin. Biomedicines. 2023
+        pmid: '37893135'
+        pmcid: PMC10604277
+        doi: 10.3390/biomedicines11102653
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M1
+    section: histomorphology
+    status: active
+    hypothesis: Dermal thickness and collagen amount differ by sex.
+    mechanism: Classic tissue studies report sex and age effects on skin thickness/collagen.
+    features: Dermal thickness, collagen density, collagen bundle pattern.
+    confounders: Age, body site, biopsy depth, scar, UV damage.
+    validation: Quantify dermal thickness/collagen in site- and age-matched benign skin.
+    literature:
+      - short_citation: Shuster et al., 1975
+        citation: >-
+          Shuster S, Black MM, McVitie E. The influence of age and sex on skin thickness, skin collagen and density.
+          British Journal of Dermatology. 1975
+        pmid: '1220811'
+        doi: 10.1111/j.1365-2133.1975.tb05113.x
+        evidence_status: needs claim-level validation
+      - short_citation: Vitellaro-Zuccarello et al., 1994
+        citation: >-
+          Vitellaro-Zuccarello L, Cappelletti S, Dal Pozzo Rossi V, Sari-Gorla M. Stereological analysis of collagen and
+          elastic fibers in the normal human dermis. Anatomical Record. 1994
+        pmid: '8154602'
+        doi: 10.1002/ar.1092380202
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M2
+    section: histomorphology
+    status: active
+    hypothesis: Collagen and elastic-fiber proportions vary with sex and body region.
+    mechanism: Stereologic dermal fiber differences can create texture/architecture signal.
+    features: Collagen/elastic fibers, papillary vs reticular dermis.
+    confounders: Body region, age, solar elastosis, scar.
+    validation: Review attention maps for dermal fiber-rich compartments.
+    literature:
+      - short_citation: Vitellaro-Zuccarello et al., 1994
+        citation: >-
+          Vitellaro-Zuccarello L, Cappelletti S, Dal Pozzo Rossi V, Sari-Gorla M. Stereological analysis of collagen and
+          elastic fibers in the normal human dermis. Anatomical Record. 1994
+        pmid: '8154602'
+        doi: 10.1002/ar.1092380202
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M3
+    section: histomorphology
+    status: active
+    hypothesis: Post-operative skin shows sex-linked ECM and adipose-associated differences.
+    mechanism: Sex-linked scar ECM, collagen I/III/VI, elastin, alpha-SMA, and adipogenic markers may alter H&E texture.
+    features: Scar collagen, dWAT/adipose cones, stromal cells, elastin.
+    confounders: Scar status, anatomic site, prior procedure.
+    validation: Separate scar/wound from non-scar skin before interpreting residual signal.
+    literature:
+      - short_citation: Gawronska-Kozak et al., 2023
+        citation: >-
+          Gawronska-Kozak B, Kopcewicz M, Machcinska-Zielinska S, et al. Gender Differences in Post-Operative Human
+          Skin. Biomedicines. 2023
+        pmid: '37893135'
+        pmcid: PMC10604277
+        doi: 10.3390/biomedicines11102653
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M4
+    section: histomorphology
+    status: active
+    hypothesis: Adnexal density and hair-bearing site composition may be an indirect carrier.
+    mechanism: Site imbalance can change follicles, sebaceous glands, sweat glands, and dermal thickness.
+    features: Hair follicles, sebaceous units, eccrine glands, dermal/adipose depth.
+    confounders: Anatomic site, sex-linked site sampling, diagnosis, biopsy depth.
+    validation: Require site-matched benign skin review before calling direct sex morphology.
+    literature:
+      - short_citation: Dąbrowska et al., 2018
+        citation: >-
+          Dąbrowska M, Mielcarek A, Nowak I. Evaluation of sex-related changes in skin topography and structure using
+          innovative skin testing equipment. Skin Research and Technology. 2018
+        pmid: '29707820'
+        doi: 10.1111/srt.12473
+        evidence_status: needs claim-level validation
+      - short_citation: Shuster et al., 1975
+        citation: >-
+          Shuster S, Black MM, McVitie E. The influence of age and sex on skin thickness, skin collagen and density.
+          British Journal of Dermatology. 1975
+        pmid: '1220811'
+        doi: 10.1111/j.1365-2133.1975.tb05113.x
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+key_takeaways:
+  - 'Best review target: dermal thickness/collagen, elastic fibers, adnexa, scar/wound ECM, and site distribution.'
+  - 'Main shortcut risk: anatomic site, scar/wound status, age, and diagnosis.'
+  - Strong morphology evidence exists, but site and age matching are essential.
+references:
+  - 'n': 1
+    raw: >-
+      Shuster S, Black MM, McVitie E. The influence of age and sex on skin thickness, skin collagen and density. British
+      Journal of Dermatology. 1975. PMID: 1220811. DOI: 10.1111/j.1365-2133.1975.tb05113.x.
+    citation: >-
+      Shuster S, Black MM, McVitie E. The influence of age and sex on skin thickness, skin collagen and density. British
+      Journal of Dermatology. 1975
+    year: '1975'
+    pmid: '1220811'
+    doi: 10.1111/j.1365-2133.1975.tb05113.x
+  - 'n': 2
+    raw: >-
+      Vitellaro-Zuccarello L, Cappelletti S, Dal Pozzo Rossi V, Sari-Gorla M. Stereological analysis of collagen and
+      elastic fibers in the normal human dermis. Anatomical Record. 1994. PMID: 8154602. DOI: 10.1002/ar.1092380202.
+    citation: >-
+      Vitellaro-Zuccarello L, Cappelletti S, Dal Pozzo Rossi V, Sari-Gorla M. Stereological analysis of collagen and
+      elastic fibers in the normal human dermis. Anatomical Record. 1994
+    year: '1994'
+    pmid: '8154602'
+    doi: 10.1002/ar.1092380202
+  - 'n': 3
+    raw: >-
+      Dąbrowska M, Mielcarek A, Nowak I. Evaluation of sex-related changes in skin topography and structure using
+      innovative skin testing equipment. Skin Research and Technology. 2018. PMID: 29707820. DOI: 10.1111/srt.12473.
+    citation: >-
+      Dąbrowska M, Mielcarek A, Nowak I. Evaluation of sex-related changes in skin topography and structure using
+      innovative skin testing equipment. Skin Research and Technology. 2018
+    year: '2018'
+    pmid: '29707820'
+    doi: 10.1111/srt.12473
+  - 'n': 4
+    raw: >-
+      Gawronska-Kozak B, Kopcewicz M, Machcinska-Zielinska S, et al. Gender Differences in Post-Operative Human Skin.
+      Biomedicines. 2023. PMID: 37893135. PMCID: PMC10604277. DOI: 10.3390/biomedicines11102653.
+    citation: >-
+      Gawronska-Kozak B, Kopcewicz M, Machcinska-Zielinska S, et al. Gender Differences in Post-Operative Human Skin.
+      Biomedicines. 2023
+    year: '2023'
+    pmid: '37893135'
+    pmcid: PMC10604277
+    doi: 10.3390/biomedicines11102653

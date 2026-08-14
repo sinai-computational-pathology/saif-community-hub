@@ -1,0 +1,15 @@
+title: "[Announcement] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Maintainer announcements for releases, community updates, and calls for review.
+
+        Do not include sensitive, restricted, identifying, credential, or unpublished material.
+  - type: textarea
+    id: announcement
+    attributes:
+      label: Announcement
+    validations:
+      required: true

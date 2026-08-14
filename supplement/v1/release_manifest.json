@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "saif-community-hub-2026-08-14",
+  "status": "approved",
+  "approvedAt": "2026-08-14",
+  "repository": "sinai-computational-pathology/saif-community-hub",
+  "siteUrl": "https://sinai-computational-pathology.github.io/saif-community-hub/",
+  "atlasUrl": "https://sinai-computational-pathology.github.io/saif-results-atlas/",
+  "atlasReleaseId": "saif-results-2026-07-31",
+  "claimCount": 28,
+  "edition": "living",
+  "generatedAt": "2026-08-14T14:58:25.675Z",
+  "dossiers": 28,
+  "claims": 232,
+  "organs": 14,
+  "citations": 94,
+  "verifiedClaims": 0,
+  "bundleSha256": "7ef2e50f2d90e54f067cb373f153c47a55171977cfff3369eb54b5082d5abacd"
+}

@@ -1,0 +1,156 @@
+combo: gastric_stomach__sex
+organ_slug: gastric_stomach
+organ: Gastric (Stomach)
+demographic: sex
+demographic_label: Sex
+summary: >-
+  Gastric sex signal is a stable residual candidate with high S3_CC performance. The likely mechanisms are mixed: sex
+  differences in gastric cancer subtype/age distribution, diffuse/signet-ring patterns in some cohorts, and possible
+  hormonal or inflammatory context. Direct H&E sex morphology outside subtype and diagnosis remains uncertain.
+claims:
+  - id: C1
+    section: clinical_context
+    status: active
+    hypothesis: Gastric cancer subtype and age distribution may differ by sex.
+    mechanism: Sex-skewed cancer subtype and presentation can create diagnosis/subtype shortcuts.
+    features: Adenocarcinoma subtype, intestinal vs diffuse, signet-ring cells, grade, stage.
+    confounders: Cancer status, Lauren subtype, grade, stage, age, procedure.
+    validation: Match cancer subtype and stage; compare residual sex signal in non-neoplastic gastric biopsies.
+    literature:
+      - short_citation: Li et al., 2016
+        citation: >-
+          Li C, Kim S, Lai JF, et al. The characteristics and prognostic value of signet ring cell histology in gastric
+          cancer: A retrospective cohort study of 2199 consecutive patients. Medicine. 2016
+        pmid: '27399088'
+        doi: 10.1097/MD.0000000000004052
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C2
+    section: clinical_context
+    status: active
+    hypothesis: Diffuse/signet-ring gastric cancer context may contribute to female-enriched morphology in some cohorts.
+    mechanism: Signet-ring/diffuse histology is a distinct H&E-visible subtype that can drive sex prediction if imbalanced.
+    features: Signet-ring cells, mucin, diffuse infiltration, desmoplastic stroma.
+    confounders: Subtype, age, tumor location, stage, treatment.
+    validation: Exclude or match signet-ring/diffuse carcinoma and retest.
+    literature:
+      - short_citation: Li et al., 2016
+        citation: >-
+          Li C, Kim S, Lai JF, et al. The characteristics and prognostic value of signet ring cell histology in gastric
+          cancer: A retrospective cohort study of 2199 consecutive patients. Medicine. 2016
+        pmid: '27399088'
+        doi: 10.1097/MD.0000000000004052
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C3
+    section: clinical_context
+    status: active
+    hypothesis: Non-neoplastic gastritis/metaplasia prevalence may differ by sex and age mix.
+    mechanism: >-
+      Sex differences in H. pylori exposure, autoimmune gastritis, or cancer surveillance could alter background biopsy
+      diagnoses.
+    features: Chronic gastritis, atrophy, intestinal metaplasia, lymphoid follicles, H. pylori organisms.
+    confounders: Age, H. pylori, site, race/ethnicity, autoimmune gastritis, indication.
+    validation: Test sex signal in non-neoplastic biopsies matched for site, gastritis, and metaplasia.
+    literature:
+      - short_citation: Li et al., 2016
+        citation: >-
+          Li C, Kim S, Lai JF, et al. The characteristics and prognostic value of signet ring cell histology in gastric
+          cancer: A retrospective cohort study of 2199 consecutive patients. Medicine. 2016
+        pmid: '27399088'
+        doi: 10.1097/MD.0000000000004052
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C4
+    section: clinical_context
+    status: active
+    hypothesis: Procedure and tumor-location mix may encode sex.
+    mechanism: Gastrectomy vs biopsy, antrum/corpus/cardia site, and tumor location can be sex-skewed in cancer cohorts.
+    features: Biopsy vs resection, tumor site, adjacent mucosa, ulcer, treatment effect.
+    confounders: Procedure type, anatomic site, stage, treatment, institution.
+    validation: Match procedure and gastric site before interpreting residual sex signal.
+    literature:
+      - short_citation: Li et al., 2016
+        citation: >-
+          Li C, Kim S, Lai JF, et al. The characteristics and prognostic value of signet ring cell histology in gastric
+          cancer: A retrospective cohort study of 2199 consecutive patients. Medicine. 2016
+        pmid: '27399088'
+        doi: 10.1097/MD.0000000000004052
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M1
+    section: histomorphology
+    status: active
+    hypothesis: Residual sex signal may be subtype-mediated rather than intrinsic gastric mucosa biology.
+    mechanism: >-
+      H&E-visible diffuse/signet-ring and intestinal-type patterns could persist if S3 clusters do not fully balance
+      subtype.
+    features: Tumor cell cohesion, mucin, signet-ring morphology, intestinal glands.
+    confounders: Lauren subtype, tumor site, stage, age.
+    validation: Audit S3 clusters for detailed histologic subtype balance.
+    literature:
+      - short_citation: Li et al., 2016
+        citation: >-
+          Li C, Kim S, Lai JF, et al. The characteristics and prognostic value of signet ring cell histology in gastric
+          cancer: A retrospective cohort study of 2199 consecutive patients. Medicine. 2016
+        pmid: '27399088'
+        doi: 10.1097/MD.0000000000004052
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M2
+    section: histomorphology
+    status: active
+    hypothesis: Non-neoplastic gastric mucosa sex morphology is uncertain.
+    mechanism: >-
+      Hormonal or inflammatory differences are plausible but not directly supported by strong H&E sex-specific gastric
+      mucosa evidence.
+    features: Chronic gastritis, atrophy, intestinal metaplasia, lymphoid follicles.
+    confounders: H. pylori, age, race/ethnicity, medication, biopsy indication.
+    validation: Test sex signal in non-neoplastic gastric biopsies matched for gastritis/metaplasia/H. pylori.
+    literature: []
+    evidence_status: source metadata incomplete
+  - id: M3
+    section: histomorphology
+    status: active
+    hypothesis: Signet-ring and mucin-rich patterns are a visible tumor-mediated carrier.
+    mechanism: Diffuse/signet-ring carcinoma has highly distinctive single-cell/mucin morphology.
+    features: Signet-ring cells, mucin vacuoles, discohesive infiltration, stromal desmoplasia.
+    confounders: Histologic subtype, site, stage, treatment, age.
+    validation: Compare model signal within subtype-matched tumor cohorts.
+    literature:
+      - short_citation: Li et al., 2016
+        citation: >-
+          Li C, Kim S, Lai JF, et al. The characteristics and prognostic value of signet ring cell histology in gastric
+          cancer: A retrospective cohort study of 2199 consecutive patients. Medicine. 2016
+        pmid: '27399088'
+        doi: 10.1097/MD.0000000000004052
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M4
+    section: histomorphology
+    status: active
+    hypothesis: Inflammation/metaplasia should be treated as confounded until sex-specific mucosal evidence is added.
+    mechanism: >-
+      If signal localizes to background mucosa, it may reflect H. pylori/metaplasia imbalance rather than intrinsic sex
+      biology.
+    features: Activity, chronic inflammation, gland atrophy, intestinal metaplasia.
+    confounders: H. pylori, site, age, autoimmune gastritis, indication.
+    validation: Require reviewer-added DOI-backed references before promoting to testable biological claim.
+    literature: []
+    evidence_status: source metadata incomplete
+key_takeaways:
+  - 'Best review target: diffuse/signet-ring carcinoma and subtype balance.'
+  - 'Main shortcut risk: cancer subtype, age, stage, and procedure.'
+  - If residual signal remains in non-neoplastic matched biopsies, further literature search is needed.
+references:
+  - 'n': 1
+    raw: >-
+      Li C, Kim S, Lai JF, et al. The characteristics and prognostic value of signet ring cell histology in gastric
+      cancer: A retrospective cohort study of 2199 consecutive patients. Medicine. 2016. PMID: 27399088. DOI:
+      10.1097/MD.0000000000004052.
+    citation: >-
+      Li C, Kim S, Lai JF, et al. The characteristics and prognostic value of signet ring cell histology in gastric
+      cancer: A retrospective cohort study of 2199 consecutive patients. Medicine. 2016
+    year: '2016'
+    pmid: '27399088'
+    doi: 10.1097/MD.0000000000004052

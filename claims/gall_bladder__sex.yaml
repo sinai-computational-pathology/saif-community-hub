@@ -1,0 +1,168 @@
+combo: gall_bladder__sex
+organ_slug: gall_bladder
+organ: Gall Bladder
+demographic: sex
+demographic_label: Sex
+summary: >-
+  Gall bladder sex signal is a moderate residual candidate. The likely carrier is strongly clinical-contextual:
+  gallstone disease and cholecystitis risk are sex-skewed through reproductive, metabolic, obesity, and hormonal
+  factors. H&E signal may reflect chronic cholecystitis, gallstone injury, cholesterolosis, fibrosis, metaplasia,
+  dysplasia, and carcinoma context rather than intrinsic sex-specific gallbladder wall morphology.
+claims:
+  - id: C1
+    section: clinical_context
+    status: active
+    hypothesis: Gallstone disease has sex-skewed risk factors.
+    mechanism: >-
+      Female sex, reproductive factors, obesity/metabolic context, and hormones can increase
+      cholelithiasis/cholecystectomy pathways.
+    features: Chronic cholecystitis, gallstone-related injury, cholesterolosis, Rokitansky-Aschoff sinuses.
+    confounders: Diagnosis, gallstones, age, BMI/metabolic disease, pregnancy/parity if available.
+    validation: Match cholecystitis/gallstones and age; retest residual sex signal.
+    literature:
+      - short_citation: Stinton & Shaffer, 2012
+        citation: 'Stinton LM, Shaffer EA. Epidemiology of Gallbladder Disease: Cholelithiasis and Cancer. Gut and Liver. 2012'
+        pmcid: PMC3343155
+        evidence_status: source metadata incomplete
+      - short_citation: Figueiredo et al., 2017
+        citation: Figueiredo JC, et al. Sex and ethnic/racial-specific risk factors for gallbladder disease. 2017
+        pmcid: PMC5723039
+        evidence_status: source metadata incomplete
+    evidence_status: source metadata incomplete
+  - id: C2
+    section: clinical_context
+    status: active
+    hypothesis: Gallbladder carcinoma and chronic injury context may differ by sex and risk background.
+    mechanism: Chronic gallstone injury can lead to metaplasia/dysplasia/carcinoma with H&E-visible features.
+    features: Pyloric/intestinal metaplasia, dysplasia, carcinoma, fibrosis, xanthogranulomatous inflammation.
+    confounders: Cancer status, chronic cholecystitis severity, ethnicity/race, age.
+    validation: Exclude carcinoma/dysplasia and compare chronic cholecystitis-only specimens.
+    literature:
+      - short_citation: Stinton & Shaffer, 2012
+        citation: 'Stinton LM, Shaffer EA. Epidemiology of Gallbladder Disease: Cholelithiasis and Cancer. Gut and Liver. 2012'
+        pmcid: PMC3343155
+        evidence_status: source metadata incomplete
+      - short_citation: Figueiredo et al., 2017
+        citation: Figueiredo JC, et al. Sex and ethnic/racial-specific risk factors for gallbladder disease. 2017
+        pmcid: PMC5723039
+        evidence_status: source metadata incomplete
+    evidence_status: source metadata incomplete
+  - id: C3
+    section: clinical_context
+    status: active
+    hypothesis: Cholecystectomy indication and acute/chronic inflammation mix may differ by sex.
+    mechanism: Gallstone risk affects elective chronic cholecystitis versus acute/emergency pathways.
+    features: Acute cholecystitis, chronic cholecystitis, empyema, wall edema, necrosis.
+    confounders: Acute vs chronic diagnosis, gallstones, age, BMI/metabolic risk, pregnancy context.
+    validation: Match acute/chronic cholecystitis severity and exclude carcinoma before reviewing sex signal.
+    literature:
+      - short_citation: Stinton & Shaffer, 2012
+        citation: 'Stinton LM, Shaffer EA. Epidemiology of Gallbladder Disease: Cholelithiasis and Cancer. Gut and Liver. 2012'
+        pmcid: PMC3343155
+        evidence_status: source metadata incomplete
+      - short_citation: Figueiredo et al., 2017
+        citation: Figueiredo JC, et al. Sex and ethnic/racial-specific risk factors for gallbladder disease. 2017
+        pmcid: PMC5723039
+        evidence_status: source metadata incomplete
+    evidence_status: source metadata incomplete
+  - id: C4
+    section: clinical_context
+    status: active
+    hypothesis: Metabolic and reproductive risk factors may be hidden mediators.
+    mechanism: Obesity, parity, hormones, diabetes, and lipid metabolism affect gallstone formation and chronic injury.
+    features: Cholesterolosis, gallstones, chronic inflammation, fibrosis, mucosal hyperplasia.
+    confounders: BMI, diabetes, parity/pregnancy, age, ethnicity/race.
+    validation: Use available metadata proxies and treat residual as risk-factor mediated unless matched.
+    literature:
+      - short_citation: Figueiredo et al., 2017
+        citation: Figueiredo JC, et al. Sex and ethnic/racial-specific risk factors for gallbladder disease. 2017
+        pmcid: PMC5723039
+        evidence_status: source metadata incomplete
+      - short_citation: Stinton & Shaffer, 2012
+        citation: 'Stinton LM, Shaffer EA. Epidemiology of Gallbladder Disease: Cholelithiasis and Cancer. Gut and Liver. 2012'
+        pmcid: PMC3343155
+        evidence_status: source metadata incomplete
+    evidence_status: source metadata incomplete
+  - id: M1
+    section: histomorphology
+    status: active
+    hypothesis: Sex signal likely reflects gallstone/chronic injury morphology.
+    mechanism: Sex-skewed lithogenic risk creates H&E-visible chronic inflammation and remodeling.
+    features: Chronic inflammation, fibrosis, Rokitansky-Aschoff sinuses, cholesterolosis.
+    confounders: Gallstone status, age, metabolic risk, procedure indication.
+    validation: Review only chronic cholecystitis cases matched for severity and age.
+    literature:
+      - short_citation: Stinton & Shaffer, 2012
+        citation: 'Stinton LM, Shaffer EA. Epidemiology of Gallbladder Disease: Cholelithiasis and Cancer. Gut and Liver. 2012'
+        pmcid: PMC3343155
+        evidence_status: source metadata incomplete
+    evidence_status: source metadata incomplete
+  - id: M2
+    section: histomorphology
+    status: active
+    hypothesis: Direct intrinsic sex morphology of gallbladder wall is not established.
+    mechanism: >-
+      Persistent signal after matching may reflect unmeasured metabolic/reproductive context or incomplete diagnosis
+      control.
+    features: Background mucosa and muscular wall after excluding stones/cancer.
+    confounders: Stone status, inflammation, BMI, parity, ethnicity, institution.
+    validation: Treat residual sex signal cautiously unless gallstone/injury context is controlled.
+    literature:
+      - short_citation: Figueiredo et al., 2017
+        citation: Figueiredo JC, et al. Sex and ethnic/racial-specific risk factors for gallbladder disease. 2017
+        pmcid: PMC5723039
+        evidence_status: source metadata incomplete
+    evidence_status: source metadata incomplete
+  - id: M3
+    section: histomorphology
+    status: active
+    hypothesis: Rokitansky-Aschoff sinuses and mural fibrosis may carry chronic injury signal.
+    mechanism: Longstanding cholelithiasis/cholecystitis remodels mucosa and wall architecture.
+    features: Rokitansky-Aschoff sinuses, muscular hypertrophy, fibrosis, chronic inflammation.
+    confounders: Gallstones, chronicity, age, acute inflammation, procedure indication.
+    validation: Score chronic cholecystitis severity within sex-balanced groups.
+    literature:
+      - short_citation: Stinton & Shaffer, 2012
+        citation: 'Stinton LM, Shaffer EA. Epidemiology of Gallbladder Disease: Cholelithiasis and Cancer. Gut and Liver. 2012'
+        pmcid: PMC3343155
+        evidence_status: source metadata incomplete
+    evidence_status: source metadata incomplete
+  - id: M4
+    section: histomorphology
+    status: active
+    hypothesis: Cholesterolosis and metaplasia/dysplasia patterns should be interpreted as disease context.
+    mechanism: Lipid/metabolic injury and chronic inflammation produce visible mucosal changes that may be sex-skewed.
+    features: Cholesterolosis, pyloric/intestinal metaplasia, dysplasia, xanthogranulomatous inflammation.
+    confounders: Metabolic risk, stones, cancer status, age, ethnicity/race.
+    validation: Separate benign chronic cholecystitis, metaplasia/dysplasia, and carcinoma categories.
+    literature:
+      - short_citation: Figueiredo et al., 2017
+        citation: Figueiredo JC, et al. Sex and ethnic/racial-specific risk factors for gallbladder disease. 2017
+        pmcid: PMC5723039
+        evidence_status: source metadata incomplete
+      - short_citation: Stinton & Shaffer, 2012
+        citation: 'Stinton LM, Shaffer EA. Epidemiology of Gallbladder Disease: Cholelithiasis and Cancer. Gut and Liver. 2012'
+        pmcid: PMC3343155
+        evidence_status: source metadata incomplete
+    evidence_status: source metadata incomplete
+key_takeaways:
+  - >-
+    Best review target: chronic cholecystitis severity, cholesterolosis, fibrosis, metaplasia/dysplasia, and gallstone
+    proxies.
+  - 'Main shortcut risk: gallstone disease and cholecystectomy indication.'
+  - Direct intrinsic sex morphology evidence is weak; this is likely a clinical-context signal.
+references:
+  - 'n': 1
+    raw: >-
+      Stinton LM, Shaffer EA. Epidemiology of Gallbladder Disease: Cholelithiasis and Cancer. Gut and Liver. 2012.
+      PMCID: PMC3343155.
+    citation: 'Stinton LM, Shaffer EA. Epidemiology of Gallbladder Disease: Cholelithiasis and Cancer. Gut and Liver. 2012'
+    year: '2012'
+    pmcid: PMC3343155
+  - 'n': 2
+    raw: >-
+      Figueiredo JC, et al. Sex and ethnic/racial-specific risk factors for gallbladder disease. 2017. PMCID:
+      PMC5723039.
+    citation: Figueiredo JC, et al. Sex and ethnic/racial-specific risk factors for gallbladder disease. 2017
+    year: '2017'
+    pmcid: PMC5723039

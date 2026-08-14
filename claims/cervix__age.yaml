@@ -1,0 +1,168 @@
+combo: cervix__age
+organ_slug: cervix
+organ: Cervix
+demographic: age
+demographic_label: Age
+summary: >-
+  Cervix age signal is a stable residual candidate. Literature support centers on transformation-zone migration,
+  squamous metaplasia, menopausal epithelial atrophy, glandular/squamous composition, and age-dependent
+  screening/HPV/CIN context. The major review need is stronger modern pathology sources beyond the older
+  transformation-zone literature.
+claims:
+  - id: C1
+    section: clinical_context
+    status: active
+    hypothesis: Screening history and HPV/CIN diagnostic mix vary by age.
+    mechanism: >-
+      Younger patients may be enriched for HPV/CIN screening biopsies; older patients may have postmenopausal workups or
+      invasive cancer contexts.
+    features: CIN grade, HPV-related koilocytosis, invasive carcinoma, biopsy vs excision.
+    confounders: Diagnosis, CIN grade, procedure type, screening indication, HPV status.
+    validation: Match CIN grade and procedure type; test residual age signal within benign/CIN-only strata.
+    literature:
+      - short_citation: Singer, 1975
+        citation: >-
+          Singer A. The uterine cervix from adolescence to the menopause. British Journal of Obstetrics and Gynaecology.
+          1975
+        pmid: '1125147'
+        doi: 10.1111/j.1471-0528.1975.tb02204.x
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C2
+    section: clinical_context
+    status: active
+    hypothesis: Transformation-zone sampling differs by age.
+    mechanism: >-
+      The transformation zone changes position across life stages and menopause, altering squamous/endocervical tissue
+      composition.
+    features: Transformation zone, squamocolumnar junction, endocervical glands, ectocervical squamous mucosa.
+    confounders: Sampling site, procedure type, menopausal status, inflammation.
+    validation: Use report/site labels to stratify transformation-zone versus ectocervical/endocervical samples.
+    literature:
+      - short_citation: Singer, 1975
+        citation: >-
+          Singer A. The uterine cervix from adolescence to the menopause. British Journal of Obstetrics and Gynaecology.
+          1975
+        pmid: '1125147'
+        doi: 10.1111/j.1471-0528.1975.tb02204.x
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C3
+    section: clinical_context
+    status: active
+    hypothesis: Older patients may be enriched for atrophy-related or postmenopausal bleeding workups.
+    mechanism: Low-estrogen mucosa is more fragile and may be sampled for bleeding, cytologic abnormality, or cancer exclusion.
+    features: Atrophic squamous epithelium, scant stroma, inflammation, biopsy fragments with limited TZ.
+    confounders: Menopausal status, hormone therapy, bleeding indication, procedure type.
+    validation: Compare age signal in benign/postmenopausal workups separately from CIN/cancer.
+    literature:
+      - short_citation: Singer, 1975
+        citation: >-
+          Singer A. The uterine cervix from adolescence to the menopause. British Journal of Obstetrics and Gynaecology.
+          1975
+        pmid: '1125147'
+        doi: 10.1111/j.1471-0528.1975.tb02204.x
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C4
+    section: clinical_context
+    status: active
+    hypothesis: Excision versus biopsy mix may encode age and screening pathway.
+    mechanism: LEEP/cone, hysterectomy, and punch biopsy have different tissue composition and age distributions.
+    features: Cone/LEEP margins, cautery, endocervical glands, stromal depth, invasive carcinoma.
+    confounders: Procedure type, CIN grade, margin status, cancer diagnosis.
+    validation: Match procedure type before evaluating tissue-level age features.
+    literature:
+      - short_citation: Singer, 1975
+        citation: >-
+          Singer A. The uterine cervix from adolescence to the menopause. British Journal of Obstetrics and Gynaecology.
+          1975
+        pmid: '1125147'
+        doi: 10.1111/j.1471-0528.1975.tb02204.x
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M1
+    section: histomorphology
+    status: active
+    hypothesis: Menopause/age alters cervical squamous epithelium.
+    mechanism: Hormonal involution can produce epithelial thinning/atrophy and altered maturation.
+    features: Atrophic squamous epithelium, maturation pattern, basal/parabasal prominence.
+    confounders: Menopausal status, inflammation, radiation/treatment, sampling site.
+    validation: Quantify epithelial atrophy in benign cervix matched by site and inflammation.
+    literature:
+      - short_citation: Singer, 1975
+        citation: >-
+          Singer A. The uterine cervix from adolescence to the menopause. British Journal of Obstetrics and Gynaecology.
+          1975
+        pmid: '1125147'
+        doi: 10.1111/j.1471-0528.1975.tb02204.x
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M2
+    section: histomorphology
+    status: active
+    hypothesis: Squamous metaplasia and transformation-zone architecture can encode age.
+    mechanism: Transformation-zone remodeling changes squamous/glandular proportions and metaplastic epithelium.
+    features: Squamous metaplasia, reserve cells, gland involvement, SCJ architecture.
+    confounders: CIN, HPV, inflammation, procedure type.
+    validation: Match CIN/HPV context and compare benign transformation-zone morphology by age.
+    literature:
+      - short_citation: Singer, 1975
+        citation: >-
+          Singer A. The uterine cervix from adolescence to the menopause. British Journal of Obstetrics and Gynaecology.
+          1975
+        pmid: '1125147'
+        doi: 10.1111/j.1471-0528.1975.tb02204.x
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M3
+    section: histomorphology
+    status: active
+    hypothesis: Residual model signal may reflect tissue-composition rather than disease.
+    mechanism: >-
+      Different proportions of squamous, glandular, stromal, and transformation-zone tissue can persist after diagnosis
+      matching.
+    features: Squamous:gland ratio, stromal inflammation, endocervical gland density.
+    confounders: Site, procedure, block selection, diagnosis.
+    validation: Review attention maps for transformation-zone and atrophic epithelium after diagnosis matching.
+    literature:
+      - short_citation: Singer, 1975
+        citation: >-
+          Singer A. The uterine cervix from adolescence to the menopause. British Journal of Obstetrics and Gynaecology.
+          1975
+        pmid: '1125147'
+        doi: 10.1111/j.1471-0528.1975.tb02204.x
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M4
+    section: histomorphology
+    status: active
+    hypothesis: Chronic inflammation can amplify age- and menopause-associated morphology.
+    mechanism: Atrophic mucosa and altered microbiome/inflammation may change stromal and epithelial appearance.
+    features: Chronic cervicitis, lymphoplasmacytic inflammation, epithelial thinning, reactive atypia.
+    confounders: Infection, HPV, atrophy, treatment, biopsy site.
+    validation: Score inflammation separately from atrophy and CIN before assigning residual age mechanism.
+    literature:
+      - short_citation: Singer, 1975
+        citation: >-
+          Singer A. The uterine cervix from adolescence to the menopause. British Journal of Obstetrics and Gynaecology.
+          1975
+        pmid: '1125147'
+        doi: 10.1111/j.1471-0528.1975.tb02204.x
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+key_takeaways:
+  - 'Best review target: transformation-zone location, squamous metaplasia, and atrophic squamous epithelium.'
+  - 'Main shortcut risk: CIN/HPV grade, screening indication, and biopsy/excision procedure.'
+  - Needs stronger modern cervical histology sources before final manuscript claims.
+references:
+  - 'n': 1
+    raw: >-
+      Singer A. The uterine cervix from adolescence to the menopause. British Journal of Obstetrics and Gynaecology.
+      1975. PMID: 1125147. DOI: 10.1111/j.1471-0528.1975.tb02204.x.
+    citation: >-
+      Singer A. The uterine cervix from adolescence to the menopause. British Journal of Obstetrics and Gynaecology.
+      1975
+    year: '1975'
+    pmid: '1125147'
+    doi: 10.1111/j.1471-0528.1975.tb02204.x

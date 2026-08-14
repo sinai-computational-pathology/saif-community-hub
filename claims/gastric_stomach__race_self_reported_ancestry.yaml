@@ -1,0 +1,174 @@
+combo: gastric_stomach__race_self_reported_ancestry
+organ_slug: gastric_stomach
+organ: Gastric (Stomach)
+demographic: race_self_reported_ancestry
+demographic_label: Race / Self-Reported Ancestry
+summary: >-
+  Gastric race/self-reported ancestry signal is a high residual candidate. The best-supported carrier is gastric
+  intestinal metaplasia (GIM), H. pylori-associated gastritis, atrophy, and chronic inflammation in multiethnic biopsy
+  cohorts. Interpret this as ancestry/geography/exposure/access and infection-context signal, not intrinsic race
+  biology.
+claims:
+  - id: C1
+    section: clinical_context
+    status: active
+    hypothesis: GIM prevalence differs across racial/ethnic groups in a multiethnic US biopsy cohort.
+    mechanism: Race/ethnicity may proxy H. pylori exposure, geography, diet, access, and biopsy indication.
+    features: Intestinal metaplasia, atrophy, chronic gastritis, acute activity.
+    confounders: H. pylori, age, sex, site, biopsy indication, institution.
+    validation: Match H. pylori/gastritis/metaplasia status; test residual signal in normal/non-metaplastic biopsies.
+    literature:
+      - short_citation: Nguyen et al., 2021
+        citation: >-
+          Nguyen TH, Tan MC, Liu Y, et al. Prevalence of Gastric Intestinal Metaplasia in a Multiethnic US Veterans
+          Population. Clinical Gastroenterology and Hepatology. 2021
+        pmid: '32184184'
+        pmcid: PMC7890574
+        doi: 10.1016/j.cgh.2020.03.015
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C2
+    section: clinical_context
+    status: active
+    hypothesis: H. pylori and gastritis mediate part of race/ethnicity-associated gastric pathology.
+    mechanism: Infection and chronic inflammation create H&E-visible patterns that can drive demographic prediction.
+    features: H. pylori organisms if visible, active chronic gastritis, lymphoid follicles, atrophy.
+    confounders: H. pylori testing, gastric site, medication, age, SES/geography.
+    validation: Include H. pylori and gastritis severity in matched analysis.
+    literature:
+      - short_citation: Nguyen et al., 2021
+        citation: >-
+          Nguyen TH, Tan MC, Liu Y, et al. Prevalence of Gastric Intestinal Metaplasia in a Multiethnic US Veterans
+          Population. Clinical Gastroenterology and Hepatology. 2021
+        pmid: '32184184'
+        pmcid: PMC7890574
+        doi: 10.1016/j.cgh.2020.03.015
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C3
+    section: clinical_context
+    status: active
+    hypothesis: Gastric cancer risk and surveillance pathways may differ by ethnicity and geography.
+    mechanism: Race/ethnicity can proxy migration, endemic exposure, family history, and endoscopic surveillance thresholds.
+    features: Dysplasia, adenocarcinoma, intestinal metaplasia mapping biopsies, antrum/corpus site.
+    confounders: Cancer status, site, H. pylori, family history, geography, indication.
+    validation: Exclude dysplasia/cancer and separately analyze metaplasia-surveillance biopsies.
+    literature:
+      - short_citation: Nguyen et al., 2021
+        citation: >-
+          Nguyen TH, Tan MC, Liu Y, et al. Prevalence of Gastric Intestinal Metaplasia in a Multiethnic US Veterans
+          Population. Clinical Gastroenterology and Hepatology. 2021
+        pmid: '32184184'
+        pmcid: PMC7890574
+        doi: 10.1016/j.cgh.2020.03.015
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: C4
+    section: clinical_context
+    status: active
+    hypothesis: Biopsy-site distribution may encode race-associated clinical workflow.
+    mechanism: Antrum, corpus, incisura, and mapping protocols differ across gastritis/metaplasia workups.
+    features: Antral vs corpus mucosa, oxyntic atrophy, incisura fragments, mapping biopsies.
+    confounders: Site label, endoscopy indication, institution, H. pylori, age.
+    validation: Require site-matched analysis before interpreting residual gastric race signal.
+    literature:
+      - short_citation: Nguyen et al., 2021
+        citation: >-
+          Nguyen TH, Tan MC, Liu Y, et al. Prevalence of Gastric Intestinal Metaplasia in a Multiethnic US Veterans
+          Population. Clinical Gastroenterology and Hepatology. 2021
+        pmid: '32184184'
+        pmcid: PMC7890574
+        doi: 10.1016/j.cgh.2020.03.015
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M1
+    section: histomorphology
+    status: active
+    hypothesis: Race-associated signal may localize to metaplasia/atrophy rather than normal mucosa.
+    mechanism: GIM and atrophic gastritis have strong H&E morphology and may be imbalanced by group.
+    features: Goblet cells, intestinalized glands, gland loss, endocrine cell change, inflammation.
+    confounders: Diagnosis, H. pylori, biopsy site, age.
+    validation: Exclude GIM/atrophy and retest; separately review metaplastic regions.
+    literature:
+      - short_citation: Nguyen et al., 2021
+        citation: >-
+          Nguyen TH, Tan MC, Liu Y, et al. Prevalence of Gastric Intestinal Metaplasia in a Multiethnic US Veterans
+          Population. Clinical Gastroenterology and Hepatology. 2021
+        pmid: '32184184'
+        pmcid: PMC7890574
+        doi: 10.1016/j.cgh.2020.03.015
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M2
+    section: histomorphology
+    status: active
+    hypothesis: Direct intrinsic gastric mucosa differences by race are not established.
+    mechanism: Observed signal likely reflects infection, exposure, care, and diagnosis context.
+    features: Background mucosa after excluding gastritis/metaplasia.
+    confounders: Site, stain/scanner, institution, geography.
+    validation: Interpret residual signal cautiously unless it persists after infection/site/diagnosis matching.
+    literature:
+      - short_citation: Nguyen et al., 2021
+        citation: >-
+          Nguyen TH, Tan MC, Liu Y, et al. Prevalence of Gastric Intestinal Metaplasia in a Multiethnic US Veterans
+          Population. Clinical Gastroenterology and Hepatology. 2021
+        pmid: '32184184'
+        pmcid: PMC7890574
+        doi: 10.1016/j.cgh.2020.03.015
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M3
+    section: histomorphology
+    status: active
+    hypothesis: Active chronic gastritis may be an indirect H&E carrier.
+    mechanism: >-
+      H. pylori and related injury produce neutrophilic activity, lymphoplasmacytic inflammation, and lymphoid
+      follicles.
+    features: Activity, chronic inflammation, lymphoid aggregates, organisms, foveolar reaction.
+    confounders: H. pylori status, site, treatment, PPI/antibiotics, age.
+    validation: Score gastritis severity and compare race signal in H. pylori-negative/non-inflamed biopsies.
+    literature:
+      - short_citation: Nguyen et al., 2021
+        citation: >-
+          Nguyen TH, Tan MC, Liu Y, et al. Prevalence of Gastric Intestinal Metaplasia in a Multiethnic US Veterans
+          Population. Clinical Gastroenterology and Hepatology. 2021
+        pmid: '32184184'
+        pmcid: PMC7890574
+        doi: 10.1016/j.cgh.2020.03.015
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+  - id: M4
+    section: histomorphology
+    status: active
+    hypothesis: Metaplasia-stage and atrophy-stage morphology should be separated from ancestry claims.
+    mechanism: Atrophy and GIM are disease/injury states with visible glandular remodeling.
+    features: Gland loss, goblet cells, pseudopyloric change, endocrine-cell context.
+    confounders: Site, H. pylori, autoimmune gastritis, age, geography.
+    validation: Promote only disease-context hypotheses unless residual persists in normal site-matched mucosa.
+    literature:
+      - short_citation: Nguyen et al., 2021
+        citation: >-
+          Nguyen TH, Tan MC, Liu Y, et al. Prevalence of Gastric Intestinal Metaplasia in a Multiethnic US Veterans
+          Population. Clinical Gastroenterology and Hepatology. 2021
+        pmid: '32184184'
+        pmcid: PMC7890574
+        doi: 10.1016/j.cgh.2020.03.015
+        evidence_status: needs claim-level validation
+    evidence_status: needs claim-level validation
+key_takeaways:
+  - 'Best review target: intestinal metaplasia, chronic active gastritis, atrophy, and lymphoid follicles.'
+  - 'Main shortcut risk: H. pylori, gastric site, biopsy indication, and metaplasia status.'
+  - Frame as exposure/infection/context signal rather than intrinsic race biology.
+references:
+  - 'n': 1
+    raw: >-
+      Nguyen TH, Tan MC, Liu Y, et al. Prevalence of Gastric Intestinal Metaplasia in a Multiethnic US Veterans
+      Population. Clinical Gastroenterology and Hepatology. 2021. PMID: 32184184. PMCID: PMC7890574. DOI:
+      10.1016/j.cgh.2020.03.015.
+    citation: >-
+      Nguyen TH, Tan MC, Liu Y, et al. Prevalence of Gastric Intestinal Metaplasia in a Multiethnic US Veterans
+      Population. Clinical Gastroenterology and Hepatology. 2021
+    year: '2021'
+    pmid: '32184184'
+    pmcid: PMC7890574
+    doi: 10.1016/j.cgh.2020.03.015

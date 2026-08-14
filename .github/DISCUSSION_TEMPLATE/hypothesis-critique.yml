@@ -1,0 +1,52 @@
+title: "[Hypothesis critique] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to challenge, refine, or offer an alternative explanation for a public claim.
+
+        **This discussion is public. Do not include PHI, patient or specimen identifiers, restricted data, credentials, private paths, or unpublished sensitive results.**
+  - type: input
+    id: context
+    attributes:
+      label: Organ–demographic combination and claim ID
+      description: Example: skin × race/self-reported ancestry, M3
+      placeholder: organ × demographic, claim ID
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Hub or Results Atlas URL
+      placeholder: https://sinai-computational-pathology.github.io/...
+    validations:
+      required: true
+  - type: textarea
+    id: interpretation
+    attributes:
+      label: Interpretation or critique
+      description: State which part of the claim you agree or disagree with and why.
+    validations:
+      required: true
+  - type: textarea
+    id: alternative
+    attributes:
+      label: Alternative explanation
+      description: Describe confounding, case mix, workflow, morphology, or another mechanism that should be considered.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting evidence
+      description: Provide DOI, PMID, stable URL, or a concise description of relevant experience. Do not paste full copyrighted articles.
+    validations:
+      required: false
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public-data confirmation
+      options:
+        - label: I confirm that this submission contains no sensitive, restricted, identifying, or credential material.
+          required: true

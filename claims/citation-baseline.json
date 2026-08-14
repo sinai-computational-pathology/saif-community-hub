@@ -1,0 +1,27 @@
+{
+  "note": "Identifiers already broken at migration time. Reported by validate_claims.mjs but not blocking. Fix and remove entries as the backlog is worked through; never add to this list by hand.",
+  "generated_at": "2026-08-08",
+  "known_broken": [
+    "doi:10.1001/archoto.2011.91",
+    "doi:10.1001/jamaoto.2025.3916",
+    "doi:10.1002/lary.29730",
+    "doi:10.1007/s10549-015-3665-5",
+    "doi:10.1038/jid.1966.107",
+    "doi:10.1093/carcin/bgw055",
+    "doi:10.1158/1055-9965.EPI-22-0997",
+    "doi:10.1186/2193-1801-3-570",
+    "doi:10.1186/s13058-016-0738-5",
+    "doi:10.4317/medoral.16.e641",
+    "doi:10.4317/medoral.23883",
+    "pmid:20711172",
+    "pmid:21690474",
+    "pmid:26819318",
+    "pmid:27206972",
+    "pmid:27439764",
+    "pmid:31895414",
+    "pmid:32683380",
+    "pmid:34033326",
+    "pmid:36791786",
+    "pmid:37893135"
+  ]
+}
