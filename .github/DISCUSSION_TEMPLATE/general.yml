@@ -1,0 +1,42 @@
+title: "[Collaboration opportunity] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Start a public scientific collaboration conversation. Move private logistics to verified institutional channels only after initial contact.
+
+        **This discussion is public. Do not share PHI, identifiers, restricted data, credentials, private paths, unpublished sensitive results, or personal details you do not want indexed.**
+  - type: input
+    id: area
+    attributes:
+      label: Scientific area or organ–demographic combination
+    validations:
+      required: true
+  - type: textarea
+    id: interest
+    attributes:
+      label: Collaboration interest
+      description: Describe the shared question or unmet need.
+    validations:
+      required: true
+  - type: textarea
+    id: contribution
+    attributes:
+      label: Contribution you can offer
+      description: Examples include pathology review, external validation, methods, statistics, or literature expertise.
+    validations:
+      required: true
+  - type: textarea
+    id: next_step
+    attributes:
+      label: Desired next step
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public-data confirmation
+      options:
+        - label: I confirm that this submission contains no sensitive, restricted, identifying, or credential material.
+          required: true

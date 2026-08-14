@@ -11,7 +11,7 @@
   "citationValidation": "schema-validated; DOI and PMID resolution tracked by CI",
   "linkedAtlasReleaseId": "saif-results-2026-07-31",
   "files": {
-    "app.js": "6523d6c35bfe072cfa653719fdcbf0618a521b30343df9a5e4d87a532a691540",
+    "app.js": "468f40ad7f4d23b550752d602e8c42457a337c4b158a06bc081b3087eb9c10a9",
     "claims_bundle.js": "686b13fd096d21e0fc4a1565eb68f138624bdbc786396e6d2542a1c4b8dd9ea5",
     "favicon.png": "9aeecb244ac260b2b0c6223991aa560f073959e07ca71faff4dd519b67d40395",
     "index.html": "ea2a39dbdf63ae03ce6ee22c1337a8f5064e5e4fae6978f9e8edd1e27fdc9be1",

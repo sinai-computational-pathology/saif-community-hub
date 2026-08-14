@@ -210,9 +210,9 @@ function renderDossier(current) {
       <div class="claim-list">${dossier.claims.filter((claim) => claim.section === "histomorphology").map((claim) => renderClaim(dossier, claim)).join("") || `<div class="empty-section">No histomorphology claim is currently published.</div>`}</div>
     </section>
     <section class="collaboration-panel"><div class="page-width"><div><p class="eyebrow">Move the evidence forward</p><h2>Challenge, extend, or test this dossier.</h2><p>Include <strong>${esc(context)}</strong> and the permanent claim ID in your post. Discussions are public; never share PHI, restricted data, credentials, or unpublished sensitive results.</p></div><div class="collaboration-actions">
-      <a href="${discussionHref("hypothesis-critique")}" target="_blank" rel="noopener"><strong>Discuss a hypothesis</strong><span>Offer a critique or alternative explanation →</span></a>
-      <a href="${discussionHref("new-evidence-or-correction")}" target="_blank" rel="noopener"><strong>Suggest evidence</strong><span>Add a DOI, PMID, or correction →</span></a>
-      <a href="${discussionHref("replication-or-follow-up-study")}" target="_blank" rel="noopener"><strong>Propose a follow-up study</strong><span>Define a cohort, test, and success criterion →</span></a>
+      <a href="${discussionHref("ideas")}" target="_blank" rel="noopener"><strong>Discuss a hypothesis</strong><span>Offer a critique or alternative explanation →</span></a>
+      <a href="${discussionHref("q-a")}" target="_blank" rel="noopener"><strong>Suggest evidence</strong><span>Add a DOI, PMID, or correction →</span></a>
+      <a href="${discussionHref("show-and-tell")}" target="_blank" rel="noopener"><strong>Propose a follow-up study</strong><span>Define a cohort, test, and success criterion →</span></a>
     </div></div></section>`;
 
   document.querySelectorAll(".copy-context").forEach((button) => button.addEventListener("click", async () => {
