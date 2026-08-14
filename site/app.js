@@ -72,7 +72,7 @@ function renderHome() {
       <div class="hero-copy">
         <p class="eyebrow">Pan-organ demographic signal research</p>
         <h1>From model signal to a <em>testable pathology hypothesis.</em></h1>
-        <p class="hero-lede">Explore what the experiments show, what prior literature can—and cannot—explain, and where pathologists, computational researchers, and clinical collaborators can help next.</p>
+        <p class="hero-lede">Explore the results, literature-based explanations, and ways to contribute.</p>
         <div class="hero-actions">
           <a class="button primary" href="#/hypotheses">Explore hypotheses</a>
           <a class="button secondary" href="${esc(community.release.atlasUrl)}" target="_blank" rel="noopener">Inspect results <span aria-hidden="true">↗</span></a>
@@ -88,21 +88,21 @@ function renderHome() {
       </aside>
     </section>
     <section class="caution-band">
-      <div class="page-width caution-inner"><span class="caution-mark" aria-hidden="true">!</span><p><strong>Prediction is not mechanism.</strong> Residual demographic signal can reflect diagnosis mix, sampling, access, exposure, workflow, or morphology. These hypotheses organize follow-up—not causal conclusions.</p></div>
+      <div class="page-width caution-inner"><span class="caution-mark" aria-hidden="true">!</span><p><strong>Prediction is not mechanism.</strong> Signal may reflect diagnosis mix, sampling, access, exposure, workflow, or morphology. These hypotheses guide follow-up; they are not causal conclusions.</p></div>
     </section>
     <section class="page-width pathway-section">
-      <div class="section-heading"><p class="eyebrow">One connected research path</p><h2>Read the evidence. Challenge the explanation. Design the next test.</h2></div>
+      <div class="section-heading"><p class="eyebrow">Research path</p><h2>Review the evidence. Test the explanation. Plan what comes next.</h2></div>
       <div class="pathway-grid">
-        <article><span>01</span><h3>Observe</h3><p>Start with the separately audited aggregate control results for an organ–demographic combination.</p><a href="${esc(community.release.atlasUrl)}" target="_blank" rel="noopener">Open Results Atlas <span aria-hidden="true">↗</span></a></article>
-        <article><span>02</span><h3>Interpret cautiously</h3><p>Compare clinical-context and histomorphology hypotheses, their source trail, confounders, and evidence gaps.</p><a href="#/hypotheses">Browse hypothesis dossiers <span aria-hidden="true">→</span></a></article>
-        <article><span>03</span><h3>Collaborate</h3><p>Critique a claim, suggest literature, propose replication, or find collaborators through public structured discussions.</p><a href="${DISCUSSIONS}" target="_blank" rel="noopener">Enter community discussions <span aria-hidden="true">↗</span></a></article>
+        <article><span>01</span><h3>Observe</h3><p>Review audited aggregate results for each organ–demographic combination.</p><a href="${esc(community.release.atlasUrl)}" target="_blank" rel="noopener">Open Results Atlas <span aria-hidden="true">↗</span></a></article>
+        <article><span>02</span><h3>Interpret</h3><p>Compare hypotheses, evidence, confounders, and gaps.</p><a href="#/hypotheses">Browse hypothesis dossiers <span aria-hidden="true">→</span></a></article>
+        <article><span>03</span><h3>Collaborate</h3><p>Critique claims, add literature, propose studies, or connect with collaborators.</p><a href="${DISCUSSIONS}" target="_blank" rel="noopener">Join discussions <span aria-hidden="true">↗</span></a></article>
       </div>
     </section>
     <section class="page-width feature-split">
       <div>
-        <p class="eyebrow">Designed for scientific disagreement</p>
-        <h2>Every claim exposes the parts most likely to break.</h2>
-        <p>Mechanism, visible features, confounders, validation design, source identifiers, and review status stay together. Permanent claim IDs let a discussion, correction, and later experiment refer to the same idea.</p>
+        <p class="eyebrow">Built for scientific review</p>
+        <h2>Every claim shows how it can be tested.</h2>
+        <p>Mechanism, visible features, confounders, validation, sources, and review status stay together. Permanent claim IDs connect discussions, corrections, and experiments.</p>
         <a class="button dark" href="#/hypotheses">Open the explorer</a>
       </div>
       <div class="claim-preview" aria-label="Example claim structure">
@@ -139,7 +139,7 @@ function evidenceSummary(dossier) {
 function renderHypotheses() {
   const dossiers = [...community.dossiers].sort((a, b) => a.organ.localeCompare(b.organ) || DEMOGRAPHIC_ORDER[a.demographic] - DEMOGRAPHIC_ORDER[b.demographic]);
   const visible = dossiers.filter(dossierMatches);
-  app.innerHTML = `${editionBanner()}<section class="explorer-hero"><div class="page-width"><p class="eyebrow">Hypothesis explorer</p><h1>Find the idea behind a signal.</h1><p>Filter literature-grounded explanations by organ, demographic variable, hypothesis type, or current evidence status.</p></div></section>
+  app.innerHTML = `${editionBanner()}<section class="explorer-hero"><div class="page-width"><p class="eyebrow">Hypothesis explorer</p><h1>Find the idea behind a signal.</h1><p>Filter explanations by organ, demographic, claim type, or evidence status.</p></div></section>
     <section class="page-width explorer-layout">
       <div class="filter-panel" aria-label="Hypothesis filters">
         <label class="search-field"><span>Search</span><input id="search" type="search" value="${esc(state.search)}" placeholder="Organ, claim, mechanism…"></label>
@@ -210,9 +210,9 @@ function renderDossier(current) {
       <div class="claim-list">${dossier.claims.filter((claim) => claim.section === "histomorphology").map((claim) => renderClaim(dossier, claim)).join("") || `<div class="empty-section">No histomorphology claim is currently published.</div>`}</div>
     </section>
     <section class="collaboration-panel"><div class="page-width"><div><p class="eyebrow">Move the evidence forward</p><h2>Challenge, extend, or test this dossier.</h2><p>Include <strong>${esc(context)}</strong> and the permanent claim ID in your post. Discussions are public; never share PHI, restricted data, credentials, or unpublished sensitive results.</p></div><div class="collaboration-actions">
-      <a href="${discussionHref("hypothesis-critique")}" target="_blank" rel="noopener"><strong>Discuss a hypothesis</strong><span>Offer a critique or alternative explanation →</span></a>
-      <a href="${discussionHref("new-evidence-or-correction")}" target="_blank" rel="noopener"><strong>Suggest evidence</strong><span>Add a DOI, PMID, or correction →</span></a>
-      <a href="${discussionHref("replication-or-follow-up-study")}" target="_blank" rel="noopener"><strong>Propose a follow-up study</strong><span>Define a cohort, test, and success criterion →</span></a>
+      <a href="${discussionHref("ideas")}" target="_blank" rel="noopener"><strong>Discuss a hypothesis</strong><span>Offer a critique or alternative explanation →</span></a>
+      <a href="${discussionHref("q-a")}" target="_blank" rel="noopener"><strong>Suggest evidence</strong><span>Add a DOI, PMID, or correction →</span></a>
+      <a href="${discussionHref("show-and-tell")}" target="_blank" rel="noopener"><strong>Propose a follow-up study</strong><span>Define a cohort, test, and success criterion →</span></a>
     </div></div></section>`;
 
   document.querySelectorAll(".copy-context").forEach((button) => button.addEventListener("click", async () => {
@@ -227,7 +227,7 @@ function renderDossier(current) {
 }
 
 function renderGovernance() {
-  app.innerHTML = `${editionBanner()}<section class="governance-hero"><div class="page-width"><p class="eyebrow">Methods &amp; governance</p><h1>A transparent boundary between evidence, hypothesis, and conclusion.</h1><p>The Hub is designed for inspectable scientific discussion while protecting unpublished work and restricted research artifacts.</p></div></section>
+  app.innerHTML = `${editionBanner()}<section class="governance-hero"><div class="page-width"><p class="eyebrow">Methods &amp; governance</p><h1>Separate evidence, hypothesis, and conclusion.</h1><p>The Hub supports public scientific review while protecting unpublished and restricted work.</p></div></section>
     <section class="page-width governance-grid">
       <article><span>01</span><h2>Results remain separate</h2><p>The SAIF Results Atlas is the sole public source for approved aggregate experiment results. The Hub links to it by stable organ–demographic route and never copies its performance data.</p></article>
       <article><span>02</span><h2>Claims remain traceable</h2><p>Each hypothesis has an immutable ID, evidence status, source trail, confounders, and suggested validation. Claims are retired rather than silently deleted.</p></article>

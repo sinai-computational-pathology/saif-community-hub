@@ -8,10 +8,10 @@ const bundle = JSON.parse(bundleSource.replace(/^window\.SAIF_COMMUNITY\s*=\s*/,
 const demoMap = { age: "age", race_self_reported_ancestry: "race", sex: "sex" };
 const expectedDiscussionForms = [
   "announcements.yml",
-  "collaboration-opportunities.yml",
-  "hypothesis-critique.yml",
-  "new-evidence-or-correction.yml",
-  "replication-or-follow-up-study.yml",
+  "general.yml",
+  "ideas.yml",
+  "q-a.yml",
+  "show-and-tell.yml",
 ];
 const failures = [];
 const seenCombos = new Set();
@@ -32,7 +32,7 @@ for (const filename of expectedDiscussionForms) {
 }
 
 const appSource = fs.readFileSync(path.join(repoDir, "_site", "app.js"), "utf8");
-for (const category of ["hypothesis-critique", "new-evidence-or-correction", "replication-or-follow-up-study"]) {
+for (const category of ["ideas", "q-a", "show-and-tell"]) {
   if (!appSource.includes(`discussionHref("${category}")`)) failures.push(`missing dossier action for ${category}`);
 }
 if (!appSource.includes("#/combo/")) failures.push("missing Results Atlas deep-link contract");
