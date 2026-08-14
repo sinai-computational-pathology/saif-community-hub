@@ -173,12 +173,25 @@ async function cachedFetch(key, url, headers = {}) {
   if (fs.existsSync(cacheFile)) return JSON.parse(fs.readFileSync(cacheFile, "utf8"));
 
   // NCBI asks for no more than 3 requests/second without an API key; Crossref
-  // asks for a contact in the User-Agent. Be a good citizen on both counts.
-  await new Promise((done) => setTimeout(done, 350));
-  const response = await fetch(url, { headers: { "User-Agent": CONTACT, ...headers } });
-  const payload = { ok: response.ok, status: response.status, body: response.ok ? await response.text() : "" };
-  fs.writeFileSync(cacheFile, JSON.stringify(payload));
-  return payload;
+  // asks for a contact in the User-Agent. Retry transient throttling without
+  // caching it as a broken citation; permanent responses remain cached.
+  const maxAttempts = 4;
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    await new Promise((done) => setTimeout(done, attempt === 1 ? 500 : 1000 * (2 ** (attempt - 2))));
+    const response = await fetch(url, { headers: { "User-Agent": CONTACT, ...headers } });
+    const transient = response.status === 429 || response.status >= 500;
+    if (transient && attempt < maxAttempts) {
+      const retryAfter = Number(response.headers.get("retry-after"));
+      if (Number.isFinite(retryAfter) && retryAfter > 0) {
+        await new Promise((done) => setTimeout(done, Math.min(retryAfter * 1000, 10000)));
+      }
+      continue;
+    }
+    const payload = { ok: response.ok, status: response.status, body: response.ok ? await response.text() : "" };
+    if (!transient) fs.writeFileSync(cacheFile, JSON.stringify(payload));
+    return payload;
+  }
+  throw new Error(`Citation resolver exhausted retries for ${key}`);
 }
 
 function normalizeTitle(text) {
