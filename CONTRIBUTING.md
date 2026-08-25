@@ -4,7 +4,7 @@ Thank you for helping test, refine, or challenge these hypotheses. Scientific di
 
 ## Choose the right channel
 
-- **Discussion:** interpretation, alternative explanations, new literature, replication ideas, or collaboration interest.
+- **Discussion:** a proposed mechanism, falsifiable prediction, alternative explanation, new literature, replication idea, or collaboration interest.
 - **Issue:** a reproducible website defect, accessibility problem, broken link, or confirmed content inconsistency.
 - **Pull request:** a concrete change to `claims/*.yaml` that follows an accepted discussion or supplies directly reviewable evidence.
 
@@ -17,6 +17,10 @@ Do not submit protected health information, patient or specimen identifiers, res
 3. Provide a DOI, PMID, or stable source URL and identify the part of the source supporting the exact statement.
 4. Preserve cautious causal language, particularly for race and self-reported ancestry.
 5. Run `npm run check` before requesting review.
+
+## Propose a hypothesis
+
+Use the guided **Propose a hypothesis** Discussion form. Identify the result to explain, state one proposed mechanism, separate literature rationale from SAIF support, describe what should be observed if the mechanism is true, and optionally suggest a validation experiment or reference. If the prediction or experiment is not yet supported, mark it incomplete rather than filling the gap speculatively.
 
 Claim IDs must never be renumbered or deleted. Set `status: retired` when a claim should no longer be presented as active. New claims begin as `status: proposed`.
 

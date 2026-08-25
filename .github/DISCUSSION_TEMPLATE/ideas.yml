@@ -1,43 +1,57 @@
-title: "[Hypothesis critique] "
+title: "[Proposed hypothesis] "
 labels: []
 body:
   - type: markdown
     attributes:
       value: |
-        Challenge, refine, or offer an alternative explanation for a public claim.
+        Propose a falsifiable explanation for an approved SAIF result or offer an alternative to an existing hypothesis.
 
         **This discussion is public. Do not include PHI, patient or specimen identifiers, restricted data, credentials, private paths, or unpublished sensitive results.**
   - type: input
-    id: context
+    id: result
     attributes:
-      label: Organ–demographic combination and claim ID
-      placeholder: skin × race/self-reported ancestry, M3
+      label: Result or organ–demographic association to explain
+      description: Include the organ, demographic variable, and claim ID when responding to an existing hypothesis.
+      placeholder: Lymph node × sex; optional claim M3
     validations:
       required: true
   - type: input
-    id: page
+    id: result_url
     attributes:
       label: Hub or Results Atlas URL
     validations:
       required: true
   - type: textarea
-    id: interpretation
+    id: mechanism
     attributes:
-      label: Interpretation or critique
+      label: Proposed mechanism
+      description: State one explanation clearly. Separate tissue biology from disease, care pathway, sampling, and technical context.
     validations:
       required: true
   - type: textarea
-    id: alternative
+    id: rationale
     attributes:
-      label: Alternative explanation
-      description: Describe confounding, case mix, workflow, morphology, or another mechanism.
+      label: Evidence or rationale
+      description: Explain why the mechanism is plausible and distinguish literature evidence from SAIF evidence.
     validations:
       required: true
   - type: textarea
-    id: evidence
+    id: prediction
     attributes:
-      label: Supporting evidence
-      description: Provide DOI, PMID, stable URL, or a concise description. Do not paste full copyrighted articles.
+      label: What should we observe if this hypothesis is true?
+      description: State a falsifiable tissue, subgroup, attention, or control-pattern prediction. Say "not yet specified" if incomplete.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Optional validation experiment
+      description: Suggest a cohort, matching strategy, ablation, pathologist review, or replication test.
+  - type: input
+    id: reference
+    attributes:
+      label: Optional reference
+      description: Provide a DOI, PMID, or stable URL. Do not paste full copyrighted articles.
   - type: checkboxes
     id: safety
     attributes:

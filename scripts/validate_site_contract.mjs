@@ -36,6 +36,16 @@ for (const category of ["ideas", "q-a", "show-and-tell"]) {
   if (!appSource.includes(`discussionHref("${category}")`)) failures.push(`missing dossier action for ${category}`);
 }
 if (!appSource.includes("#/combo/")) failures.push("missing Results Atlas deep-link contract");
+if (!appSource.includes('hash === "#/signals"')) failures.push("missing result-first signal route");
+if (!appSource.includes("window.SAIF_RESULTS")) failures.push("missing runtime Results Atlas integration");
+
+const indexSource = fs.readFileSync(path.join(repoDir, "_site", "index.html"), "utf8");
+if (!indexSource.includes("saif-results-atlas/results_bundle.js")) failures.push("missing approved Atlas bundle source");
+
+const proposalForm = fs.readFileSync(path.join(repoDir, ".github", "DISCUSSION_TEMPLATE", "ideas.yml"), "utf8");
+for (const field of ["id: result", "id: mechanism", "id: rationale", "id: prediction", "id: validation"]) {
+  if (!proposalForm.includes(field)) failures.push(`missing hypothesis proposal field ${field}`);
+}
 
 if (failures.length) {
   failures.forEach((failure) => console.error(`SITE CONTRACT FAILED: ${failure}`));
@@ -46,5 +56,6 @@ if (failures.length) {
     dossierRoutes: bundle.dossiers.length,
     claimPermalinks: bundle.dossiers.reduce((count, dossier) => count + dossier.claims.length, 0),
     discussionForms: expectedDiscussionForms.length,
+    resultFirstRoute: true,
   }, null, 2));
 }

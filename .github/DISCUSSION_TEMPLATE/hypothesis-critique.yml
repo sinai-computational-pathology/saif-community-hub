@@ -11,7 +11,7 @@ body:
     id: context
     attributes:
       label: Organ–demographic combination and claim ID
-      description: Example: skin × race/self-reported ancestry, M3
+      description: "Example: skin × race/self-reported ancestry, M3"
       placeholder: organ × demographic, claim ID
     validations:
       required: true
@@ -19,7 +19,7 @@ body:
     id: page
     attributes:
       label: Hub or Results Atlas URL
-      placeholder: https://sinai-computational-pathology.github.io/...
+      placeholder: "https://sinai-computational-pathology.github.io/..."
     validations:
       required: true
   - type: textarea

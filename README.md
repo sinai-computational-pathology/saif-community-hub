@@ -1,14 +1,15 @@
 # SAIF Community Hub
 
-The SAIF Community Hub is the literature-grounded companion to the [SAIF Results Atlas](https://sinai-computational-pathology.github.io/saif-results-atlas/). It connects approved aggregate experiment results with testable organ–demographic hypotheses and public scientific discussion.
+The SAIF Community Hub is a community hypothesis registry and literature-grounded companion to the [SAIF Results Atlas](https://sinai-computational-pathology.github.io/saif-results-atlas/). It connects an approved aggregate observation to a possible mechanism, observable prediction, proposed validation, and public scientific discussion.
 
 ## Explore
 
 - [Open the Community Hub](https://sinai-computational-pathology.github.io/saif-community-hub/)
+- [Explore residual signals](https://sinai-computational-pathology.github.io/saif-community-hub/#/signals)
 - [Inspect the Results Atlas](https://sinai-computational-pathology.github.io/saif-results-atlas/)
-- [Join a discussion](https://github.com/sinai-computational-pathology/saif-community-hub/discussions)
+- [Propose a hypothesis](https://github.com/sinai-computational-pathology/saif-community-hub/discussions/new?category=ideas)
 
-The Hub contains literature hypotheses, evidence status, confounders, and suggested validation studies. The Results Atlas remains the sole public source for approved experiment results. Neither site contains patient-level data, identifiers, report text, source paths, or a browser-writable review backend.
+The living Hub reads the Atlas's public aggregate bundle at runtime so visitors can start from a result without creating a second results release. Literature evidence and claim-level SAIF evidence remain separate; literature plausibility is not treated as experimental support. Neither site contains patient-level data, identifiers, report text, source paths, or a browser-writable review backend.
 
 ## Contribute
 

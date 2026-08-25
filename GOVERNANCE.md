@@ -5,6 +5,8 @@ The Hub is maintained by the Mount Sinai Computational Pathology community. Main
 ## Scientific decisions
 
 - Community suggestions remain proposals until a maintainer completes evidence review.
+- Literature plausibility and claim-level SAIF support are tracked separately.
+- A proposed mechanism should include an observable prediction and validation path when the available evidence supports them; incomplete hypotheses remain visibly incomplete.
 - Sources must support the exact public statement, not merely the general topic.
 - Residual prediction motivates follow-up; it does not identify a causal mechanism.
 - Self-reported race and ancestry are treated as contextual proxy labels unless a narrower mechanism is directly supported.
