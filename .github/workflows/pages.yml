@@ -1,4 +1,4 @@
-name: Deploy SAIF Community Hub
+name: Deploy Hypothesis Explorer
 
 on:
   push:

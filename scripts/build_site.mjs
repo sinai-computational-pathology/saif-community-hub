@@ -1,63 +1,16 @@
-import crypto from "node:crypto";
-import fs from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import * as yaml from "js-yaml";
-
-const repoDir = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
-const claimsDir = path.join(repoDir, "claims");
-const siteSource = path.join(repoDir, "site");
-const siteDir = path.join(repoDir, "_site");
-const sourceManifest = JSON.parse(fs.readFileSync(path.join(repoDir, "community_release_manifest.json"), "utf8"));
-
-const claimFiles = fs.readdirSync(claimsDir).filter((name) => name.endsWith(".yaml")).sort();
-const dossiers = claimFiles.map((filename) => {
-  const dossier = yaml.load(fs.readFileSync(path.join(claimsDir, filename), "utf8"));
-  return { ...dossier, filename };
-});
-
-const claims = dossiers.flatMap((dossier) => dossier.claims.map((claim) => ({
-  ...claim,
-  combo: dossier.combo,
-  organ_slug: dossier.organ_slug,
-  organ: dossier.organ,
-  demographic: dossier.demographic,
-  demographic_label: dossier.demographic_label,
-})));
-const organs = [...new Set(dossiers.map((dossier) => dossier.organ_slug))];
-const citations = new Set(dossiers.flatMap((dossier) => dossier.claims.flatMap((claim) => claim.literature || []).map((entry) => entry.doi || entry.pmid || entry.url || entry.citation)).filter(Boolean));
-
-const bundle = {
-  schemaVersion: 1,
-  edition: "living",
-  generatedAt: new Date().toISOString(),
-  release: sourceManifest,
-  stats: {
-    dossiers: dossiers.length,
-    claims: claims.length,
-    organs: organs.length,
-    citations: citations.size,
-    verifiedClaims: claims.filter((claim) => claim.evidence_status === "verified").length,
-  },
-  dossiers,
-};
-
-fs.rmSync(siteDir, { recursive: true, force: true });
-fs.mkdirSync(siteDir, { recursive: true });
-fs.cpSync(siteSource, siteDir, { recursive: true });
-if (fs.existsSync(path.join(repoDir, "supplement"))) {
-  fs.cpSync(path.join(repoDir, "supplement"), path.join(siteDir, "supplement"), { recursive: true });
-}
-
-const serialized = JSON.stringify(bundle);
-fs.writeFileSync(path.join(siteDir, "claims_bundle.js"), `window.SAIF_COMMUNITY = ${serialized};\n`);
-const releaseManifest = {
-  ...sourceManifest,
-  edition: "living",
-  generatedAt: bundle.generatedAt,
-  ...bundle.stats,
-  bundleSha256: crypto.createHash("sha256").update(serialized).digest("hex"),
-};
-fs.writeFileSync(path.join(siteDir, "release_manifest.json"), `${JSON.stringify(releaseManifest, null, 2)}\n`);
-
-console.log(JSON.stringify({ build: "complete", siteDir, ...bundle.stats }, null, 2));
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {fileURLToPath} from 'node:url';
+const root=path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+const data=fs.existsSync(path.join(root,'data/signals.json')) ? path.join(root,'data') : path.join(root,'../data');
+const read=n=>JSON.parse(fs.readFileSync(path.join(data,n),'utf8'));
+const signals=read('signals.json'), hypotheses=read('viewer_hypotheses.json');
+if(signals.combos.length!==69 || hypotheses.signals.length!==3 || hypotheses.schema_version!==3) throw new Error('Invalid arXiv input');
+const out=path.join(root,'_site');
+fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(out,{recursive:true});
+for(const file of ['index.html','app.js','styles.css','favicon.svg']) fs.copyFileSync(path.join(root,'site',file),path.join(out,file));
+fs.writeFileSync(path.join(out,'results_bundle.js'),'window.SAIF_RESULTS = '+JSON.stringify(signals)+';\n');
+fs.writeFileSync(path.join(out,'claims_bundle.js'),'window.SAIF_COMMUNITY = '+JSON.stringify(hypotheses)+';\n');
+fs.writeFileSync(path.join(out,'release_manifest.json'),JSON.stringify({releaseId:signals.releaseId,status:'candidate',signalSha256:crypto.createHash('sha256').update(fs.readFileSync(path.join(data,'signals.json'))).digest('hex')},null,2)+'\n');
+console.log('Built static Hypothesis Explorer: three exemplars, seven candidates.');

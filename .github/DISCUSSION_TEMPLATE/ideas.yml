@@ -4,7 +4,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Propose a falsifiable explanation for an approved SAIF result or offer an alternative to an existing hypothesis.
+        Propose a falsifiable explanation for an study result or offer an alternative to an existing hypothesis.
 
         **This discussion is public. Do not include PHI, patient or specimen identifiers, restricted data, credentials, private paths, or unpublished sensitive results.**
   - type: input
@@ -32,7 +32,7 @@ body:
     id: rationale
     attributes:
       label: Evidence or rationale
-      description: Explain why the mechanism is plausible and distinguish literature evidence from SAIF evidence.
+      description: Explain why the mechanism is plausible and distinguish literature evidence from experimental model evidence.
     validations:
       required: true
   - type: textarea

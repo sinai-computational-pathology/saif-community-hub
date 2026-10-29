@@ -351,3 +351,31 @@ h3 { line-height: 1.25; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
+
+/* Compact arXiv exemplar presentation in the existing Hub design. */
+.index-hero { padding:64px 0 48px; background:var(--cream); }
+.index-hero h1 { max-width:950px; font-size:clamp(2.4rem,5vw,4.4rem); }
+.index-hero p { max-width:850px; }
+.dossier-grid { padding-block:40px 64px; }
+.dossier-card { text-decoration:none; }
+.dossier-card h2 { font-size:2.3rem; }
+.dossier-hero h1 { font-size:clamp(2.8rem,6vw,4.6rem); }
+.candidate-boundary { padding:16px 20px; border-left:4px solid var(--teal-700); background:var(--teal-100); }
+.claim-card h2 { font-size:clamp(1.7rem,3vw,2.3rem); }
+.claim-card h3 { margin:16px 0 8px; font-size:.9rem; }
+.claim-card p, .claim-card li { font-size:.95rem; }
+.claim-details ul { padding-left:20px; }
+.claim-details li { margin-bottom:8px; }
+.source-list li { margin:12px 0; overflow-wrap:anywhere; }
+.source-list p { margin-bottom:5px; }
+.boundary-sources { padding:20px; border:1px solid var(--line); }
+.boundary-sources summary { cursor:pointer; font-weight:bold; }
+.reference-section { padding:36px 0; }
+.reference-section h2 { font-size:2rem; }
+.signal-links { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; padding-block:36px; }
+:focus-visible { outline:3px solid var(--coral-600); outline-offset:4px; }
+@media(max-width:680px) { .signal-links { grid-template-columns:1fr; } .index-hero { padding-block:40px; } }
+
+.candidate-actions { display:flex; flex-wrap:wrap; gap:12px 24px; margin-top:20px; padding-top:16px; border-top:1px solid #d8e2e8; font-size:13px; }
+.primary-nav a[aria-current] { border-bottom:2px solid currentColor; }
+.brand-copy small { max-width:260px; }
