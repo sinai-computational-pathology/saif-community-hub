@@ -35,7 +35,11 @@ export function audit(site) {
   assert(h.signals[2].candidates.every(c=>c.type==='Clinical/context'));
  }
  const html=fs.readFileSync(path.join(site,'index.html'),'utf8');
- assert(!/\bSAIF\b/.test(html.replace(/https?:[^"\s<]+/g,'')),'Visible internal branding');
+ // "SAIF Community Hub" is the approved public name for this site (release decision,
+ // 29 Oct 2026), so the project name is no longer treated as internal branding. Genuinely
+ // internal tokens (institutional hosts, filesystem paths, identifiers) stay covered by the
+ // `forbidden` scan above, which runs over index.html along with every other published file.
+ assert(!/github\.mountsinai\.org|Mount Sinai Health System/i.test(html),'Visible internal branding');
  assert(!/https:[^"\s]+results_bundle\.js/.test(html),'Remote legacy results dependency');
  const app=fs.readFileSync(path.join(site,'app.js'),'utf8');
  assert(!/localStorage|sessionStorage|indexedDB|XMLHttpRequest|\bfetch\s*\(/.test(app),'Unexpected runtime storage/network surface');
