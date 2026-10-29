@@ -49,33 +49,25 @@ function shortRef(citation = '') {
   const many = head.includes(',') || /\bet al\b/i.test(head);
   return `${surname}${many ? ' et al.' : ''}${year ? ' ' + year : ''}`;
 }
-// The three categories the site links to carry no discussion form template, so
-// GitHub applies these title/body query parameters. The context a contributor
-// would otherwise retype — combination, hypothesis id and title, type, links —
-// is filled in here, leaving one free-text field and an optional reference.
-const TYPE_LABEL = {'ideas':'Idea or alternative','show-and-tell':'Evidence','q-a':'Question'};
+// Each of the three categories carries a four-field discussion form, with the
+// contribution type preselected in the template itself: GitHub cannot prefill a
+// dropdown from the URL. The title is the reliable carrier of the hypothesis and
+// combination, and `hypothesis` is also passed as a field value in case GitHub
+// applies it; that field is optional, so nothing has to be retyped either way.
 const TYPE_TAG = {'ideas':'Idea','show-and-tell':'Evidence','q-a':'Question'};
 function discussionHref(category, c, topic = null, candidate = null) {
   const context = c ? `${c.organ} / ${c.demoLabel}` : 'Not specified';
-  const hypothesis = c ? `https://sinai-computational-pathology.github.io/saif-community-hub/${href({organ:c.organSlug,demographic:c.demographic})}${candidate?'/claim/'+encodeURIComponent(shortId(candidate)):''}` : '';
+  const page = c ? `https://sinai-computational-pathology.github.io/saif-community-hub/${href({organ:c.organSlug,demographic:c.demographic})}${candidate?'/claim/'+encodeURIComponent(shortId(candidate)):''}` : '';
   const experiment = c ? `https://sinai-computational-pathology.github.io/saif-results-atlas/#/combo/${c.organSlug}/${c.demographic}` : '';
-  const body = [
-    `**Contribution type:** ${TYPE_LABEL[category] || TYPE_LABEL['q-a']}`,
-    `**Combination:** ${context}`,
-    candidate ? `**Hypothesis:** ${shortId(candidate)} — ${candidate.title}` : null,
-    hypothesis ? `**Pages:** [hypothesis](${hypothesis})${experiment ? ` · [experimental results](${experiment})` : ''}` : null,
-    '',
-    '**Reference (optional — DOI, PMID or URL):**',
-    '',
-    '---',
-    '',
-    'Write your contribution here.',
-    '',
-    '',
-    '<sub>This discussion is public. Do not post PHI, patient or specimen identifiers, restricted data, or credentials.</sub>'
-  ].filter(v => v !== null).join('\n');
   const label = candidate ? `${candidate.title} — ${context}` : (topic ? `${topic} — ${context}` : context);
-  const params = new URLSearchParams({category,title:`[${TYPE_TAG[category] || 'Question'}] ${label}`,body});
+  const params = new URLSearchParams({category,title:`[${TYPE_TAG[category] || 'Question'}] ${label}`});
+  const ref = [
+    candidate ? `${shortId(candidate)} — ${candidate.title}` : null,
+    c ? context : null,
+    page || null,
+    experiment || null
+  ].filter(Boolean).join(' · ');
+  if (ref) params.set('hypothesis', ref);
   return `${REPO}/discussions/new?${params}`;
 }
 // No discussions exist for these hypotheses yet, so this points at the search or
