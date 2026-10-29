@@ -379,3 +379,5 @@ h3 { line-height: 1.25; }
 .candidate-actions { display:flex; flex-wrap:wrap; gap:12px 24px; margin-top:20px; padding-top:16px; border-top:1px solid #d8e2e8; font-size:13px; }
 .primary-nav a[aria-current] { border-bottom:2px solid currentColor; }
 .brand-copy small { max-width:260px; }
+.claim-status { margin:-4px 0 4px; color:var(--teal-700); font-size:.78rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+.claim-status strong { color:var(--coral-600); font-weight:850; }
