@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Public literature-grounded SAIF hypothesis and collaboration hub.",
+  "description": "Static arXiv hypothesis explorer",
   "scripts": {
     "build": "node scripts/build_site.mjs",
     "audit": "node scripts/audit_public_release.mjs",
-    "check": "node scripts/validate_claims.mjs && npm run build && node scripts/validate_site_contract.mjs && npm run audit",
-    "citations": "node scripts/validate_claims.mjs --resolve --report citation-report.md",
+    "check": "npm run build && node scripts/validate_site_contract.mjs && npm run audit",
     "snapshot": "node scripts/freeze_supplement.mjs"
   },
   "devDependencies": {

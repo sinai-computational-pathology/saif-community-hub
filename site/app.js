@@ -1,274 +1,247 @@
 const community = window.SAIF_COMMUNITY;
-const app = document.querySelector("#app");
-const main = document.querySelector("#main-content");
-const menuButton = document.querySelector(".menu-button");
-const primaryNav = document.querySelector("#primary-nav");
+const atlas = window.SAIF_RESULTS;
+const app = document.querySelector('#app');
+const main = document.querySelector('#main-content');
+const REPO = 'https://github.com/sinai-computational-pathology/saif-community-hub';
+const local = ['localhost','127.0.0.1'].includes(location.hostname);
+const ATLAS_URL = local ? '../../public_results_release/' : 'https://sinai-computational-pathology.github.io/saif-results-atlas/';
+const esc = (v = '') => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const disclaimer = 'These hypotheses are literature-linked candidates for follow-up and have not been shown to explain the model predictions.';
+const sources = new Map((community?.sources || []).map(s => [s.source_id,s]));
 
-const REPO = "https://github.com/sinai-computational-pathology/saif-community-hub";
-const DISCUSSIONS = `${REPO}/discussions`;
-const DEMOGRAPHIC_ORDER = { age: 0, race_self_reported_ancestry: 1, sex: 2 };
-const DEMOGRAPHIC_SHORT = { age: "Age", race_self_reported_ancestry: "Race / ancestry", sex: "Sex" };
-const ATLAS_DEMOGRAPHIC = { age: "age", race_self_reported_ancestry: "race", sex: "sex" };
-const EVIDENCE_LABEL = {
-  verified: "Verified",
-  "needs claim-level validation": "Needs claim review",
-  "source metadata incomplete": "Source incomplete",
-};
+// Reader-facing labels for the stored scientific classifications. The records keep their
+// original `type`; only the display name changes.
+const CATEGORY = {'Morphology':'Tissue Morphology','Clinical/context':'Clinical & Sampling'};
+const categoryOf = c => CATEGORY[c.type] || c.type;
+let activeCategory = 'all';
 
-const state = {
-  search: "",
-  demographic: "all",
-  section: "all",
-  evidence: "all",
-};
-
-function esc(value = "") {
-  return String(value).replace(/[&<>"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[character]);
-}
-
+// Hash carries the route; an optional `?cat=` query carries filter state so a
+// filtered view is shareable. Links written before Round 2 have no query and
+// still resolve, including the legacy '#/combo/...' and '/claim/<id>' forms.
+const SIGNALS_ROUTE = '#/signals';
 function route() {
-  const hash = location.hash || "#/";
-  const dossier = hash.match(/^#\/hypothesis\/([^/]+)\/([^/]+)(?:\/claim\/([^/]+))?$/);
-  if (dossier) return { page: "dossier", organ: decodeURIComponent(dossier[1]), demographic: decodeURIComponent(dossier[2]), claim: dossier[3] ? decodeURIComponent(dossier[3]) : null };
-  if (hash === "#/hypotheses") return { page: "hypotheses" };
-  if (hash === "#/governance") return { page: "governance" };
-  return { page: "home" };
+  const [path, qs] = (location.hash || '#/').slice(1).split('?');
+  const cat = new URLSearchParams(qs || '').get('cat');
+  const match = path.match(/^\/(?:hypothesis|combo)\/([^/]+)\/([^/]+)(?:\/claim\/([^/]+))?\/?$/);
+  if (match) return {page:'detail',organ:decodeURIComponent(match[1]),demo:decodeURIComponent(match[2]) === 'race_self_reported_ancestry' ? 'race' : decodeURIComponent(match[2]),claim:match[3] ? decodeURIComponent(match[3]) : null,cat};
+  if (`#${path}` === SIGNALS_ROUTE) return {page:'signals'};
+  if (path === '/governance') return {page:'governance'};
+  if (path === '/contribute') return {page:'contribute'};
+  return {page:'home'};
 }
-
-function dossierHref(dossier, claimId = "") {
-  const base = `#/hypothesis/${encodeURIComponent(dossier.organ_slug)}/${encodeURIComponent(dossier.demographic)}`;
-  return claimId ? `${base}/claim/${encodeURIComponent(claimId)}` : base;
+function routePath() {return (location.hash || '#/').slice(1).split('?')[0];}
+function writeUrl(path) {
+  const q = activeCategory !== 'all' ? `?cat=${encodeURIComponent(activeCategory)}` : '';
+  history.replaceState(null,'',`#${path}${q}`);
 }
+function href(s) {return `#/hypothesis/${encodeURIComponent(s.organ)}/${s.demographic === 'race' ? 'race_self_reported_ancestry' : s.demographic}`;}
+function result(s) {return atlas.combos.find(c => c.organSlug === s.organ && c.demographic === s.demographic);}
+function atlasHref(c) {return `${ATLAS_URL}#/combo/${encodeURIComponent(c.organSlug)}/${c.demographic}`;}
+function shortId(c) {return c.id.split(':').at(-1);}
+function question(c) {return `What tissue or contextual features could be associated with ${String(c.demoLabel).toLowerCase()} predictability in ${String(c.organ).toLowerCase()} histopathology?`;}
 
-function atlasHref(dossier) {
-  const base = community.release.atlasUrl;
-  return `${base}#/combo/${encodeURIComponent(dossier.organ_slug)}/${ATLAS_DEMOGRAPHIC[dossier.demographic] || encodeURIComponent(dossier.demographic)}`;
+// "Thong HY, Jee SH, ... . Title. Journal. 2003." -> "Thong et al. 2003"
+function shortRef(citation = '') {
+  const year = (String(citation).match(/\b(?:19|20)\d{2}\b/g) || []).pop();
+  const head = String(citation).split(/\.\s/)[0] || '';
+  const surname = (head.split(',')[0] || '').trim().split(/\s+/)[0];
+  if (!surname) return citation;
+  const many = head.includes(',') || /\bet al\b/i.test(head);
+  return `${surname}${many ? ' et al.' : ''}${year ? ' ' + year : ''}`;
 }
-
-function discussionHref(category) {
-  return `${DISCUSSIONS}/new?category=${encodeURIComponent(category)}`;
+// The three categories the site links to carry no discussion form template, so
+// GitHub applies these title/body query parameters. The context a contributor
+// would otherwise retype — combination, hypothesis id and title, type, links —
+// is filled in here, leaving one free-text field and an optional reference.
+const TYPE_LABEL = {'ideas':'Idea or alternative','show-and-tell':'Evidence','q-a':'Question'};
+const TYPE_TAG = {'ideas':'Idea','show-and-tell':'Evidence','q-a':'Question'};
+function discussionHref(category, c, topic = null, candidate = null) {
+  const context = c ? `${c.organ} / ${c.demoLabel}` : 'Not specified';
+  const hypothesis = c ? `https://sinai-computational-pathology.github.io/saif-community-hub/${href({organ:c.organSlug,demographic:c.demographic})}${candidate?'/claim/'+encodeURIComponent(shortId(candidate)):''}` : '';
+  const experiment = c ? `https://sinai-computational-pathology.github.io/saif-results-atlas/#/combo/${c.organSlug}/${c.demographic}` : '';
+  const body = [
+    `**Contribution type:** ${TYPE_LABEL[category] || TYPE_LABEL['q-a']}`,
+    `**Combination:** ${context}`,
+    candidate ? `**Hypothesis:** ${shortId(candidate)} — ${candidate.title}` : null,
+    hypothesis ? `**Pages:** [hypothesis](${hypothesis})${experiment ? ` · [experimental results](${experiment})` : ''}` : null,
+    '',
+    '**Reference (optional — DOI, PMID or URL):**',
+    '',
+    '---',
+    '',
+    'Write your contribution here.',
+    '',
+    '',
+    '<sub>This discussion is public. Do not post PHI, patient or specimen identifiers, restricted data, or credentials.</sub>'
+  ].filter(v => v !== null).join('\n');
+  const label = candidate ? `${candidate.title} — ${context}` : (topic ? `${topic} — ${context}` : context);
+  const params = new URLSearchParams({category,title:`[${TYPE_TAG[category] || 'Question'}] ${label}`,body});
+  return `${REPO}/discussions/new?${params}`;
 }
-
-function sourceHref(source) {
-  if (source.doi) return `https://doi.org/${encodeURIComponent(source.doi)}`;
-  if (source.pmid) return `https://pubmed.ncbi.nlm.nih.gov/${encodeURIComponent(source.pmid)}/`;
-  return source.url || "";
+// No discussions exist for these hypotheses yet, so this points at the search or
+// category view rather than implying a thread or count is available.
+function browseHref(c, candidate = null) {
+  const q = candidate ? candidate.title : (c ? `${c.organ} / ${c.demoLabel}` : '');
+  return `${REPO}/discussions${q ? `?discussions_q=${encodeURIComponent(q)}` : ''}`;
 }
+function contributions(c) {return `<section class="collaboration-panel"><div class="page-width"><div><p class="eyebrow">Community contributions</p><h2>Add a question or evidence</h2><p>Community submissions are separate from the study-linked candidates shown here. Contributions open a GitHub discussion; they do not edit this page.</p><p class="panel-links"><a href="#/contribute">What makes a useful contribution →</a><a href="${esc(browseHref(c))}" target="_blank" rel="noopener">Browse existing discussions ↗</a></p></div><div class="collaboration-actions"><a class="button primary" href="${esc(discussionHref('ideas',c))}" target="_blank" rel="noopener">Propose a hypothesis ↗</a><a class="button" href="${esc(discussionHref('show-and-tell',c))}" target="_blank" rel="noopener">Add evidence ↗</a><a class="button" href="${esc(discussionHref('q-a',c))}" target="_blank" rel="noopener">Ask a question ↗</a></div></div></section>`;}
 
-function evidencePill(status) {
-  const tone = status === "verified" ? "verified" : status === "source metadata incomplete" ? "incomplete" : "review";
-  return `<span class="status-pill ${tone}">${esc(EVIDENCE_LABEL[status] || status || "Unreviewed")}</span>`;
+// Prominent literature block: who/when, what it showed, where to read it, what limits it.
+function evidence(links, tone = 'support') {
+  return `<ul class="evidence-list ${tone}">${links.map(l => {
+    const s = sources.get(l.source_id);
+    return `<li class="evidence-item"><p class="evidence-claim">${esc(l.support)}</p><p class="evidence-meta"><a class="evidence-ref" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(shortRef(s.citation))} ↗</a><span class="tag ${s.access_status === 'open full text' ? 'tag-open' : 'tag-limited'}">${esc(s.access_status)}</span><span class="tag tag-rel">${esc(s.evidence_relation)}</span></p><p class="evidence-locator">${esc(l.locator)}</p></li>`;
+  }).join('')}</ul>`;
 }
-
-function editionBanner() {
-  if (community.edition !== "frozen") return "";
-  return `<div class="edition-banner"><strong>Frozen paper supplement</strong><span>This version is immutable. Visit the <a href="${esc(community.release.siteUrl.replace(/supplement\/v\d+(?:\.\d+)*\/$/, ""))}">living edition</a> for later updates.</span></div>`;
-}
-
-function renderHome() {
-  const stats = community.stats;
-  app.innerHTML = `${editionBanner()}
-    <section class="hero page-width">
-      <div class="hero-copy">
-        <p class="eyebrow">Pan-organ demographic signal research</p>
-        <h1>From model signal to a <em>testable pathology hypothesis.</em></h1>
-        <p class="hero-lede">Explore the results, literature-based explanations, and ways to contribute.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#/hypotheses">Explore hypotheses</a>
-          <a class="button secondary" href="${esc(community.release.atlasUrl)}" target="_blank" rel="noopener">Inspect results <span aria-hidden="true">↗</span></a>
-          <a class="text-link" href="${DISCUSSIONS}" target="_blank" rel="noopener">Join the discussion <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-      <aside class="hero-atlas-card" aria-label="Community corpus summary">
-        <div class="signal-orbit" aria-hidden="true"><i></i><i></i><i></i><b>H&amp;E</b></div>
-        <div class="metric-row"><strong>${stats.dossiers}</strong><span>organ–demographic dossiers</span></div>
-        <div class="metric-row"><strong>${stats.claims}</strong><span>testable claims</span></div>
-        <div class="metric-row"><strong>${stats.citations}</strong><span>linked sources</span></div>
-        <p>Living edition · human-reviewed updates</p>
-      </aside>
-    </section>
-    <section class="caution-band">
-      <div class="page-width caution-inner"><span class="caution-mark" aria-hidden="true">!</span><p><strong>Prediction is not mechanism.</strong> Signal may reflect diagnosis mix, sampling, access, exposure, workflow, or morphology. These hypotheses guide follow-up; they are not causal conclusions.</p></div>
-    </section>
-    <section class="page-width pathway-section">
-      <div class="section-heading"><p class="eyebrow">Research path</p><h2>Review the evidence. Test the explanation. Plan what comes next.</h2></div>
-      <div class="pathway-grid">
-        <article><span>01</span><h3>Observe</h3><p>Review audited aggregate results for each organ–demographic combination.</p><a href="${esc(community.release.atlasUrl)}" target="_blank" rel="noopener">Open Results Atlas <span aria-hidden="true">↗</span></a></article>
-        <article><span>02</span><h3>Interpret</h3><p>Compare hypotheses, evidence, confounders, and gaps.</p><a href="#/hypotheses">Browse hypothesis dossiers <span aria-hidden="true">→</span></a></article>
-        <article><span>03</span><h3>Collaborate</h3><p>Critique claims, add literature, propose studies, or connect with collaborators.</p><a href="${DISCUSSIONS}" target="_blank" rel="noopener">Join discussions <span aria-hidden="true">↗</span></a></article>
-      </div>
-    </section>
-    <section class="page-width feature-split">
-      <div>
-        <p class="eyebrow">Built for scientific review</p>
-        <h2>Every claim shows how it can be tested.</h2>
-        <p>Mechanism, visible features, confounders, validation, sources, and review status stay together. Permanent claim IDs connect discussions, corrections, and experiments.</p>
-        <a class="button dark" href="#/hypotheses">Open the explorer</a>
-      </div>
-      <div class="claim-preview" aria-label="Example claim structure">
-        <div class="preview-head"><span class="claim-id">M3</span>${evidencePill("needs claim-level validation")}</div>
-        <h3>Candidate morphology or contextual carrier</h3>
-        <dl><div><dt>Could reflect</dt><dd>Background tissue, disease mix, or workflow</dd></div><div><dt>Must control</dt><dd>Diagnosis, site, procedure, institution</dd></div><div><dt>Next test</dt><dd>Matched review and independent replication</dd></div></dl>
-      </div>
-    </section>`;
-}
-
-function dossierMatches(dossier) {
-  const query = state.search.trim().toLowerCase();
-  const candidates = dossier.claims.filter((claim) => {
-    if (state.section !== "all" && claim.section !== state.section) return false;
-    if (state.evidence !== "all" && claim.evidence_status !== state.evidence) return false;
-    return true;
-  });
-  if (!candidates.length) return false;
-  if (state.demographic !== "all" && dossier.demographic !== state.demographic) return false;
-  if (!query) return true;
-  return `${dossier.organ} ${dossier.demographic_label} ${dossier.summary} ${candidates.map((claim) => `${claim.id} ${claim.hypothesis} ${claim.mechanism}`).join(" ")}`.toLowerCase().includes(query);
-}
-
-function evidenceSummary(dossier) {
-  const counts = dossier.claims.reduce((accumulator, claim) => {
-    accumulator[claim.evidence_status] = (accumulator[claim.evidence_status] || 0) + 1;
-    return accumulator;
-  }, {});
-  if (counts.verified) return `${counts.verified} verified`;
-  if (counts["needs claim-level validation"]) return `${counts["needs claim-level validation"]} need review`;
-  return "Source gaps remain";
-}
-
-function renderHypotheses() {
-  const dossiers = [...community.dossiers].sort((a, b) => a.organ.localeCompare(b.organ) || DEMOGRAPHIC_ORDER[a.demographic] - DEMOGRAPHIC_ORDER[b.demographic]);
-  const visible = dossiers.filter(dossierMatches);
-  app.innerHTML = `${editionBanner()}<section class="explorer-hero"><div class="page-width"><p class="eyebrow">Hypothesis explorer</p><h1>Find the idea behind a signal.</h1><p>Filter explanations by organ, demographic, claim type, or evidence status.</p></div></section>
-    <section class="page-width explorer-layout">
-      <div class="filter-panel" aria-label="Hypothesis filters">
-        <label class="search-field"><span>Search</span><input id="search" type="search" value="${esc(state.search)}" placeholder="Organ, claim, mechanism…"></label>
-        <label><span>Demographic</span><select id="demographic"><option value="all">All demographics</option><option value="age">Age</option><option value="race_self_reported_ancestry">Race / ancestry</option><option value="sex">Sex</option></select></label>
-        <label><span>Claim section</span><select id="section"><option value="all">All claim sections</option><option value="clinical_context">Clinical context</option><option value="histomorphology">Histomorphology</option></select></label>
-        <label><span>Evidence status</span><select id="evidence"><option value="all">All evidence states</option><option value="verified">Verified</option><option value="needs claim-level validation">Needs claim review</option><option value="source metadata incomplete">Source incomplete</option></select></label>
-      </div>
-      <div class="result-toolbar"><p><strong>${visible.length}</strong> of ${dossiers.length} dossiers</p><button id="clear-filters" type="button">Clear filters</button></div>
-      <div class="dossier-grid">${visible.length ? visible.map((dossier) => `<a class="dossier-card" href="${dossierHref(dossier)}">
-        <div class="dossier-card-top"><span class="demographic-chip demo-${esc(dossier.demographic)}">${esc(DEMOGRAPHIC_SHORT[dossier.demographic] || dossier.demographic_label)}</span><span>${dossier.claims.length} claims</span></div>
-        <h2>${esc(dossier.organ)}</h2><p>${esc(dossier.summary)}</p>
-        <div class="dossier-card-footer"><span>${esc(evidenceSummary(dossier))}</span><strong>Open dossier <span aria-hidden="true">→</span></strong></div>
-      </a>`).join("") : `<div class="empty-state"><strong>No dossiers match these filters.</strong><p>Clear one or more filters to broaden the explorer.</p></div>`}</div>
-    </section>`;
-
-  const controls = { demographic: state.demographic, section: state.section, evidence: state.evidence };
-  for (const [id, value] of Object.entries(controls)) {
-    const select = document.querySelector(`#${id}`);
-    select.value = value;
-    select.addEventListener("change", (event) => { state[id] = event.target.value; renderHypotheses(); });
-  }
-  document.querySelector("#search").addEventListener("input", (event) => { state.search = event.target.value; renderHypotheses(); document.querySelector("#search")?.focus(); });
-  document.querySelector("#clear-filters").addEventListener("click", () => { Object.assign(state, { search: "", demographic: "all", section: "all", evidence: "all" }); renderHypotheses(); });
-}
-
-function renderLiterature(literature = []) {
-  if (!literature.length) return `<p class="source-gap">No claim-level source is linked yet.</p>`;
-  return `<ol class="source-list">${literature.map((source) => {
-    const href = sourceHref(source);
-    const identifier = source.doi ? `DOI ${source.doi}` : source.pmid ? `PMID ${source.pmid}` : "Source";
-    return `<li>${href ? `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(source.short_citation || source.citation || identifier)} <span aria-hidden="true">↗</span></a>` : `<span>${esc(source.short_citation || source.citation || "Source metadata incomplete")}</span>`}<small>${esc(identifier)} · ${esc(EVIDENCE_LABEL[source.evidence_status] || source.evidence_status || "Evidence status not assigned")}</small></li>`;
-  }).join("")}</ol>`;
-}
-
-function renderClaim(dossier, claim) {
-  const permalink = `${community.release.siteUrl}${dossierHref(dossier, claim.id)}`;
-  return `<article id="claim-${esc(claim.id)}" class="claim-card">
-    <header><div><span class="claim-id">${esc(claim.id)}</span><span class="claim-status">${esc(claim.status)}</span></div>${evidencePill(claim.evidence_status)}</header>
-    <h3>${esc(claim.hypothesis)}</h3>
-    <p class="mechanism"><strong>Potential mechanism</strong>${esc(claim.mechanism)}</p>
-    <div class="claim-details">
-      <div><h4>Features to inspect</h4><p>${esc(claim.features)}</p></div>
-      <div><h4>Key confounders</h4><p>${esc(claim.confounders)}</p></div>
-      <div class="validation-block"><h4>Suggested validation</h4><p>${esc(claim.validation)}</p></div>
+function card(c, signal) {
+  const id = shortId(c);
+  const cat = categoryOf(c);
+  return `<article class="hcard" id="${esc(id)}" data-category="${esc(cat)}">
+  <button class="hcard-head" type="button" data-toggle="${esc(id)}" aria-expanded="false" aria-controls="body-${esc(id)}">
+    <span class="hcard-text"><span class="badge badge-${c.type === 'Morphology' ? 'morph' : 'clin'}">${esc(cat)}</span><span class="hcard-title">${esc(c.title)}</span><span class="hcard-lede">${esc(c.hypothesis)}</span><span class="hcard-meta">${c.evidence.length} reference${c.evidence.length === 1 ? '' : 's'}</span></span>
+    <span class="hcard-cta"><span class="cta-label">Explore</span><span class="chev" aria-hidden="true"></span></span>
+  </button>
+  <div class="hcard-body" id="body-${esc(id)}" hidden>
+    <div class="hcard-inner">
+      <section class="block"><h3>Literature evidence</h3>${evidence(c.evidence)}</section>
+      <section class="block"><h3>What to measure next</h3><ul class="measure-list">${c.features.map(f => `<li>${esc(f)}</li>`).join('')}</ul></section>
+      <details class="sub"><summary>Limitations (${c.limitations.length})</summary><ul class="plain-list">${c.limitations.map(l => `<li>${esc(l)}</li>`).join('')}</ul></details>
+      <details class="sub"><summary>Status and provenance</summary><p><strong>${esc(c.claim_status)}</strong> · ${c.human_reviewed ? 'human-reviewed' : 'not human-reviewed'} · model reliance untested.</p><p>Generated 24 September 2026 from a frozen prompt; source checking used the same model and is not independent verification. <a href="#/governance">Full provenance →</a></p></details>
+      <div class="hcard-actions"><a class="button primary" href="${esc(discussionHref('q-a',signal,'Discuss: '+c.title,c))}" target="_blank" rel="noopener">Discuss this hypothesis ↗</a><a class="button" href="${esc(discussionHref('show-and-tell',signal,'Evidence: '+c.title,c))}" target="_blank" rel="noopener">Add evidence ↗</a><a class="button" href="${esc(discussionHref('ideas',signal,'Alternative explanation for: '+c.title,c))}" target="_blank" rel="noopener">Propose an alternative ↗</a></div>
+      <p class="action-note"><a href="${esc(browseHref(signal,c))}" target="_blank" rel="noopener">Search discussions for this hypothesis ↗</a></p>
     </div>
-    <details><summary>Source trail <span>${claim.literature?.length || 0}</span></summary>${renderLiterature(claim.literature)}</details>
-    <footer><a href="${dossierHref(dossier, claim.id)}" aria-label="Permanent link to claim ${esc(claim.id)}">Permalink</a><button class="copy-context" type="button" data-context="${esc(`${dossier.organ} × ${dossier.demographic_label}, claim ${claim.id} — ${permalink}`)}">Copy discussion context</button></footer>
-  </article>`;
+  </div>
+</article>`;
 }
-
-function renderDossier(current) {
-  const dossier = community.dossiers.find((entry) => entry.organ_slug === current.organ && entry.demographic === current.demographic);
-  if (!dossier) {
-    app.innerHTML = `<section class="page-width not-found"><p class="eyebrow">Not found</p><h1>This hypothesis dossier is unavailable.</h1><a class="button primary" href="#/hypotheses">Return to explorer</a></section>`;
+function renderHome() {
+  app.innerHTML = `<section class="explorer-intro"><div class="page-width">
+    <p class="eyebrow">Demographic signals in routine histopathology</p>
+    <h1>Hypothesis Explorer</h1>
+    <p class="lede">Models read demographic attributes from routine H&amp;E slides. These are the candidate explanations we could find in the literature — open for criticism, evidence and testing.</p>
+    <p class="notice">All hypotheses are <strong>proposed and unvalidated</strong>. None has been shown to explain model behaviour.</p>
+  </div></section>
+  <section class="page-width exemplar-grid">${community.signals.map(s => {
+    const c = result(s);
+    const refs = new Set(s.candidates.flatMap(x => x.evidence).map(l => l.source_id)).size;
+    return `<a class="exemplar-card" href="${href(s)}"><p class="eyebrow">${esc(c.demoLabel)}</p><h2>${esc(c.organ)}</h2><p class="exemplar-q">${esc(question(c))}</p><p class="exemplar-meta"><strong>${s.candidates.length}</strong> hypotheses · <strong>${refs}</strong> references</p><span class="cta-inline">Explore →</span></a>`;
+  }).join('')}</section>
+  <section class="page-width atlas-strip"><p>Looking for the experimental results? All 69 organ–demographic combinations live in the Results Atlas. <a href="${SIGNALS_ROUTE}">See which have hypotheses →</a></p><a class="button" href="${ATLAS_URL}">Open Results Atlas →</a></section>
+  ${contributions()}`;
+}
+function renderSignals() {
+  app.innerHTML=`<section class="explorer-intro"><div class="page-width"><h1>Experimental signals</h1><p class="lede">All 69 combinations are available in the Results Atlas. Three have literature-linked candidate explanations in this release.</p><a class="button primary" href="${ATLAS_URL}">Open Results Atlas →</a></div></section><section class="page-width signal-links">${atlas.combos.map(c => `<a href="${href({organ:c.organSlug,demographic:c.demographic})}">${esc(c.organ)} · ${esc(c.demoLabel)}</a>`).join('')}</section>`;
+}
+function renderDetail(current) {
+  const c = atlas.combos.find(c => c.organSlug===current.organ && c.demographic===current.demo);
+  if (!c) {app.innerHTML='<section class="page-width not-found"><h1>Signal unavailable</h1><a class="button" href="#/">Return to the examples</a></section>';return;}
+  const s = community.signals.find(s => s.organ===current.organ && s.demographic===current.demo);
+  const knownClaim = s?.candidates.some(x => shortId(x)===current.claim);
+  if (!s) {
+    app.innerHTML=`<section class="exemplar-hero"><div class="page-width"><a class="back" href="#/">← All examples</a><p class="eyebrow">${esc(c.demoLabel)}</p><h1>${esc(c.organ)}</h1><p class="lede">No literature-linked hypothesis has been reviewed for this signal yet.</p><a class="button primary" href="${atlasHref(c)}">View experimental results →</a></div></section>${contributions(c)}`;
     return;
   }
-  const context = `${dossier.organ} × ${dossier.demographic_label}`;
-  app.innerHTML = `${editionBanner()}<section class="dossier-hero"><div class="page-width">
-      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="#/hypotheses">Hypotheses</a><span aria-hidden="true">/</span><span>${esc(dossier.organ)}</span></nav>
-      <div class="dossier-heading"><div><span class="demographic-chip demo-${esc(dossier.demographic)}">${esc(dossier.demographic_label)}</span><h1>${esc(dossier.organ)} <em>×</em> ${esc(dossier.demographic_label)}</h1><p>${esc(dossier.summary)}</p></div>
-      <a class="atlas-link-card" href="${esc(atlasHref(dossier))}" target="_blank" rel="noopener"><small>Approved aggregate evidence</small><strong>Open matching Results Atlas dossier</strong><span>Results remain independently audited <b aria-hidden="true">↗</b></span></a></div>
-    </div></section>
-    <section class="interpretation-boundary"><div class="page-width"><strong>Interpretation boundary</strong><p>These are testable explanations for observed prediction patterns. They do not establish causality, intrinsic demographic biology, or clinical utility. Case mix, access, exposure, sampling, and workflow remain competing explanations.</p></div></section>
-    <section class="page-width dossier-content">
-      <div class="claim-section-heading"><div><p class="eyebrow">Clinical context</p><h2>Disease, care pathway, and sampling hypotheses</h2></div><span>${dossier.claims.filter((claim) => claim.section === "clinical_context").length} claims</span></div>
-      <div class="claim-list">${dossier.claims.filter((claim) => claim.section === "clinical_context").map((claim) => renderClaim(dossier, claim)).join("") || `<div class="empty-section">No clinical-context claim is currently published.</div>`}</div>
-      <div class="claim-section-heading morphology"><div><p class="eyebrow">Histomorphology</p><h2>Candidate H&amp;E-visible carriers</h2></div><span>${dossier.claims.filter((claim) => claim.section === "histomorphology").length} claims</span></div>
-      <div class="claim-list">${dossier.claims.filter((claim) => claim.section === "histomorphology").map((claim) => renderClaim(dossier, claim)).join("") || `<div class="empty-section">No histomorphology claim is currently published.</div>`}</div>
-    </section>
-    <section class="collaboration-panel"><div class="page-width"><div><p class="eyebrow">Move the evidence forward</p><h2>Challenge, extend, or test this dossier.</h2><p>Include <strong>${esc(context)}</strong> and the permanent claim ID in your post. Discussions are public; never share PHI, restricted data, credentials, or unpublished sensitive results.</p></div><div class="collaboration-actions">
-      <a href="${discussionHref("ideas")}" target="_blank" rel="noopener"><strong>Discuss a hypothesis</strong><span>Offer a critique or alternative explanation →</span></a>
-      <a href="${discussionHref("q-a")}" target="_blank" rel="noopener"><strong>Suggest evidence</strong><span>Add a DOI, PMID, or correction →</span></a>
-      <a href="${discussionHref("show-and-tell")}" target="_blank" rel="noopener"><strong>Propose a follow-up study</strong><span>Define a cohort, test, and success criterion →</span></a>
-    </div></div></section>`;
-
-  document.querySelectorAll(".copy-context").forEach((button) => button.addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(button.dataset.context);
-      button.textContent = "Copied";
-    } catch {
-      button.textContent = "Copy unavailable";
-    }
-  }));
-  if (current.claim) requestAnimationFrame(() => document.querySelector(`#claim-${CSS.escape(current.claim)}`)?.scrollIntoView({ behavior: "smooth", block: "start" }));
+  const cats = [...new Set(s.candidates.map(categoryOf))];
+  const allRefs = [...new Set([...s.candidates.flatMap(x => x.evidence), ...s.limiting_evidence].map(l => l.source_id))];
+  app.innerHTML = `<section class="exemplar-hero"><div class="page-width">
+    <a class="back" href="#/">← All examples</a>
+    <p class="eyebrow">${esc(c.demoLabel)}</p>
+    <h1>${esc(c.organ)}</h1>
+    <p class="exemplar-q">${esc(question(c))}</p>
+    <p class="lede">${esc(s.summary)}</p>
+    ${current.claim && !knownClaim ? '<p class="empty-section">This historical hypothesis is not included in the current release. Current content for this signal appears below.</p>' : ''}
+    <p class="notice"><strong>${s.candidates.length} proposed hypotheses</strong> · unvalidated · model reliance untested</p>
+    <a class="button primary" href="${atlasHref(c)}">View experimental results in Results Atlas →</a>
+  </div></section>
+  <section class="page-width filter-bar" role="group" aria-label="Filter hypotheses by category">
+    <button class="chip" type="button" data-filter="all">All <span>${s.candidates.length}</span></button>
+    ${cats.map(cat => `<button class="chip" type="button" data-filter="${esc(cat)}">${esc(cat)} <span>${s.candidates.filter(x => categoryOf(x)===cat).length}</span></button>`).join('')}
+  </section>
+  <section class="page-width card-list">${s.candidates.map(x => card(x,c)).join('')}<p class="filter-empty" hidden>No hypotheses in this category.</p></section>
+  ${s.limiting_evidence.length ? `<section class="page-width block limiting-block"><h2>Limiting and contradictory evidence</h2><p class="block-note">Findings that constrain or argue against the candidates above. Retained deliberately.</p>${evidence(s.limiting_evidence,'limit')}</section>` : ''}
+  <section class="page-width"><details class="bibliography"><summary>Full bibliography (${allRefs.length} sources)</summary><p class="block-note">Sources support specific literature premises; their relevance to this study's cohort and model is indirect.</p><ol class="source-list">${allRefs.map(id => {const r=sources.get(id);return `<li><p>${esc(r.citation)}</p><a href="https://doi.org/${esc(r.doi)}" target="_blank" rel="noopener">DOI: ${esc(r.doi)}</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/${esc(r.pmid)}/" target="_blank" rel="noopener">PMID: ${esc(r.pmid)}</a></li>`;}).join('')}</ol></details></section>
+  ${contributions(c)}`;
+  activeCategory = cats.includes(current.cat) ? current.cat : 'all';
+  applyFilter();
+  if (knownClaim) setExpanded(current.claim,true,false);
 }
+function renderGovernance() {app.innerHTML=`<section class="page-width prose"><h1>About this resource</h1><p>The Results Atlas reports experimental AUROCs across training controls. The Hypothesis Explorer presents literature-linked candidates for three examples.</p><p>${disclaimer}</p><p>Literature searches were targeted and exploratory. Source checking was AI-assisted; the candidate records remain proposed and do not record human approval. Neither source support nor author review would establish model reliance.</p><p>Self-reported race categories describe study labels; they do not identify intrinsic racial biology.</p><h2>Categories</h2><p><strong>Tissue Morphology</strong> covers candidates recorded as morphology in the underlying records. <strong>Clinical &amp; Sampling</strong> covers candidates recorded as clinical or contextual. The stored scientific classification is unchanged; only the display name differs.</p><h2>Generation provenance</h2><p>All seven candidates come from three sealed runs of a frozen prompt, executed on 24 September 2026 (UTC) with OpenAI <code>gpt-6-astra</code> at reasoning setting <code>medium</code>. The backend model version, sampling seed and temperature were not exposed by the runtime. Generation and source checking used the same model in the same session, so they are not independent replication or human verification.</p><ul><li>Prompt <code>hypothesis_literature_v1</code>, SHA-256 <code>e16b158d8cedf9eafd38f0c2c152110ff3976696ed08cd07d5eadd029798cb8c</code></li><li>Output schema SHA-256 <code>d6503345c77d7038b7c68ef02063431859e3d319b88422a707fa49e404f4d670</code></li><li>Skin run <code>20260924T172017Z_23b25561</code>; breast run <code>20260924T203828Z_3860d41f</code>; gastric run <code>20260924T203828Z_114a41eb</code></li></ul><p>The skin run received only its residual AUROC, best-context AUROC and their difference as inputs; the other strategy values were verified afterwards and were not generation inputs. Every cited source records the material actually inspected — open full text or abstract only — and all source-to-study relations are indirect, because no cited study examined this cohort or model.</p><p>Historical claims from earlier editions are not part of this release. They remain frozen at <a href="supplement/v1/">supplement/v1</a>.</p><a class="button" href="${ATLAS_URL}">Open Results Atlas →</a></section>${contributions()}`;}
 
-function renderGovernance() {
-  app.innerHTML = `${editionBanner()}<section class="governance-hero"><div class="page-width"><p class="eyebrow">Methods &amp; governance</p><h1>Separate evidence, hypothesis, and conclusion.</h1><p>The Hub supports public scientific review while protecting unpublished and restricted work.</p></div></section>
-    <section class="page-width governance-grid">
-      <article><span>01</span><h2>Results remain separate</h2><p>The SAIF Results Atlas is the sole public source for approved aggregate experiment results. The Hub links to it by stable organ–demographic route and never copies its performance data.</p></article>
-      <article><span>02</span><h2>Claims remain traceable</h2><p>Each hypothesis has an immutable ID, evidence status, source trail, confounders, and suggested validation. Claims are retired rather than silently deleted.</p></article>
-      <article><span>03</span><h2>Community input is reviewed</h2><p>Discussions can challenge or extend claims, but only human-reviewed pull requests change the public corpus. A discussion or completed experiment is not automatically a paper claim.</p></article>
-      <article><span>04</span><h2>Publication is default-deny</h2><p>The release builder allowlists public claim fields. Internal workplans, prompts, rankings, annotations, comments, paths, credentials, identifiers, and unapproved results are excluded.</p></article>
-    </section>
-    <section class="page-width method-flow"><div class="section-heading"><p class="eyebrow">Evidence workflow</p><h2>How a public claim changes</h2></div><ol><li><strong>Literature or result raises a question</strong><span>Record the exact organ–demographic context.</span></li><li><strong>Structured claim is proposed</strong><span>State mechanism, features, confounders, validation, and source identifiers.</span></li><li><strong>Community critiques the claim</strong><span>Surface alternative explanations and conflicting evidence publicly.</span></li><li><strong>Maintainer completes human review</strong><span>Verify exact source support and causal framing before merge.</span></li><li><strong>Living edition updates</strong><span>Frozen paper supplements remain unchanged; corrections receive a new version.</span></li></ol></section>
-    <section class="race-framing"><div class="page-width"><div><p class="eyebrow">Demographic interpretation</p><h2>Race and self-reported ancestry are not direct tissue mechanisms.</h2></div><p>They can proxy pigmentation, geography, exposure, access, referral, institution, diagnosis mix, or other social and technical context. The Hub uses narrower mechanism language only when directly supported and retains competing contextual explanations.</p></div></section>
-    <section class="page-width governance-cta"><h2>Read the full community policies.</h2><div><a href="${REPO}/blob/main/GOVERNANCE.md" target="_blank" rel="noopener">Governance <span aria-hidden="true">↗</span></a><a href="${REPO}/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contribution guide <span aria-hidden="true">↗</span></a><a href="${REPO}/blob/main/SECURITY.md" target="_blank" rel="noopener">Sensitive-data reporting <span aria-hidden="true">↗</span></a></div></section>`;
+function renderContribute() {
+  app.innerHTML = `<section class="page-width prose">
+    <a class="back" href="#/">← All examples</a>
+    <h1>How to contribute</h1>
+    <p class="lede">These seven hypotheses are starting points, not conclusions. The most useful contributions are the ones that make a hypothesis easier to test — or harder to believe.</p>
+    <p>Everything here is <strong>proposed and not human-reviewed</strong>. Disagreement is a valid contribution; so is a source that undermines a candidate.</p>
+    <h2>Three kinds of contribution</h2>
+    <div class="contrib-grid">
+      <div class="contrib-card"><h3>Propose a hypothesis</h3><p>An explanation we missed, or an alternative reading of one already listed. Most valuable when it names something observable in tissue.</p><a class="button primary" href="${esc(discussionHref('ideas'))}" target="_blank" rel="noopener">Propose ↗</a></div>
+      <div class="contrib-card"><h3>Add or challenge evidence</h3><p>A paper that supports or contradicts a candidate. Contradicting evidence is as welcome as supporting evidence.</p><a class="button primary" href="${esc(discussionHref('show-and-tell'))}" target="_blank" rel="noopener">Add evidence ↗</a></div>
+      <div class="contrib-card"><h3>Ask a question</h3><p>About a candidate, the cohort, or how the hypotheses were generated.</p><a class="button primary" href="${esc(discussionHref('q-a'))}" target="_blank" rel="noopener">Ask ↗</a></div>
+    </div>
+    <h2>What makes a contribution useful</h2>
+    <ul class="plain-list guide-list">
+      <li><strong>Cite something resolvable.</strong> A DOI or PubMed ID, not a description. Every source on this site carries both.</li>
+      <li><strong>Say what the source actually reports</strong>, not what it implies. The prefilled template asks for this separately on purpose.</li>
+      <li><strong>State what you read.</strong> Full text and abstract-only are different kinds of evidence, and the site labels every source accordingly.</li>
+      <li><strong>Name the limits.</strong> Different cohort, different modality, different disease setting — these are the usual reasons a plausible source does not transfer.</li>
+      <li><strong>Say what would falsify it.</strong> A hypothesis that no observation could contradict is not yet useful here.</li>
+    </ul>
+    <h2>What happens next</h2>
+    <p>A contribution opens a thread in GitHub Discussions. It does not edit this page, and nothing posted there becomes part of the record automatically. Published candidates change only through the generation and review process described in <a href="#/governance">scientific scope</a>.</p>
+    <p><a class="button" href="${esc(browseHref())}" target="_blank" rel="noopener">Browse all discussions ↗</a></p>
+  </section>${contributions()}`;
 }
-
-function updateNav(page) {
-  document.querySelectorAll("[data-nav]").forEach((link) => {
-    const active = link.dataset.nav === (page === "dossier" ? "hypotheses" : page);
-    link.classList.toggle("active", active);
-    if (active) link.setAttribute("aria-current", "page"); else link.removeAttribute("aria-current");
-  });
-}
-
-function render() {
-  if (!community?.dossiers) {
-    app.innerHTML = `<section class="page-width not-found"><h1>The public claim bundle could not be loaded.</h1><p>Please report this as a site defect.</p></section>`;
-    return;
-  }
-  const current = route();
-  updateNav(current.page);
-  if (current.page === "hypotheses") renderHypotheses();
-  else if (current.page === "dossier") renderDossier(current);
-  else if (current.page === "governance") renderGovernance();
-  else renderHome();
-  primaryNav.classList.remove("open");
-  menuButton.setAttribute("aria-expanded", "false");
-  if (!(current.page === "dossier" && current.claim)) {
-    window.scrollTo({ top: 0, behavior: "instant" });
-    main.focus({ preventScroll: true });
+function setExpanded(id, open, moveHash = true) {
+  const article = document.getElementById(id);
+  if (!article) return;
+  const head = article.querySelector('.hcard-head');
+  const body = article.querySelector('.hcard-body');
+  head.setAttribute('aria-expanded',String(open));
+  article.classList.toggle('is-open',open);
+  body.hidden = !open;
+  head.querySelector('.cta-label').textContent = open ? 'Collapse' : 'Explore';
+  if (moveHash) {
+    const base = routePath().replace(/\/claim\/[^/]+\/?$/,'');
+    writeUrl(open ? `${base}/claim/${encodeURIComponent(id)}` : base);
+    // Expanding a card far down the page would otherwise leave its body below the fold.
+    if (open) article.scrollIntoView({block:'start',behavior:'smooth'});
   }
 }
-
-menuButton.addEventListener("click", () => {
-  const open = primaryNav.classList.toggle("open");
-  menuButton.setAttribute("aria-expanded", String(open));
+function applyFilter(persist = false) {
+  const cards = [...document.querySelectorAll('.hcard')];
+  if (!cards.length) return;
+  let shown = 0;
+  for (const el of cards) {
+    const match = activeCategory === 'all' || el.dataset.category === activeCategory;
+    el.hidden = !match;
+    if (match) shown++;
+  }
+  for (const chip of document.querySelectorAll('.chip')) chip.classList.toggle('is-active',chip.dataset.filter === activeCategory);
+  const empty = document.querySelector('.filter-empty');
+  if (empty) empty.hidden = shown > 0;
+  if (persist) writeUrl(routePath());
+}
+app.addEventListener('click', e => {
+  const chip = e.target.closest('.chip');
+  if (chip) {activeCategory = chip.dataset.filter; applyFilter(true); return;}
+  const head = e.target.closest('.hcard-head');
+  if (head) {setExpanded(head.dataset.toggle, head.getAttribute('aria-expanded') !== 'true');}
 });
-window.addEventListener("hashchange", render);
+function render() {
+  if (!community || !atlas) {app.innerHTML='<p class="page-width">Data could not be loaded. Please reload the page.</p>';return;}
+  const current=route();
+  activeCategory = 'all';
+  if(current.page==='detail') renderDetail(current);
+  else if(current.page==='signals') renderSignals();
+  else if(current.page==='governance') renderGovernance();
+  else if(current.page==='contribute') renderContribute();
+  else renderHome();
+  if(current.claim) document.getElementById(current.claim)?.scrollIntoView({block:'start'});
+  document.querySelector('#primary-nav').classList.remove('open');
+  document.querySelector('.menu-button').setAttribute('aria-expanded','false');
+}
+document.querySelector('.menu-button').addEventListener('click',e => {const open=document.querySelector('#primary-nav').classList.toggle('open');e.currentTarget.setAttribute('aria-expanded',String(open));});
+document.querySelector('#primary-nav').addEventListener('click', e => {if(e.target.closest('a')) {document.querySelector('#primary-nav').classList.remove('open');document.querySelector('.menu-button').setAttribute('aria-expanded','false');}});
+if(local) for(const a of document.querySelectorAll('a[href="https://sinai-computational-pathology.github.io/saif-results-atlas/"]')) a.href=ATLAS_URL;
+window.addEventListener('hashchange',()=>{render();main.focus({preventScroll:true});if(!route().claim)window.scrollTo(0,0);});
 render();

@@ -1,0 +1,427 @@
+{
+  "schema_version": 3,
+  "scope": "arxiv_three_exemplars",
+  "sources": [
+    {
+      "source_id": "doi:10.1046/j.1365-2133.2003.05473.x",
+      "citation": "Thong HY, Jee SH, Sun CC, Boissy RE. The patterns of melanosome distribution in keratinocytes of human skin as one determining factor of skin colour. British Journal of Dermatology. 2003.",
+      "doi": "10.1046/j.1365-2133.2003.05473.x",
+      "pmid": "14510981",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/14510981/",
+      "access_status": "abstract only",
+      "evidence_relation": "indirect"
+    },
+    {
+      "source_id": "doi:10.1034/j.1600-0749.2002.1o071.x",
+      "citation": "Alaluf S, Atkins D, Barrett K, Blount M, Carter N, Heath A. Ethnic variation in melanin content and composition in photoexposed and photoprotected human skin. Pigment Cell Research. 2002.",
+      "doi": "10.1034/j.1600-0749.2002.1o071.x",
+      "pmid": "11936268",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11936268/",
+      "access_status": "abstract only",
+      "evidence_relation": "indirect"
+    },
+    {
+      "source_id": "doi:10.1096/fj.02-0865fje",
+      "citation": "Tadokoro T, et al. UV-induced DNA damage and melanin content in human skin differing in racial/ethnic origin. FASEB Journal. 2003.",
+      "doi": "10.1096/fj.02-0865fje",
+      "pmid": "12692083",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12692083/",
+      "access_status": "abstract only",
+      "evidence_relation": "indirect"
+    },
+    {
+      "source_id": "doi:10.1001/jamadermatol.2024.2554",
+      "citation": "Ahmed F, Fitzsimmons R, Chu EY, Shin DB, Takeshita J. Frequency of Skin Biopsies for Psoriasis by Race and Ethnicity. JAMA Dermatology. 2024;160(9):1003–1005.",
+      "doi": "10.1001/jamadermatol.2024.2554",
+      "pmid": "39110450",
+      "url": "https://jamanetwork.com/journals/jamadermatology/fullarticle/2822205",
+      "access_status": "open full text",
+      "evidence_relation": "indirect"
+    },
+    {
+      "source_id": "doi:10.1111/cup.13033",
+      "citation": "Chau T, et al. Psoriasis or not? Review of 51 clinically confirmed cases reveals an expanded histopathologic spectrum of psoriasis. Journal of Cutaneous Pathology. 2017.",
+      "doi": "10.1111/cup.13033",
+      "pmid": "28833447",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28833447/",
+      "access_status": "abstract only",
+      "evidence_relation": "indirect"
+    },
+    {
+      "source_id": "doi:10.1111/j.1600-0625.2009.00843.x",
+      "citation": "Girardeau S, Mine S, Pageon H, Asselineau D. The Caucasian and African skin types differ morphologically and functionally in their dermal component. Experimental Dermatology. 2009.",
+      "doi": "10.1111/j.1600-0625.2009.00843.x",
+      "pmid": "19469898",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19469898/",
+      "access_status": "abstract only",
+      "evidence_relation": "indirect"
+    },
+    {
+      "source_id": "doi:10.1093/jnci/dju286",
+      "citation": "Figueroa et al. Terminal duct lobular unit involution of the normal breast: implications for breast cancer etiology. Journal of the National Cancer Institute. 2014.",
+      "doi": "10.1093/jnci/dju286",
+      "pmid": "25274491",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25274491/",
+      "access_status": "abstract only",
+      "evidence_relation": "indirect"
+    },
+    {
+      "source_id": "doi:10.1007/s10549-016-3691-5",
+      "citation": "Radisky et al. Natural history of age-related lobular involution and impact on breast cancer risk. Breast cancer research and treatment. 2016.",
+      "doi": "10.1007/s10549-016-3691-5",
+      "pmid": "26846985",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26846985/",
+      "access_status": "abstract only",
+      "evidence_relation": "indirect"
+    },
+    {
+      "source_id": "doi:10.1016/j.humpath.2015.09.031",
+      "citation": "Sandhu et al. Digital histologic analysis reveals morphometric patterns of age-related involution in breast epithelium and stroma. Human pathology. 2016.",
+      "doi": "10.1016/j.humpath.2015.09.031",
+      "pmid": "26772400",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26772400/",
+      "access_status": "open full text",
+      "evidence_relation": "indirect"
+    },
+    {
+      "source_id": "doi:10.1186/s13058-022-01541-z",
+      "citation": "Ogony et al. Towards defining morphologic parameters of normal parous and nulliparous breast tissues by artificial intelligence. Breast cancer research : BCR. 2022.",
+      "doi": "10.1186/s13058-022-01541-z",
+      "pmid": "35821041",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35821041/",
+      "access_status": "abstract only",
+      "evidence_relation": "indirect"
+    },
+    {
+      "source_id": "doi:10.1158/1055-9965.epi-20-0723",
+      "citation": "Kensler et al. Automated Quantitative Measures of Terminal Duct Lobular Unit Involution and Breast Cancer Risk. Cancer epidemiology, biomarkers & prevention : a publication of the American Association for Cancer Research, cosponsored by the American Society of Preventive Oncology. 2020.",
+      "doi": "10.1158/1055-9965.EPI-20-0723",
+      "pmid": "32917665",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32917665/",
+      "access_status": "open full text",
+      "evidence_relation": "indirect"
+    },
+    {
+      "source_id": "doi:10.1097/md.0000000000004052",
+      "citation": "Lu et al. The characteristics and prognostic value of signet ring cell histology in gastric cancer: A retrospective cohort study of 2199 consecutive patients. Medicine. 2016.",
+      "doi": "10.1097/MD.0000000000004052",
+      "pmid": "27399088",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27399088/",
+      "access_status": "open full text",
+      "evidence_relation": "indirect"
+    },
+    {
+      "source_id": "doi:10.3748/wjg.v28.i9.933",
+      "citation": "Choi et al. Sex-based differences in histology, staging, and prognosis among 2983 gastric cancer surgery patients. World journal of gastroenterology. 2022.",
+      "doi": "10.3748/wjg.v28.i9.933",
+      "pmid": "35317055",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35317055/",
+      "access_status": "abstract only",
+      "evidence_relation": "indirect"
+    },
+    {
+      "source_id": "doi:10.1111/j.1699-0463.1991.tb05122.x",
+      "citation": "Janssen et al. Age and sex distribution of intestinal type and diffuse gastric carcinoma. APMIS : acta pathologica, microbiologica, et immunologica Scandinavica. 1991.",
+      "doi": "10.1111/j.1699-0463.1991.tb05122.x",
+      "pmid": "1993119",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/1993119/",
+      "access_status": "abstract only",
+      "evidence_relation": "indirect"
+    },
+    {
+      "source_id": "doi:10.1111/jgh.15477",
+      "citation": "Kodama et al. Gastric mucosal changes, and sex differences therein, after Helicobacter pylori eradication: A long-term prospective follow-up study. Journal of gastroenterology and hepatology. 2021.",
+      "doi": "10.1111/jgh.15477",
+      "pmid": "33656793",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33656793/",
+      "access_status": "abstract only",
+      "evidence_relation": "indirect"
+    },
+    {
+      "source_id": "doi:10.1111/j.1365-2036.2004.01985.x",
+      "citation": "Kato et al. Sex differences in mucosal response to Helicobacter pylori infection in the stomach and variations in interleukin-8, COX-2 and trefoil factor family 1 gene expression. Alimentary pharmacology & therapeutics. 2004.",
+      "doi": "10.1111/j.1365-2036.2004.01985.x",
+      "pmid": "15298601",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15298601/",
+      "access_status": "abstract only",
+      "evidence_relation": "indirect"
+    },
+    {
+      "source_id": "doi:10.1136/gut.2008.161331",
+      "citation": "Derakhshan et al. Oesophageal and gastric intestinal-type adenocarcinomas show the same male predominance due to a 17 year delayed development in females. Gut. 2009.",
+      "doi": "10.1136/gut.2008.161331",
+      "pmid": "18838486",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18838486/",
+      "access_status": "abstract only",
+      "evidence_relation": "indirect"
+    }
+  ],
+  "signals": [
+    {
+      "signal_id": "skin__race_self_reported_ancestry",
+      "organ": "skin",
+      "demographic": "race",
+      "summary": "Epidermal pigmentation is a localized candidate morphology correlate, with anatomical-site/exposure sampling and psoriasis-specific biopsy selection as contextual alternatives.",
+      "candidates": [
+        {
+          "id": "skin__race_self_reported_ancestry:H1",
+          "title": "Epidermal pigmentation",
+          "hypothesis": "Variation in epidermal pigmentation may provide a localized visual correlate associated with the self-reported labels in this dataset.",
+          "type": "Morphology",
+          "spatial_scope": "localized",
+          "features": [
+            "Basal and suprabasal epidermal pigment amount and distribution",
+            "Pigment within lesion-free epidermis versus lesional tissue"
+          ],
+          "limitations": [
+            "Some supporting evidence uses electron microscopy beyond routine H&E resolution; visibility in routine sections requires testing.",
+            "Source populations and demographic definitions do not directly match the self-reported categories in this study.",
+            "Anatomical site and exposure may confound pigmentation comparisons. Pigmentation has not been established as a carrier of the model signal."
+          ],
+          "claim_status": "proposed",
+          "human_reviewed": false,
+          "evidence": [
+            {
+              "source_id": "doi:10.1046/j.1365-2133.2003.05473.x",
+              "support": "Electron microscopy of photoprotected volar forearm skin showed differing melanosome distribution patterns among the study-defined skin groups.",
+              "locator": "Abstract: Objectives, Methods and Results"
+            },
+            {
+              "source_id": "doi:10.1034/j.1600-0749.2002.1o071.x",
+              "support": "The studied human skin groups differed in epidermal melanin amount and composition.",
+              "locator": "Abstract"
+            }
+          ]
+        },
+        {
+          "id": "skin__race_self_reported_ancestry:H2",
+          "title": "Anatomical-site and exposure sampling",
+          "hypothesis": "Differences in anatomical-site and exposure-related sampling could contribute through epidermal pigmentation, if their distributions differ across the dataset labels.",
+          "type": "Clinical/context",
+          "spatial_scope": "localized",
+          "features": [
+            "Epidermal pigment within matched anatomical sites",
+            "Biopsy-site and sun-exposure metadata"
+          ],
+          "limitations": [
+            "Protected and exposed samples differed in anatomical site as well as exposure.",
+            "Individual UV response is not captured reliably by demographic labels alone.",
+            "The distributions of site and exposure across this study's labels need to be checked."
+          ],
+          "claim_status": "proposed",
+          "human_reviewed": false,
+          "evidence": [
+            {
+              "source_id": "doi:10.1034/j.1600-0749.2002.1o071.x",
+              "support": "Across the studied groups, chronically photoexposed skin had more epidermal melanin than corresponding photoprotected skin.",
+              "locator": "Abstract"
+            },
+            {
+              "source_id": "doi:10.1096/fj.02-0865fje",
+              "support": "In an experimental UV study, measured erythemal sensitivity predicted DNA photodamage better than racial/ethnic origin or skin phototype.",
+              "locator": "Abstract"
+            }
+          ]
+        },
+        {
+          "id": "skin__race_self_reported_ancestry:H3",
+          "title": "Psoriasis-specific biopsy selection",
+          "hypothesis": "Disease-specific biopsy selection could change the lesion mix across demographic labels within psoriasis samples.",
+          "type": "Clinical/context",
+          "spatial_scope": "mixed",
+          "features": [
+            "Diagnosis and biopsy indication",
+            "Psoriasiform epidermal changes, spongiosis and inflammatory patterns within matched diagnoses",
+            "Prior treatment and refractory or atypical presentation"
+          ],
+          "limitations": [
+            "The supporting biopsy-frequency comparison comes from one health system and is specific to psoriasis.",
+            "Clinical histories and indications remain alternative explanations; these findings do not establish demographic differences in inflammatory morphology.",
+            "The selected biopsy histology series did not compare demographic groups."
+          ],
+          "claim_status": "proposed",
+          "human_reviewed": false,
+          "evidence": [
+            {
+              "source_id": "doi:10.1001/jamadermatol.2024.2554",
+              "support": "Among adults with psoriasis in one academic health system, Black patients had higher adjusted odds of biopsy than White patients; the authors could not exclude differing clinical histories or presentations as explanations.",
+              "locator": "Methods; Results; Table 2; Discussion"
+            },
+            {
+              "source_id": "doi:10.1111/cup.13033",
+              "support": "A clinically confirmed psoriasis biopsy series documented classic and non-classic histological features, illustrating variation among selected psoriasis biopsies.",
+              "locator": "Abstract: Background, Methods and Conclusions"
+            }
+          ]
+        }
+      ],
+      "limiting_evidence": [
+        {
+          "source_id": "doi:10.1111/j.1600-0625.2009.00843.x",
+          "support": "Reported no significant epidermal or superficial dermal thickness difference and no observed collagen/elastic-fibre organization difference, alongside a dermal–epidermal junction difference. It does not justify a general dermal race signature.",
+          "locator": "Abstract"
+        }
+      ]
+    },
+    {
+      "signal_id": "breast__age",
+      "organ": "breast",
+      "demographic": "age",
+      "summary": "Breast has the clearest directly measured H&E age-related precedent among these three examples: localized lobular changes and broader tissue composition. Neither has been shown to explain model predictions.",
+      "candidates": [
+        {
+          "id": "breast__age:H1",
+          "title": "TDLU involution / epithelial cellularity",
+          "hypothesis": "Age-associated TDLU involution and reduced epithelial cellularity could contribute to age-group prediction in breast tissue.",
+          "type": "Morphology",
+          "spatial_scope": "localized",
+          "features": [
+            "TDLU count per tissue area",
+            "TDLU span and acini count",
+            "epithelial nuclear density in non-neoplastic lobules"
+          ],
+          "limitations": [
+            "Parity, menopause, diagnosis, and procedure may influence the sampled lobules.",
+            "Findings in normal or selected benign-biopsy cohorts may not transfer directly to this study's age groups and tissue mix.",
+            "The cited features have not been shown to carry the model prediction."
+          ],
+          "claim_status": "proposed",
+          "human_reviewed": false,
+          "evidence": [
+            {
+              "source_id": "doi:10.1093/jnci/dju286",
+              "support": "In normal breast samples from 1,938 women, TDLU count, span and acini count declined with age and were lower after menopause; parity also affected these measures.",
+              "locator": "Abstract: METHODS and RESULTS"
+            },
+            {
+              "source_id": "doi:10.1007/s10549-016-3691-5",
+              "support": "Among 1,115 women with repeated benign breast biopsies, lobular involution generally progressed between biopsies, with variation by initial age and interval.",
+              "locator": "Abstract"
+            },
+            {
+              "source_id": "doi:10.1186/s13058-022-01541-z",
+              "support": "In H&E samples from donors aged 45 or younger, parity was associated with differences in TDLU/acini measures and recent childbirth with increased mononuclear cells; these features are not specific to chronological age.",
+              "locator": "Abstract: METHODS and RESULTS"
+            }
+          ]
+        },
+        {
+          "id": "breast__age:H2",
+          "title": "Stromal–adipose tissue composition",
+          "hypothesis": "Age-associated differences in stromal and adipose area fractions, together with epithelial cellularity, could provide a broader tissue-composition cue.",
+          "type": "Morphology",
+          "spatial_scope": "mixed",
+          "features": [
+            "adipose area fraction",
+            "nonfatty stromal area fraction",
+            "epithelial nuclear density"
+          ],
+          "limitations": [
+            "Cross-sectional tissue fractions do not demonstrate longitudinal adipose replacement.",
+            "Epithelial area did not show a universal linear decline with age; reported composition changes plateaued around age 55.",
+            "BMI, parity, menopause, procedure, tumor proximity, and tissue processing may influence observed morphology.",
+            "Measured composition is not evidence that the prediction model uses these features."
+          ],
+          "claim_status": "proposed",
+          "human_reviewed": false,
+          "evidence": [
+            {
+              "source_id": "doi:10.1016/j.humpath.2015.09.031",
+              "support": "In histologically normal H&E breast tissue from 454 surgical patients, epithelial nuclear density declined with age; stromal area decreased and adipose area increased until roughly age 55, then plateaued. Epithelial area lacked a significant age trend, as did stromal and adipose nuclear density.",
+              "locator": "3. Results, 3.2. Associations between age and tissue morphometry"
+            }
+          ]
+        }
+      ],
+      "limiting_evidence": [
+        {
+          "source_id": "doi:10.1158/1055-9965.epi-20-0723",
+          "support": "In a Nurses’ Health Studies benign-biopsy cohort, quantitative and qualitative involution measures did not predict subsequent breast cancer after the reported adjustments; this limits risk interpretation, not the existence of age-related histology.",
+          "locator": "Results: TDLU involution measures and breast cancer risk; Discussion"
+        }
+      ]
+    },
+    {
+      "signal_id": "gastric_stomach__sex",
+      "organ": "gastric_stomach",
+      "demographic": "sex",
+      "summary": "In the targeted literature search, no sufficiently supported direct morphology explanation for the full gastric residual signal was identified.",
+      "candidates": [
+        {
+          "id": "gastric_stomach__sex:H1",
+          "title": "Gastric cancer subtype composition",
+          "hypothesis": "Within gastric cancer samples, sex-associated differences in subtype composition could provide a disease-dependent cue if incompletely represented by the diagnosis matching.",
+          "type": "Clinical/context",
+          "spatial_scope": "localized",
+          "features": [
+            "pathologist-confirmed Lauren subtype within cancer",
+            "signet-ring component within confirmed tumor"
+          ],
+          "limitations": [
+            "Within-cancer subtype proportions are not population incidence; age and referral selection affect these comparisons.",
+            "Signet-ring and diffuse histology are not interchangeable categories.",
+            "Studies reporting similar diffuse-type rates limit generalization. The cancer-only findings do not explain the full tissue cohort."
+          ],
+          "claim_status": "proposed",
+          "human_reviewed": false,
+          "evidence": [
+            {
+              "source_id": "doi:10.1097/md.0000000000004052",
+              "support": "In a Beijing hospital series of 2,199 gastric cancer patients, signet-ring histology comprised a larger fraction of cancers in women than men. This was a within-cancer subtype proportion, not female predominance in population incidence; Lauren classification was available for only 255 patients.",
+              "locator": "Methods: Patients and data collection; Results: Patient characteristics"
+            },
+            {
+              "source_id": "doi:10.3748/wjg.v28.i9.933",
+              "support": "In 2,983 surgically treated gastric adenocarcinoma patients in Korea, diffuse histology was more frequent among women, especially younger women; diffuse histology was also more common at younger ages in both sexes.",
+              "locator": "Abstract: METHODS and RESULTS"
+            },
+            {
+              "source_id": "doi:10.1111/j.1699-0463.1991.tb05122.x",
+              "support": "A Norwegian series found similar sex-specific rates of diffuse gastric cancer but higher intestinal-type rates in men. Subtype proportions among cancer patients and population incidence rates are different quantities.",
+              "locator": "Abstract"
+            }
+          ]
+        },
+        {
+          "id": "gastric_stomach__sex:H2",
+          "title": "Infection, site, and treatment-dependent mucosal context",
+          "hypothesis": "Within relevant benign gastric disease samples, H. pylori history and site-dependent metaplasia/inflammation could be conditional context cues associated with sex.",
+          "type": "Clinical/context",
+          "spatial_scope": "mixed",
+          "features": [
+            "intestinal metaplasia extent by antrum/corpus",
+            "inflammatory activity by site",
+            "atrophy as a checked covariate, not a presumed universal sex feature"
+          ],
+          "limitations": [
+            "Infection, anatomical site, age, and eradication history affect mucosal findings.",
+            "A metaplasia difference coexisted with no significant sex difference in atrophy after eradication.",
+            "Molecular interleukin-8 results are a distinct endpoint, not a visible H&E feature.",
+            "These disease-dependent observations do not establish broad gastric sexual dimorphism or a hormonal explanation."
+          ],
+          "claim_status": "proposed",
+          "human_reviewed": false,
+          "evidence": [
+            {
+              "source_id": "doi:10.1111/jgh.15477",
+              "support": "In 172 patients followed after H. pylori eradication, intestinal metaplasia scores were higher in men before eradication and at most follow-up points, whereas atrophy scores did not differ significantly by sex.",
+              "locator": "Abstract: METHODS and RESULTS"
+            },
+            {
+              "source_id": "doi:10.1111/j.1365-2036.2004.01985.x",
+              "support": "In selected patients with benign gastric disease, H. pylori-associated antral inflammatory activity and corpus atrophy/metaplasia varied with sex, age and site; the abstract reports no sex difference in interleukin-8 mRNA induction.",
+              "locator": "Abstract: METHODS and RESULTS"
+            }
+          ]
+        }
+      ],
+      "limiting_evidence": [
+        {
+          "source_id": "doi:10.1136/gut.2008.161331",
+          "support": "A Scottish study including gastric and oesophageal adenocarcinomas found male predominance for intestinal subtype but similar diffuse-type incidence between sexes; pooled upper-GI evidence is indirect for gastric tissue alone.",
+          "locator": "Abstract: METHOD AND MATERIALS and RESULTS"
+        }
+      ]
+    }
+  ]
+}

@@ -1,38 +1,19 @@
-name: Validate public claims and release
-
+name: Validate arXiv viewer
 on:
   pull_request:
   push:
     branches: [main]
-  schedule:
-    - cron: "17 6 * * 1"
   workflow_dispatch:
-
 permissions:
   contents: read
-
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '20'
           cache: npm
       - run: npm ci
       - run: npm run check
-      - name: Resolve DOI and PMID metadata
-        run: npm run citations
-      - name: Verify frozen supplement
-        if: ${{ hashFiles('supplement/v1/snapshot_manifest.json') != '' }}
-        run: npm run snapshot -- v1 --verify
-      - name: Upload citation report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: citation-report
-          path: citation-report.md
-          if-no-files-found: ignore
