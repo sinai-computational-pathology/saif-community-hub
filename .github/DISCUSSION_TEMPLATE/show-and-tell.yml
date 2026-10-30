@@ -1,0 +1,38 @@
+title: "[Evidence] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The hypothesis and organ–demographic combination are recorded in the title above.
+
+        **This discussion is public. Do not post PHI, patient or specimen identifiers, restricted data, or credentials.**
+  - type: input
+    id: hypothesis
+    attributes:
+      label: Related hypothesis
+      description: Filled in from the Hypothesis Explorer. Leave it as it is.
+      placeholder: Recorded in the title above
+  - type: dropdown
+    id: contribution_type
+    attributes:
+      label: Contribution type
+      options:
+        - Idea or alternative explanation
+        - Supporting or conflicting evidence
+        - Question
+      default: 1
+    validations:
+      required: true
+  - type: input
+    id: reference
+    attributes:
+      label: Related literature (optional)
+      description: DOI, PMID or paper URL.
+  - type: textarea
+    id: contribution
+    attributes:
+      label: Your contribution
+      description: Your explanation, evidence, or question.
+    validations:
+      required: true
